@@ -42,8 +42,42 @@ IMPORTANT SECURITY NOTICE:
      using multi-layered code obfuscation and string encryption to preserve
      project integrity and prevent unauthorized malicious tampering or repackaging.
      For detailed information regarding our binary protection architecture,
-     please consult:
-       docs/PUBLIC_RELEASE_AND_PROTECTION_PLAN.md
+     please consult docs/PUBLIC_RELEASE_AND_PROTECTION_PLAN.md in the project docs.
+
+================================================================================
+AUTHORIZED IT ADMINISTRATIVE USE & MISUSE DISCLAIMER
+================================================================================
+
+1. LEGITIMATE USE ONLY:
+   This application is designed, developed, and published strictly and exclusively
+   for legitimate, authorized IT system administrators, domain engineers, and
+   certified support specialists to monitor, maintain, troubleshoot, and simplify
+   routine daily corporate Active Directory and Windows domain operations.
+
+2. STRICT PROHIBITION AGAINST MISUSE:
+   Under NO circumstances should this tool be deployed, executed, or used:
+     * On any computer, server, or corporate network without prior explicit,
+       documented authorization from the network owner or management.
+     * For unauthorized surveillance, clandestine user monitoring, privacy
+       infringement, espionage, credential harvesting, or illicit data capture.
+     * For penetration testing, exploitation, cyber attacks, or intentional
+       disruption of any computer systems, networks, or domain services.
+
+3. ZERO LIABILITY & INDEMNIFICATION:
+   The author and developer (Askarali Mattummal) expressly disclaims ABSOLUTELY
+   NO RESPONSIBILITY, LEGAL OBLIGATION, OR LIABILITY for any damages, losses,
+   penalties, security breaches, data compromises, employment disputes, or legal
+   consequences resulting from any misuse, illicit deployment, or improper
+   operation of this software.
+
+   The entire responsibility and legal liability for ensuring lawful, ethical,
+   and authorized usage — in strict compliance with all local laws, privacy
+   statutes (e.g., GDPR, CCPA, labor laws), and corporate IT policies — rests
+   entirely upon the individual operator and organization utilizing this software.
+
+   BY DOWNLOADING, STORING, OR EXECUTING THIS SOFTWARE, YOU EXPLICITLY AGREE TO
+   USE IT ONLY FOR AUTHORIZED, LEGITIMATE IT ADMINISTRATIVE PURPOSES AND ACCEPT
+   FULL PERSONAL AND LEGAL RESPONSIBILITY FOR ALL ACTIONS PERFORMED WITH IT.
 
 ================================================================================
 TERMS OF USE & PERMISSION NOTICE
@@ -56,9 +90,9 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice, project purpose, official distribution notice, and
-this permission notice shall be included in all copies or substantial portions
-of the Software.
+The above copyright notice, project purpose, official distribution notice,
+authorized use disclaimer, and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,

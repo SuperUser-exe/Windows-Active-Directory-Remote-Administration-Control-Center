@@ -141,21 +141,6 @@ AD Remote Control Center uses the built-in Microsoft .NET Framework C# compiler 
 
 ---
 
-## 🔢 Automated Version Management
-
-Updating the application version is fully automated:
-
-1. Edit **`VERSION.txt`** directly with your desired version (e.g. `2.5.1` or `3.0.0`).
-2. Run **`Build_Exe.bat`**.
-3. **`sync_version.ps1`** automatically runs and updates:
-   - `[assembly: AssemblyVersion("X.X.X.X")]`
-   - `[assembly: AssemblyFileVersion("X.X.X.X")]`
-   - `public const string APP_VERSION = "X.X.X";`
-   - Header badge, title bar, footer, and release notes buttons.
-4. The generated `AD_Remote_Control.exe` will immediately carry the new version number!
-
----
-
 ## ⚙️ Group Policy & Administrator Setup Requirements
 
 ### 1. Administrator Account Permissions
@@ -221,7 +206,10 @@ When you publish a new version on GitHub Releases:
 
 ---
 
-## 📄 License & Credits
+## 📄 License, Legal & Ethical Use Notice
 
 Developed with ❤️ by **Askarali Mattummal**.  
-Licensed under the [MIT License](LICENSE).
+Licensed under the [MIT License & Distribution Terms](LICENSE).
+
+> [!CAUTION]
+> **Authorized IT Administrative Use Only**: This software is designed, developed, and published strictly for authorized IT systems administrators and certified support personnel to maintain, monitor, and troubleshoot authorized enterprise domain infrastructure. Any unauthorized deployment, surveillance, privacy violation, or malicious use is strictly prohibited. The author assumes no responsibility or liability for damages or legal consequences arising from misuse. Please consult the [LICENSE](LICENSE) for complete terms of use and liability disclaimers.
