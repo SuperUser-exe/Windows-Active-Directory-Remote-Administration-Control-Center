@@ -1,0 +1,12 @@
+﻿# Strict Blacklist: Source files must NEVER be pushed to Public Repo
+*.cs
+*.pdb
+*.log
+*.ico
+sync_version.ps1
+Build_Exe.bat
+obfuscar.xml
+Release_Protected/
+.vs/
+bin/
+obj/
