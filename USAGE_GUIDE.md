@@ -1,4 +1,4 @@
-﻿# Windows AD Remote Administration Control Center — Enterprise Administration Suite
+# Windows AD Remote Administration Control Center — Enterprise Administration Suite
 ## Complete Operator Reference Manual & Architecture Guide (v2.6.5)
 **Created & Developed by [Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)**
 
@@ -29,6 +29,7 @@
 17. [Group Policy, Firewall & Administrator Setup Guide](#17-group-policy-firewall--administrator-setup-guide)
 18. [Universal Keyboard Shortcuts](#18-universal-keyboard-shortcuts)
 19. [Security & Access Authorization](#19-security--access-authorization)
+20. [Community, Support & Feedback](#20-community-support--feedback)
 
 ---
 
@@ -436,3 +437,12 @@ Write-Host "[SUCCESS] Workstation is fully configured for Windows AD Remote Admi
 - **Binary Integrity & Obfuscation**:
   - The compiled `.exe` is a native PE binary. Source code is compiled and cannot be extracted with archiving tools such as WinRAR or 7-Zip.
   - For public distribution, production binaries are hardened with automated obfuscation and Authenticode signatures to prevent reverse engineering and unauthorized tampering.
+
+---
+
+### 20. Community, Support & Feedback
+- **Official GitHub Releases**: [SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases)
+- **Telegram Community Group**: Join [t.me/WADRACC](https://t.me/WADRACC) for real-time chat, instant support, updates, and feature suggestions.
+- **GitHub Discussions**: [Community Discussions & Feature Ideas](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/discussions)
+- **Developer Attribution**: [Askarali Mattummal on LinkedIn](https://www.linkedin.com/in/askaralimattummal/)
+

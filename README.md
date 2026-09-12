@@ -1,12 +1,13 @@
-﻿# ⚡ Windows AD Remote Administration Control Center — Enterprise Remote Control & Administration Suite
+# ⚡ Windows AD Remote Administration Control Center — Enterprise Remote Control & Administration Suite
 
 [![Release](https://img.shields.io/badge/Release-v2.6.5-blue.svg?style=for-the-badge&logo=github)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011%20%7C%20Server-0078D6.svg?style=for-the-badge&logo=windows)](https://microsoft.com)
 [![Framework](https://img.shields.io/badge/.NET%20Framework-4.0%2B-512BD4.svg?style=for-the-badge&logo=dotnet)](https://dotnet.microsoft.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20External%20DLLs-success.svg?style=for-the-badge)](README.md)
+[![Telegram Community](https://img.shields.io/badge/Telegram-Join%20Chat-2CA5E0.svg?style=for-the-badge&logo=telegram)](https://t.me/WADRACC)
 
-> **Created & Developed by [Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)** ([LinkedIn](https://www.linkedin.com/in/askaralimattummal/) | [GitHub](https://github.com/SuperUser-exe))  
+> **Created & Developed by [Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)** ([LinkedIn](https://www.linkedin.com/in/askaralimattummal/) | [GitHub](https://github.com/SuperUser-exe) | [Telegram](https://t.me/WADRACC))  
 > *A high-performance, 100% agentless Windows & Active Directory remote management, screen mirroring, diagnostics, and IT helpdesk suite.*
 
 ---
@@ -43,6 +44,7 @@ After colleagues and fellow sysadmin friends used the tool and experienced how m
 > * **Do not trust unofficial copies**: If downloaded from third-party sites, file-sharing platforms, or re-hosted mirrors, the author assumes no responsibility for modified, corrupted, or repackaged binaries.
 > * **Integrity Check**: Always verify the official release SHA-256 checksums provided in `CHECKSUMS.txt`.
 > * **Community & Discussions**: We have enabled **[GitHub Discussions](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/discussions)**! Come say hello, share workflow feedback, report issues, or suggest new features.
+> * **Telegram Community Chat**: Join our active Telegram group at **[t.me/WADRACC](https://t.me/WADRACC)** for instant community chat, direct feedback, updates, and IT discussions.
 
 ---
 
@@ -201,7 +203,7 @@ When you publish a new version on GitHub Releases:
 
 ## 📄 License, Legal & Ethical Use Notice
 
-Developed with ❤️ by **[Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)** ([LinkedIn Profile](https://www.linkedin.com/in/askaralimattummal/) | [GitHub](https://github.com/SuperUser-exe)).  
+Developed with ❤️ by **[Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)** ([LinkedIn Profile](https://www.linkedin.com/in/askaralimattummal/) | [GitHub](https://github.com/SuperUser-exe) | [Telegram Community](https://t.me/WADRACC)).  
 Licensed under the [MIT License & Distribution Terms](LICENSE).
 
 > [!CAUTION]
