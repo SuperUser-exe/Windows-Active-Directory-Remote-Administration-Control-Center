@@ -1,5 +1,5 @@
 # 📜 Windows AD Remote Administration Control Center - Version History & Changelog
-**Created & Developed by Askarali Mattummal**
+**Created & Developed by [Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)**
 
 All notable changes and upgrades to **Windows AD Remote Administration Control Center** are documented in this file.
 

@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20External%20DLLs-success.svg?style=for-the-badge)](README.md)
 
-> **Created & Developed by [Askarali Mattummal](https://github.com/SuperUser-exe)**  
+> **Created & Developed by [Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)** ([LinkedIn](https://www.linkedin.com/in/askaralimattummal/) | [GitHub](https://github.com/SuperUser-exe))  
 > *A high-performance, 100% agentless Windows & Active Directory remote management, screen mirroring, diagnostics, and IT helpdesk suite.*
 
 ---
@@ -201,7 +201,7 @@ When you publish a new version on GitHub Releases:
 
 ## 📄 License, Legal & Ethical Use Notice
 
-Developed with ❤️ by **Askarali Mattummal**.  
+Developed with ❤️ by **[Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)** ([LinkedIn Profile](https://www.linkedin.com/in/askaralimattummal/) | [GitHub](https://github.com/SuperUser-exe)).  
 Licensed under the [MIT License & Distribution Terms](LICENSE).
 
 > [!CAUTION]

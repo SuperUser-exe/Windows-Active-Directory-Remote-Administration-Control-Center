@@ -1,6 +1,6 @@
 ﻿# Windows AD Remote Administration Control Center — Enterprise Administration Suite
 ## Complete Operator Reference Manual & Architecture Guide (v2.6.5)
-**Created & Developed by Askarali Mattummal**
+**Created & Developed by [Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)**
 
 ---
 
