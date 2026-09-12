@@ -1,7 +1,30 @@
-# 📜 AD Remote Control Center - Version History & Changelog
+# 📜 Windows AD Remote Administration Control Center - Version History & Changelog
 **Created & Developed by Askarali Mattummal**
 
-All notable changes and upgrades to the **Active Directory Remote Control Suite** are documented in this file.
+All notable changes and upgrades to **Windows AD Remote Administration Control Center** are documented in this file.
+
+## 🏷️ Version 2.6.5 (Suite Rebranding, Periodic Background Auto-Updater & Mode B Notification Edition) - September 12, 2026
+
+### 🏛️ Suite Rebranding to "Windows AD Remote Administration Control Center"
+* **Official Application Renaming**:
+  - Rebranded the entire suite to **Windows AD Remote Administration Control Center** across all user interfaces, window headers, status indicators, and embedded operator manuals.
+  - Updated domain administration automation scripts (`Configure_Endpoint_GPO.ps1`) to align with the suite identity.
+
+### 🌐 Official GitHub Repository Migration
+* **New Canonical Repository URL**:
+  - Migrated the project's upstream Git repository to `https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center`.
+  - Updated in-app auto-updater endpoints, README documentation, release badges, license attribution, and community discussion links.
+
+### 🚀 Periodic Background Update Polling & Mode B Non-Intrusive Alerts
+* **Automated Background Update Verification**:
+  - Implemented automated background polling that periodically queries the official GitHub repository for new releases while the management console remains open.
+  - Eliminates the need for administrators to manually check for updates or restart long-running monitoring sessions.
+* **Mode B Focus-Safe Emerald Notification System**:
+  - When an update is detected during background polling, the header button automatically transitions into a radiant emerald green badge (`🚀 vX.X.X Available!`).
+  - Plays a gentle, non-blocking system audio chime and updates the bottom status bar (`💡 New Update Available: vX.X.X - Click '🚀 vX.X.X Available!' to install`).
+  - **Zero Focus Stealing**: Never interrupts active remote shadowing, typing, or administrative PowerShell console workflows with disruptive modal popups.
+* **Instant Pre-Cached Release Opener**:
+  - Clicking the emerald alert button immediately launches the update dialog with zero network latency, reading pre-cached release notes and assets without re-querying the GitHub API.
 
 ## 🏷️ Version 2.6.0 (Remote User Management, Sub-Second Live Monitor & Network IP Hub Edition) - September 7, 2026
 
@@ -16,11 +39,9 @@ All notable changes and upgrades to the **Active Directory Remote Control Suite*
   - Live search filtering, CSV export, right-click context menu (`🟢 Enable`, `⚪ Disable`, `🗑️ Delete Entry`), and double-click to toggle state.
   - Accessible via top toolbar button (`🚀 Startup`) and right-click computer context menu (`🚀 Remote Startup Applications (Autorun Manager)`).
 
-### 🔄 Seamless 1-Click Updates from GitHub Releases
-* **Integrated Release Detection**:
-  - 1-click update check (`🔄 Check for Updates`) queries official releases from `https://github.com/SuperUser-exe/AD-Remote-Control-Center`.
-  - Automatically notifies administrators when new features, stability enhancements, or security patches are published.
-  - Seamless in-place download and automatic update installation without third-party installers or web browser redirects.
+* **Integrated GitHub Release Checker & 1-Click Updater**:
+  - Automatically queries official GitHub releases 4 seconds after initial launch.
+  - In-dialog release notes viewer with direct 1-click in-place updater script.
   - Silent fallback and graceful offline support when working in air-gapped enterprise domains.
 
 * **Compact & Scrollable Context Menu (`Right-Click Menu`)**:
@@ -136,10 +157,9 @@ All notable changes and upgrades to the **Active Directory Remote Control Suite*
 ### 📄 License & Community Communication
 * **Updated Official LICENSE Terms**:
   - Formalized personal-use origin and public release purpose specifically for IT administrators.
-  - Documented `https://github.com/SuperUser-exe/AD-Remote-Control-Center` as the sole official release source with disclaimers for unofficial, third-party, or repackaged copies.
-  - Referenced security protections including code obfuscation and string encryption documented in `docs/PUBLIC_RELEASE_AND_PROTECTION_PLAN.md`.
+  - Documented `https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center` as the sole official release source with disclaimers for unofficial, third-party, or repackaged copies.
 * **GitHub Discussions Community Welcome**:
-  - Created `GITHUB_DISCUSSIONS_WELCOME.md` containing a warm, developer-written announcement post ready for copy-pasting into GitHub Discussions.
+  - Created `GITHUB_DISCUSSIONS_WELCOME.md` containing a warm, developer-written announcement post ready for community discussion.
 
 ### 🧹 UI & Toolbar Streamlining
 * **Deduplicated Print Spooler Control**:
@@ -149,8 +169,8 @@ All notable changes and upgrades to the **Active Directory Remote Control Suite*
 
 ### 🏷️ Binary Metadata & Explorer Details Credit
 * **Author Attribution in Windows File Properties**:
-  - All compiled Windows binary properties (`AD_Remote_Control.exe`) now display author attribution:
-    - **File description**: `AD Remote Control Center Enterprise - Developed and Created by Askarali Mattummal`
+  - All compiled Windows binary properties now display author attribution:
+    - **File description**: `Windows AD Remote Administration Control Center Enterprise - Developed and Created by Askarali Mattummal`
     - **Company**: `Developed and Created by Askarali Mattummal`
     - **Copyright**: `Copyright © 2026 Askarali Mattummal. All rights reserved.`
     - **Product version**: `2.6.0 - Developed and Created by Askarali Mattummal`
@@ -391,7 +411,7 @@ All notable changes and upgrades to the **Active Directory Remote Control Suite*
 ---
 
 ## 🏷️ Version 1.0.0 - January 15, 2026
-* Initial release of AD Remote Control Center.
+* Initial release of Windows AD Remote Administration Control Center.
 * Active Directory computer enumeration with LDAP search paging.
 * Real-time ping latency check and status badges.
 * Auto-Attended Remote Shadowing (`mstsc /shadow`) and Remote Desktop (`mstsc /admin`).

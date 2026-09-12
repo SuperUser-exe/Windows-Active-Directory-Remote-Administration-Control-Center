@@ -1,5 +1,5 @@
-# AD Remote Control Center — Enterprise Administration Suite
-## Complete Operator Reference Manual & Architecture Guide (v2.6.0)
+﻿# Windows AD Remote Administration Control Center — Enterprise Administration Suite
+## Complete Operator Reference Manual & Architecture Guide (v2.6.5)
 **Created & Developed by Askarali Mattummal**
 
 ---
@@ -33,9 +33,9 @@
 ---
 
 ### 1. Overview & Architecture
-**AD Remote Control Center** (v2.5.0) is a standalone, high-performance Windows systems administration and remote assistance suite built specifically for Active Directory Domain Administrators, Systems Engineers, and IT Helpdesk specialists.
+**Windows AD Remote Administration Control Center** (v2.6.5) is a standalone, high-performance Windows systems administration and remote assistance suite built specifically for Active Directory Domain Administrators, Systems Engineers, and IT Helpdesk specialists.
 
-Unlike commercial remote assistance tools (such as TeamViewer, AnyDesk, or ScreenConnect) that require installing proprietary background services or paying recurring cloud subscriptions, AD Remote Control Center operates **100% agentlessly**. It interacts natively with Windows endpoints using standard enterprise protocols:
+Unlike commercial remote assistance tools (such as TeamViewer, AnyDesk, or ScreenConnect) that require installing proprietary background services or paying recurring cloud subscriptions, Windows AD Remote Administration Control Center operates **100% agentlessly**. It interacts natively with Windows endpoints using standard enterprise protocols:
 - **Active Directory / LDAP (ADSI)**: Discovers all domain-joined workstations and servers in real-time.
 - **Terminal Services APIs**: Initiates Remote Shadow sessions and RDP console attachments.
 - **Windows Management Instrumentation (WMI / DCOM / RPC)**: Executes remote commands, inspects hardware sensors, queries installed software across all user profiles, manages services, and controls processes.
@@ -50,15 +50,15 @@ Unlike commercial remote assistance tools (such as TeamViewer, AnyDesk, or Scree
 #### Single-File Native Executable
 Launch the application simply by executing:
 ```text
-AD_Remote_Control.exe
+"Windows AD Remote Administration Control Center v2.6.5.exe"
 ```
-Or use the launcher batch file:
+Or use the launcher batch file (which automatically launches the versioned executable):
 ```text
 Run_AD_Remote_Control.bat
 ```
 
 #### Zero External Dependencies
-`AD_Remote_Control.exe` is compiled as a self-contained 64-bit Windows PE executable with the application icon and user guide embedded directly within the binary. You can copy the single `.exe` file to your Desktop, an IT management jump box, or a read-only network share (`\\Domain\SYSVOL\IT_Tools\`). No installers or third-party DLLs are required.
+`Windows AD Remote Administration Control Center v2.6.5.exe` is compiled as a self-contained 64-bit Windows PE executable with the application icon and user guide embedded directly within the binary. You can copy the single `.exe` file to your Desktop, an IT management jump box, or a read-only network share (`\\Domain\SYSVOL\IT_Tools\`). No installers or third-party DLLs are required.
 
 ---
 
@@ -287,7 +287,7 @@ Click **🗄️ Mapped Drives** on the toolbar, press **`Ctrl + D`**, or right-c
 To manage domain computers agentlessly, the technician or operator account must satisfy the following permissions:
 
 1. **Local Elevation**:
-   - The application binary (`AD_Remote_Control.exe`) must be launched with elevated administrative privileges (**Run as Administrator**).
+   - The application binary (`Windows AD Remote Administration Control Center v2.6.5.exe`) must be launched with administrative privileges (**Run as Administrator**). Administrative authorization is enforced automatically on startup.
 2. **Domain Administrator vs. Delegated Helpdesk Role**:
    - **Domain Admins**: Have complete administrative access to all domain workstations, member servers, Active Directory user objects, and admin shares out of the box.
    - **Delegated Helpdesk / Systems Support Accounts**:
@@ -299,43 +299,40 @@ To manage domain computers agentlessly, the technician or operator account must 
         - In **Active Directory Users and Computers** (`dsa.msc`), right-click the target Users OU -> **Delegate Control**.
         - Add the Helpdesk Security Group and delegate:
           - *Reset user passwords and force password change at next logon*
-          - *Read and write Account Restrictions* (enables unlocking accounts by resetting `lockoutTime`).
-     3. **Remote WMI / DCOM Access**:
-        - Member of local `Administrators` automatically grants WMI namespace and DCOM execute permissions.
+          - *Read and write UserAccountControl* (unlock locked-out user accounts).
+     3. **Remote Desktop Users Group**:
+        - Add the Helpdesk group to `Remote Desktop Users` on target machines via GPO Restricted Groups if non-admin RDP access is required.
 
 ---
 
-#### B. Remote Desktop Shadowing Group Policy (Attended & Unattended)
-Remote Shadowing attaches directly to an active physical display session using native Windows terminal services without logging the user out.
+#### B. Remote Desktop Shadowing GPO Configuration
+To allow administrators to mirror and control user screens without disconnecting their sessions:
 
-1. Open **Group Policy Management Console** (`gpmc.msc`) on your Domain Controller.
-2. Edit your Workstations Policy and navigate to:
+1. Open **Group Policy Management** (`gpmc.msc`) on your Domain Controller.
+2. Create or edit a GPO linked to your Workstations / Computers OU (e.g., `Workstation-RemoteControl-Policy`).
+3. Navigate to:
    ```text
-   Computer Configuration
-     └── Policies
-           └── Administrative Templates
-                 └── Windows Components
-                       └── Remote Desktop Services
-                             └── Remote Desktop Session Host
-                                   └── Connections
+   Computer Configuration -> Policies -> Administrative Templates -> Windows Components -> Remote Desktop Services -> Remote Desktop Session Host -> Connections
    ```
-3. Configure the following policies:
-   - **"Set rules for remote control of Remote Desktop Services user sessions"**:
-     - Set to: **Enabled**
-     - Under Options, choose your organizational mode:
-       - **"Full Control without user's permission"**: *(Recommended for IT Support)* Enables instant unattended screen mirroring and mouse/keyboard control with no consent prompt.
-       - **"Full Control with user's permission"**: Prompts the user on their screen: *"Administrator is requesting remote control of your desktop. Do you allow this?"*.
-       - **"View Session without user's permission"**: View-only observation without prompting.
-       - **"View Session with user's permission"**: View-only observation with consent prompt.
-   - **"Allow users to connect remotely by using Remote Desktop Services"**:
-     - Set to: **Enabled** (ensures Terminal Services listener is active).
+4. Configure the following policies:
 
-4. Run `gpupdate /force` on endpoints (or use the in-app **Force Remote GPUpdate** action).
+   - **Set rules for remote control of Remote Desktop Services user sessions**:
+     - State: **Enabled**
+     - Options: Choose your preferred mode:
+       - `Full Control without user's permission` *(Recommended for instant unattended IT support)*
+       - `Full Control with user's permission` *(Prompts the logged-in user with an Accept/Deny prompt)*
+       - `View Session without user's permission` *(Passive observation/auditing mode)*
+       - `View Session with user's permission` *(Passive observation with consent prompt)*
+
+   - **Allow users to connect remotely by using Remote Desktop Services**:
+     - State: **Enabled**
+
+5. Run `gpupdate /force` on target workstations (or reboot them) to apply the policy.
 
 ---
 
-#### C. Windows Defender Firewall GPO Configuration
-Ensure inbound firewall rules are enabled across your domain profile so RPC, WMI, SMB, and Shadow sessions connect without obstruction.
+#### C. Windows Defender Firewall GPO Configuration (Domain Profile)
+The target computers must allow inbound administrative RPC, SMB, WMI, and RDP traffic.
 
 In `gpmc.msc`, navigate to:
 ```text
@@ -344,7 +341,7 @@ Computer Configuration -> Policies -> Windows Settings -> Security Settings -> W
 
 Enable the following predefined rule groups or create custom inbound rules:
 
-| Protocol / Feature | Port / Rule Name | Purpose in AD Remote Control Center |
+| Protocol / Feature | Port / Rule Name | Purpose in Windows AD Remote Administration Control Center |
 | :--- | :--- | :--- |
 | **Remote Desktop** | TCP `3389` | Remote Shadowing screen mirror and RDP sessions. |
 | **WMI & DCOM** | TCP `135` + Dynamic RPC Ports (`49152-65535`) | Hardware specs, Task Manager, Services, software discovery, remote terminal, drive mapping. |
@@ -374,7 +371,7 @@ Sysadmins can push this script via GPO Startup Script, Microsoft Intune, or run 
 
 ```powershell
 # =========================================================================
-# AD Remote Control Center - Automated Endpoint Configuration Script
+# Windows AD Remote Administration Control Center - Automated Endpoint Configuration Script
 # Enables: RDP Shadowing (Full Control without consent), Firewall Ports, Services
 # =========================================================================
 
@@ -407,7 +404,7 @@ Start-Service -Name "RemoteRegistry" -ErrorAction SilentlyContinue
 # 6. Configure WinRM for Toast Notifications
 winrm quickconfig -q -force 2>$null
 
-Write-Host "[SUCCESS] Workstation is fully configured for AD Remote Control Center!" -ForegroundColor Green
+Write-Host "[SUCCESS] Workstation is fully configured for Windows AD Remote Administration Control Center!" -ForegroundColor Green
 ```
 
 ---

@@ -1,2 +1,6 @@
 @echo off
-start "" "%~dp0AD_Remote_Control.exe"
+setlocal enabledelayedexpansion
+for %%f in ("%~dp0Windows AD*Control*.exe") do (
+    start "" "%%~ff"
+    exit /b 0
+)

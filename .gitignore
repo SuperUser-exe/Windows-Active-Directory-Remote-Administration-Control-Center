@@ -3,10 +3,12 @@
 *.pdb
 *.log
 *.ico
+*.ps1
 sync_version.ps1
 Build_Exe.bat
 obfuscar.xml
 Release_Protected/
+docs/
 .vs/
 bin/
 obj/

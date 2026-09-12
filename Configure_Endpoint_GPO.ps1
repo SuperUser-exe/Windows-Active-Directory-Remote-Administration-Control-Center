@@ -1,6 +1,6 @@
 <#
 ================================================================================
-  AD Remote Control Center - Automated Endpoint & GPO Configuration Script
+  Windows AD Remote Administration Control Center - Automated Endpoint & GPO Configuration Script
   Created & Developed by Askarali Mattummal
 ================================================================================
   Purpose:
@@ -17,7 +17,7 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 
 Write-Host ""
 Write-Host "========================================================" -ForegroundColor Cyan
-Write-Host "  AD Remote Control Center - Endpoint Setup Script     " -ForegroundColor Cyan
+Write-Host "  Windows AD Remote Administration Control Center - Setup" -ForegroundColor Cyan
 Write-Host "  Created & Developed by Askarali Mattummal            " -ForegroundColor Cyan
 Write-Host "========================================================" -ForegroundColor Cyan
 Write-Host ""

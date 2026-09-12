@@ -1,17 +1,17 @@
-# ⚡ AD Remote Control Center — Enterprise Remote Control & Administration Suite
+﻿# ⚡ Windows AD Remote Administration Control Center — Enterprise Remote Control & Administration Suite
 
-[![Release](https://img.shields.io/badge/Release-v2.6.0-blue.svg?style=for-the-badge&logo=github)](https://github.com/SuperUser-exe/AD-Remote-Control-Center/releases)
+[![Release](https://img.shields.io/badge/Release-v2.6.5-blue.svg?style=for-the-badge&logo=github)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011%20%7C%20Server-0078D6.svg?style=for-the-badge&logo=windows)](https://microsoft.com)
 [![Framework](https://img.shields.io/badge/.NET%20Framework-4.0%2B-512BD4.svg?style=for-the-badge&logo=dotnet)](https://dotnet.microsoft.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20External%20DLLs-success.svg?style=for-the-badge)](README.md)
 
 > **Created & Developed by [Askarali Mattummal](https://github.com/SuperUser-exe)**  
-> *A high-performance, 100% agentless Active Directory remote management, screen mirroring, diagnostics, and IT helpdesk suite.*
+> *A high-performance, 100% agentless Windows & Active Directory remote management, screen mirroring, diagnostics, and IT helpdesk suite.*
 
 ---
 
-## 👋 Welcome to AD Remote Control Center!
+## 👋 Welcome to Windows AD Remote Administration Control Center!
 
 ### 💡 Background, Motivation & Why I Created This
 As a systems engineer managing active enterprise Active Directory environments, I frequently found myself frustrated by the constant friction of daily IT administration. Performing routine support tasks meant constantly switching between a dozen separate tools:
@@ -20,7 +20,7 @@ As a systems engineer managing active enterprise Active Directory environments, 
 - Opening command prompts for `shadow.exe`, `net use`, `ipconfig`, `gpupdate`, or PowerShell remoting;
 - Relying on heavy, commercial remote support tools that require background client services, third-party cloud relays, and expensive recurring licenses.
 
-To solve this, I originally designed and built **AD Remote Control Center** as my own personal, all-in-one administrative workstation console. My goal was simple: **a single, blazing-fast, lightweight, portable executable (~580 KB) that connects directly to domain computers using native Windows protocols (LDAP, WMI, RPC, SMB, Terminal Services) with zero external dependencies and zero agents to install.**
+To solve this, I originally designed and built **Windows AD Remote Administration Control Center** as my own personal, all-in-one administrative workstation console. My goal was simple: **a single, blazing-fast, lightweight, portable executable (~580 KB) that connects directly to domain computers using native Windows protocols (LDAP, WMI, RPC, SMB, Terminal Services) with zero external dependencies and zero agents to install.**
 
 ### 🎯 Who Is This Application For?
 This suite was crafted specifically for IT professionals, including:
@@ -38,19 +38,19 @@ After colleagues and fellow sysadmin friends used the tool and experienced how m
 
 > [!IMPORTANT]
 > The **only official and authentic release source** for this project is:  
-> 👉 **https://github.com/SuperUser-exe/AD-Remote-Control-Center**  
+> 👉 **https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center**  
 >
 > * **Do not trust unofficial copies**: If downloaded from third-party sites, file-sharing platforms, or re-hosted mirrors, the author assumes no responsibility for modified, corrupted, or repackaged binaries.
 > * **Integrity Check**: Always verify the official release SHA-256 checksums provided in `CHECKSUMS.txt`.
-> * **Community & Discussions**: We have enabled **[GitHub Discussions](https://github.com/SuperUser-exe/AD-Remote-Control-Center/discussions)**! Come say hello, share workflow feedback, report issues, or suggest new features.
+> * **Community & Discussions**: We have enabled **[GitHub Discussions](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/discussions)**! Come say hello, share workflow feedback, report issues, or suggest new features.
 
 ---
 
-## 🌟 Why AD Remote Control Center?
+## 🌟 Why Windows AD Remote Administration Control Center?
 
 Commercial remote support tools (TeamViewer, AnyDesk, ScreenConnect) require client background services, third-party cloud relays, and expensive recurring licenses. 
 
-**AD Remote Control Center** eliminates all of that. It is a **single, portable, self-contained executable (~340 KB)** that connects directly to any Active Directory domain computer using native Windows protocols (LDAP, Terminal Services, WMI, RPC, SMB).
+**Windows AD Remote Administration Control Center** eliminates all of that. It is a **single, portable, self-contained executable (~340 KB)** that connects directly to any Active Directory domain computer using native Windows protocols (LDAP, Terminal Services, WMI, RPC, SMB).
 
 ### 🚀 Key Highlights
 - **⚡ Instant Screen Shadowing**: Mirror remote user displays without disconnecting or logging them off.
@@ -96,55 +96,48 @@ Commercial remote support tools (TeamViewer, AnyDesk, ScreenConnect) require cli
 | **🧹 Deep Temp Cleaner** | • Purges 4 administrative paths: `C:\Windows\Temp`, User `AppData\Local\Temp`, `Recent` files across all profiles, and `Prefetch`<br>• Reports exact file count and MB disk space freed |
 | **⚡ Power Management** | • Wake-on-LAN (WOL) magic packets<br>• Lock remote screen without logging off<br>• Graceful remote user session logoff<br>• Remote reboot and shutdown with 5-second countdown |
 | **📜 Audit Logging** | • Reverse-chronological activity log (newest records always on top)<br>• Isolated single-machine audit filtering<br>• Outcome logging: `SUCCESS`, `FAILED`, `CANCELLED` with error messages |
-| **🔄 Auto-Updater** | • Direct GitHub Releases API integration with `SuperUser-exe/AD-Remote-Control-Center`<br>• In-app release notes viewer<br>• In-place download, detached update script, and automatic restart (0 browser redirect!) |
+| **🔄 Auto-Updater** | • Direct GitHub Releases API integration with `SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center`<br>• In-app release notes viewer<br>• In-place download, detached update script, and automatic restart (0 browser redirect!) |
 
 ---
 
 ## 📁 Repository Structure
 
 ```text
-AD_Remote_Control/
-├── AD_Remote_Control.exe       # Pre-compiled standalone portable binary (~580 KB)
-├── Configure_Endpoint_GPO.ps1   # Automated endpoint GPO & firewall configuration script
-├── Run_AD_Remote_Control.bat    # 1-Click launcher script
-├── CHECKSUMS.txt               # Official SHA-256 integrity checksums
-├── README.md                   # Complete project documentation & quick start
-├── USAGE_GUIDE.md              # In-depth operator reference manual & GPO guide
-├── USAGE_GUIDE.txt             # Plain text version for in-app fallback viewer
-├── CHANGELOG.md                # Detailed version release notes & history
-├── LICENSE                     # Official software license terms
-└── .gitignore                  # Git ignore rules for clean release repository
+Windows_AD_Remote_Administration_Control_Center/
+├── Windows AD Remote Administration Control Center v2.6.5.exe  # Standalone portable Windows executable (~600 KB)
+├── Configure_Endpoint_GPO.ps1          # Automated endpoint GPO & firewall configuration script
+├── Run_AD_Remote_Control.bat           # 1-Click launcher script (auto-launches versioned exe)
+├── CHECKSUMS.txt                      # Official SHA-256 integrity checksums
+├── README.md                          # Complete project documentation & quick start
+├── USAGE_GUIDE.md                     # In-depth operator reference manual & GPO guide
+├── USAGE_GUIDE.txt                    # Plain text version for in-app fallback viewer
+├── CHANGELOG.md                       # Detailed version release notes & history
+└── LICENSE                            # MIT License
 ```
 
 ---
 
 ## 🚀 How to Run
 
-### Standalone Portable Binary
-Download the latest `AD_Remote_Control.exe` from [GitHub Releases](https://github.com/SuperUser-exe/AD-Remote-Control-Center/releases).  
-Run it directly with domain administrator credentials:
+### Option 1: Standalone Portable Executable
+Download the latest `Windows AD Remote Administration Control Center v2.6.5.exe` from [GitHub Releases](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases).  
+Right-click `Windows AD Remote Administration Control Center v2.6.5.exe` and select **Run as Administrator** (using Domain Admin credentials):
 ```cmd
-AD_Remote_Control.exe
+"Windows AD Remote Administration Control Center v2.6.5.exe"
 ```
 
-### Option 2: 1-Click Automated Build from Source
-AD Remote Control Center uses the built-in Microsoft .NET Framework C# compiler (`csc.exe`). **No Visual Studio or third-party tools are required!**
-
-1. Simply double-click:
-   ```cmd
-   Build_Exe.bat
-   ```
-2. The build script will:
-   - Read `VERSION.txt` and synchronize all assembly metadata and UI labels.
-   - Locate `csc.exe` (x64) in `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\`.
-   - Embed the multi-resolution `app.ico` and compile `AD_Remote_Control.exe` in ~2 seconds!
+### Option 2: 1-Click Convenience Launcher
+Alternatively, run the included launcher script:
+```cmd
+Run_AD_Remote_Control.bat
+```
 
 ---
 
 ## ⚙️ Group Policy & Administrator Setup Requirements
 
 ### 1. Administrator Account Permissions
-- **Running the Application**: Always launch `AD_Remote_Control.exe` with elevated privileges (**Run as Administrator**).
+- **Running the Application**: Launch `Windows AD Remote Administration Control Center v2.6.5.exe` (or `Run_AD_Remote_Control.bat`). Administrative privileges are verified automatically on launch. Non-admin users are blocked from executing the utility.
 - **Domain Admins**: Fully privileged across all domain endpoints, Active Directory user objects, and admin shares out of the box.
 - **Delegated Helpdesk Technicians**: If operators are not Domain Admins:
   1. Add their security group to the local **Administrators** group on domain workstations (via GPO Restricted Groups or Group Policy Preferences).
