@@ -1,6 +1,6 @@
 # ⚡ Windows AD Remote Administration Control Center — Enterprise Remote Control & Administration Suite
 
-[![Release](https://img.shields.io/badge/Release-v2.6.5-blue.svg?style=for-the-badge&logo=github)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases)
+[![Release](https://img.shields.io/badge/Release-v2.7.0-blue.svg?style=for-the-badge&logo=github)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011%20%7C%20Server-0078D6.svg?style=for-the-badge&logo=windows)](https://microsoft.com)
 [![Framework](https://img.shields.io/badge/.NET%20Framework-4.0%2B-512BD4.svg?style=for-the-badge&logo=dotnet)](https://dotnet.microsoft.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
@@ -48,13 +48,69 @@ After colleagues and fellow sysadmin friends used the tool and experienced how m
 
 ---
 
-## 🌟 Why Windows AD Remote Administration Control Center?
+## 🧠 How the Application Works & Why It’s a Game Changer
 
-Commercial remote support tools (TeamViewer, AnyDesk, ScreenConnect) require client background services, third-party cloud relays, and expensive recurring licenses. 
+> ### 🚀 *"Try my application once — then tell me how it is! This tool will help you and your IT team 100,000%!"*
 
-**Windows AD Remote Administration Control Center** eliminates all of that. It is a **single, portable, self-contained executable (~340 KB)** that connects directly to any Active Directory domain computer using native Windows protocols (LDAP, Terminal Services, WMI, RPC, SMB).
+### 💡 The Problem with Modern IT Support Tools
+Most remote management tools (RMMs) and commercial support platforms force you to install bloated background services on every single computer, set up complex web portals, configure SQL databases, or pay exorbitant monthly subscriptions per endpoint.
+
+### ⚡ The Breakthrough: Pure Native Windows, WMI & Active Directory Power
+**Windows AD Remote Administration Control Center** works on a fundamentally different, ultra-lightweight architectural principle:
+- **100% Agentless & Fully Portable**: No client software, drivers, or background services are ever installed on managed endpoints. Everything runs on-demand from a single, self-contained portable executable (~600 KB).
+- **Background WMI, CIM & LDAP In-Memory Engine**: Under the hood, the application executes pure, native Windows management pipelines—reading and modifying WMI/CIM classes (`Win32_Process`, `Win32_Service`, `Win32_Printer`, `Win32_UserProfile`, `StdRegProv`), LDAP directories, and Windows management APIs. It only reads and writes native Windows and Active Directory attributes in memory.
+- **Zero Foreign Binaries or Residual Payloads**: There are no temporary batch scripts, remote agents, or third-party background daemons left behind on client computers.
+- **Direct RDS Screen Shadowing**: Hooks directly into built-in Windows Terminal Services (`query.exe session` + `mstsc.exe /shadow`), allowing IT administrators to mirror and control user screens in real-time with zero latency—without kicking users off, disturbing their session, or locking their screen.
+
+---
+
+### 🏛️ Under-the-Hood Architecture: How It Actually Works
+
+```text
+                        ┌────────────────────────────────────────────────────────┐
+                        │   Windows AD Remote Administration Control Center      │
+                        │        Single Standalone Portable Executable           │
+                        │       Native C# / WPF + In-Memory Windows APIs         │
+                        └───────────────────────────┬────────────────────────────┘
+                                                    │
+         ┌──────────────────────────────────────────┼──────────────────────────────────────────┐
+         ▼                                          ▼                                          ▼
+ ┌───────────────────────┐                  ┌───────────────────────┐                  ┌───────────────────────┐
+ │ Active Directory      │                  │ Workstation & WMI     │                  │ Remote Desktop /      │
+ │ (LDAP / ADSI Layer)   │                  │ (CIM & Registry Layer)│                  │ Terminal Services     │
+ └───────────┬───────────┘                  └───────────┬───────────┘                  └───────────┬───────────┘
+             │ Reads / Writes Direct Attributes         │ Remote Management Pipelines              │ Native Shadow & RDP
+             ▼                                          ▼                                          ▼
+ ┌───────────────────────┐                  ┌───────────────────────┐                  ┌───────────────────────┐
+ │ • User Objects & OU   │                  │ • Win32_Process       │                  │ • query.exe session   │
+ │ • Account Lockouts    │                  │ • Win32_Service       │                  │ • mstsc.exe /shadow   │
+ │ • Password Resets     │                  │ • Win32_Printer / Q   │                  │ • Instant Screen Mirr │
+ │ • 40+ User Attributes │                  │ • StdRegProv Registry │                  │ • No-Kickoff Control  │
+ └───────────────────────┘                  └───────────────────────┘                  └───────────────────────┘
+```
+
+#### 1. 👤 Active Directory Layer (ADSI / LDAP / Kerberos)
+- **Direct Domain Controller Queries**: Communicates directly with domain controllers using native .NET `System.DirectoryServices` and `DirectorySearcher` over secure LDAP/Kerberos.
+- **Real-Time Attribute Inspection**: Reads user properties dynamically (`lockoutTime`, `badPwdCount`, `userAccountControl`, `pwdLastSet`, `memberOf`, contact metadata, hierarchy).
+- **Instant Account Unlocking & Resets**: Writes `lockoutTime = 0` to immediately unlock accounts, or triggers secure password resets natively over Kerberos/LDAP without requiring RSAT on the technician's workstation.
+
+#### 2. ⚙️ Workstation Management & Telemetry Layer (WMI, CIM & Remote Registry)
+- **Live Hardware Telemetry**: Queries hardware specifications, active processes, system services, and installed software directly from `root\cimv2` (`Win32_Processor`, `Win32_OperatingSystem`, `Win32_LogicalDisk`, `Win32_PhysicalMemory`).
+- **Per-Printer Queue Management**: Enumerates printer drivers and queries `Win32_PrintJob` locally, clearing hung documents with precision without affecting other printers.
+- **Cross-Profile Software & Drive Auditing**: Inspects system `HKLM` (64-bit and 32-bit) and queries all loaded user profiles in `HKEY_USERS` via WMI `StdRegProv` to discover per-user apps (Teams, Zoom, VS Code) and mapped network drives (`Ctrl + D`) even when remote users are idle.
+- **Dynamic Profile Path Resolution**: Queries WMI `Win32_UserProfile` matching the interactive user's SID to resolve the physical directory on disk (`LocalPath`), ensuring wallpaper changes and telemetry overlays (BgInfo) apply correctly even across renamed or migrated profiles.
+
+#### 3. 🖥️ Session Layer (Native Windows Remote Desktop Services Shadowing)
+- **Console Session Discovery**: Uses native Windows `query.exe session` to instantly detect the logged-in user's active console or RDP session ID.
+- **Zero-Lag Hardware Screen Control**: Launches native Microsoft `mstsc.exe /shadow:<id> /control /noConsentPrompt` for zero-lag, hardware-accelerated remote control without installing third-party VNC servers or display capture drivers.
+
+---
 
 ### 🚀 Key Highlights
+- **⚡ Sub-Second Cold Startup & Telemetry Persistence**: High-speed TSV caching engine with 24-thread parallel network endpoint scanning; hydrates and verifies 40+ endpoints with real-time green/red statuses and active user accounts in under 1.5 seconds.
+- **💬 Advanced Remote User Messaging Hub**: Enforce exact character limits, Title/Subtitle/XL modes with contextual Large Text font toggle, non-clipping cards, and vibrant multi-icon badge containers.
+- **🖨️ Remote Shared & Network Printer Infrastructure Manager**: Remotely attach UNC shared print queues, execute machine-wide connection purge, inspect properties, and pause/resume spoolers without rebooting.
+- **👥 Active Directory Group Membership Manager**: Live interactive security group management (Add to Group, Remove from Group, Refresh) with built-in primary group safeguards directly from the Profile Card.
 - **⚡ Instant Screen Shadowing**: Mirror remote user displays without disconnecting or logging them off.
 - **🔔 Modern Pre-Shadow Alerts**: Transmits unobtrusive Action Center Toast notifications near the system clock with sound chimes.
 - **🚀 Remote Startup Applications Manager**: Inspect and manage machine and per-profile startup programs, toggle Enable / Disable via Windows `StartupApproved` without deleting entries (`🚀 Startup`).
@@ -70,6 +126,11 @@ Commercial remote support tools (TeamViewer, AnyDesk, ScreenConnect) require cli
 - **🖨️ Remote Printers & Queue Manager**: Inspects local and domain print server shared printers with live print job management.
 - **👤 Active Directory User Controls**: Dynamic account lockout detection with 1-click unlocking and password resets.
 - **🧹 4-Path Deep Temp Cleaner**: Purges Temp, AppData Temp across all profiles, Recent files, and Prefetch in 1-click with byte counters.
+- **🖥️ Desktop Info HUD (Sysinternals BgInfo Engine)**: Directly stamp system telemetry onto desktop wallpapers in 2 crisp columns with drop shadows, or launch an optional floating widget (`🖥️ HUD (BgInfo)`).
+- **🖼️ Remote Desktop Wallpaper Changer & Manager (Single & Bulk)**: Remotely apply custom background images (JPG, PNG, BMP) across one or multiple remote PCs with display fit styles (Fill, Fit, Stretch, Tile, Center, Span), live image preview, and 1-click original backup restoration.
+- **👑 Windows God Mode & Power Tweaks Hub (Single & Bulk)**: Enable or remove Windows Master Control Panel on User & Public Desktop, context menus, and direct admin launcher, plus 1-click power tweaks (Take Ownership, Classic Win11 Menu, Ultimate Performance, CompactOS, Show File Extensions, Disable Telemetry, 1-Click RDP Enable, Disable Bing Search) across single or multiple remote computers.
+- **🎯 Dynamic Smart Context Menu (Single vs Bulk)**: Right-clicking multi-selected computers dynamically displays only bulk-supported actions (Wallpaper, God Mode, HUD, Deep Clean, GPUpdate, Deployer, File Push, Messaging, Power & WOL). Right-clicking a single computer presents the full administrative console with informative messages when features are not configured or supported.
+- **🌐 Remote Browser URL & File Launcher**: Launch web URLs in Default Browser, Microsoft Edge, or Google Chrome directly inside the remote user's interactive session.
 - **🔄 Seamless In-App Auto-Updater**: Directly updates the application in-place from GitHub Releases without browser redirects or installer wizards!
 - **⌨️ Universal Keyboard Ergonomics**: Dismiss any popup window with `ESC`, open Drive Manager with `Ctrl + D`.
 
@@ -79,8 +140,13 @@ Commercial remote support tools (TeamViewer, AnyDesk, ScreenConnect) require cli
 
 | Category | Features & Capabilities |
 | :--- | :--- |
+| **🎯 Smart Context Menu** | • **Dynamic Context Menu Architecture (Single vs Multi-Device)**<br>• Automatically detects multi-selection to show only bulk-compatible operations<br>• Protects against accidental single-host tool execution in bulk<br>• Full rich menu on single selection with clean "Not Configured / Not Supported" feedback on hardware or policy limitations (Battery, BitLocker, LAPS) |
 | **🖥️ Remote Display** | • Remote Shadowing (Attended & Auto-Attended `/noConsentPrompt`)<br>• Full Control (Keyboard & Mouse) or View-Only<br>• Fullscreen & Multi-Monitor spanning<br>• Standard RDP & Server Console Admin (`/admin`) sessions |
 | **🔔 User Alerts** | • Action Center Toast Notifications near the taskbar clock<br>• Audio chime notification<br>• Automated fallback to `msg.exe` |
+| **👑 God Mode & Tweaks**| • **Windows God Mode (Master Control Panel) Remote Controller (Single & Bulk)**<br>• Deploy/remove God Mode folder shortcut on User & Public Desktop<br>• Native desktop background right-click context menu integration<br>• 1-Click live interactive launch on remote user's screen (God Mode, Device Mgr, SecPol, Disk Mgr, Services, Regedit, Firewall, etc.)<br>• **"Take Ownership"** context menu injector (`takeown` + `icacls`)<br>• **Classic Windows 11 Context Menu** restorer (bypasses "Show more options")<br>• **"Ultimate Performance"** power plan activator (e9a42b02 scheme)<br>• **CompactOS** storage compression (free 3-5 GB on SSD)<br>• **Disable Consumer Bloatware** & promotional tiles<br>• **Always Show File Extensions & Hidden Files** in Explorer<br>• **Disable Windows Diagnostic Telemetry** (`AllowTelemetry = 0`)<br>• **1-Click Enable Remote Desktop (RDP)**, NLA & Firewall<br>• **Disable Bing Web Search** in Start Menu |
+| **🖼️ Wallpaper Changer**| • **Remote Desktop Wallpaper Changer & Manager (Single & Bulk)**<br>• Remotely apply custom corporate wallpaper (JPG, PNG, BMP) to single or multi-selected computers<br>• Fit styles: Fill (Default), Fit, Stretch, Tile, Center, Span<br>• Embedded in-app image preview before applying<br>• Automatic backup of original wallpaper prior to replacement<br>• 1-Click restore original wallpaper on single or bulk target computers<br>• Seamless updates across active console and RDP user sessions |
+| **🖥️ Desktop Info HUD** | • **Sysinternals BgInfo Wallpaper Engine (`🖥️ HUD (BgInfo)`)**<br>• Direct-to-wallpaper stamping matching classic Sysinternals BgInfo<br>• Two-column telemetry with drop shadows for 100% legibility on any wallpaper<br>• 3 deployment modes: Wallpaper Overlay, Floating HUD Widget, or Both<br>• Dynamic profile path discovery via `Win32_UserProfile`<br>• Theme-accurate live preview and 1-click wallpaper restoration |
+| **🌐 Browser & App Run** | • **Remote Browser URL & Program Launcher**<br>• Launch URLs in Default Browser, Microsoft Edge, or Google Chrome<br>• Non-interactive execution directly inside user session |
 | **🚀 Startup Apps** | • **Remote Startup Applications & Autoruns Manager (`🚀 Startup`)**<br>• Machine (`HKLM`) and per-user profile (`HKU`) startup enumeration<br>• Dynamic **Enable / Disable** toggling via Windows `StartupApproved\Run`<br>• Preserves user registry configurations without deletion<br>• 1-Click delete orphaned autorun entries and CSV export |
 | **👥 Local Users** | • **Local Computer Users & Accounts Manager (`👥 Local Users`)**<br>• Works without active logon session (direct ADSI / SAM connection)<br>• Account type badging: 👑 Administrator, 👤 Standard User, 🚼 Guest<br>• Remote user creation, password reset, and enable/disable toggle |
 | **📈 Live Monitor** | • **Sub-Second Live Performance Monitor (`📈 Live Perf`)**<br>• Kernel-level high-frequency CPU, RAM, Network (RX/TX), Disk active I/O<br>• 60-second historical sparkline graphs & performance charts<br>• Motherboard DIMM module slot inspector (DDR4/DDR5, MHz, part numbers)<br>• Physical storage drives, link speeds, and network adapter telemetry |
@@ -94,7 +160,7 @@ Commercial remote support tools (TeamViewer, AnyDesk, ScreenConnect) require cli
 | **📋 Event Log Viewer** | • Reverse-chronological streaming (`ReverseDirection = true`)<br>• Vivid color badges for Critical, Error, Warning, Information<br>• Date range filter: `All Dates`, `Today Only`, `Last 24h`, `Last 7d`, `Last 30d`<br>• One-click presets: Reboots (1074), Shutdowns (6006), Power Loss (41/6008), BSOD (1001), App Crashes (1000), Service Crashes (7031), Disk/NTFS errors |
 | **🖨️ Printer Management**| • Inspect local printers and domain print server shared printers<br>• Accurate active user default printer detection (`⭐ Default`) via remote registry<br>• Real-time Test Print (`🖨️ Test Print`) execution via WMI & `printui.dll`<br>• Live **Pending Jobs** column cross-referenced with active queue<br>• Real-time queue inspection: Document, Owner, Pages, Size, Submission Time<br>• 1-Click `Cancel Job`, `Purge All Jobs`, and `Restart Spooler` |
 | **📁 File Explorer** | • 1-Click Explorer access into `\\<host>\C$`<br>• Direct navigation to remote user's `Desktop`, `Downloads`, and `Documents` |
-| **👤 AD Account Actions**| • **Enterprise 360° AD User Profile Inspector**: 40+ directory attributes, hierarchy, contact, & security group memberships<br>• Real-time lockout detection: button turns red (`⚠️ Account Locked`)<br>• 1-click AD account unlocking via `UserPrincipal.UnlockAccount()`<br>• Remote password reset with optional forced password change at next logon |
+| **👤 AD Account Actions**| • **Enterprise 360° AD User Profile Inspector & In-App Editor**: 40+ directory attributes, organizational hierarchy, contact information, and security group memberships<br>• **✏️ Edit AD User Profile Attributes**: In-place editing of First/Last/Display Name, Title, Department, Company, Office, Phone, Mobile, Email, and Address with direct LDAP commit<br>• **📝 Edit / Set Computer Description**: Live Active Directory computer description updater synchronized to the computer grid<br>• Real-time lockout detection: button turns red (`⚠️ Account Locked`)<br>• 1-click AD account unlocking via `UserPrincipal.UnlockAccount()`<br>• Remote password reset with optional forced password change at next logon |
 | **🧹 Deep Temp Cleaner** | • Purges 4 administrative paths: `C:\Windows\Temp`, User `AppData\Local\Temp`, `Recent` files across all profiles, and `Prefetch`<br>• Reports exact file count and MB disk space freed |
 | **⚡ Power Management** | • Wake-on-LAN (WOL) magic packets<br>• Lock remote screen without logging off<br>• Graceful remote user session logoff<br>• Remote reboot and shutdown with 5-second countdown |
 | **📜 Audit Logging** | • Reverse-chronological activity log (newest records always on top)<br>• Isolated single-machine audit filtering<br>• Outcome logging: `SUCCESS`, `FAILED`, `CANCELLED` with error messages |
@@ -106,7 +172,7 @@ Commercial remote support tools (TeamViewer, AnyDesk, ScreenConnect) require cli
 
 ```text
 Windows_AD_Remote_Administration_Control_Center/
-├── Windows AD Remote Administration Control Center v2.6.5.exe  # Standalone portable Windows executable (~600 KB)
+├── Windows AD-Admin Control Center v2.7.0.exe  # Standalone portable Windows executable (~600 KB)
 ├── Configure_Endpoint_GPO.ps1          # Automated endpoint GPO & firewall configuration script
 ├── Run_AD_Remote_Control.bat           # 1-Click launcher script (auto-launches versioned exe)
 ├── CHECKSUMS.txt                      # Official SHA-256 integrity checksums
@@ -122,10 +188,10 @@ Windows_AD_Remote_Administration_Control_Center/
 ## 🚀 How to Run
 
 ### Option 1: Standalone Portable Executable
-Download the latest `Windows AD Remote Administration Control Center v2.6.5.exe` from [GitHub Releases](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases).  
-Right-click `Windows AD Remote Administration Control Center v2.6.5.exe` and select **Run as Administrator** (using Domain Admin credentials):
+Download the latest `Windows AD-Admin Control Center v2.7.0.exe` from [GitHub Releases](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases).  
+Right-click `Windows AD-Admin Control Center v2.7.0.exe` and select **Run as Administrator** (using Domain Admin credentials):
 ```cmd
-"Windows AD Remote Administration Control Center v2.6.5.exe"
+"Windows AD-Admin Control Center v2.7.0.exe"
 ```
 
 ### Option 2: 1-Click Convenience Launcher
@@ -138,14 +204,24 @@ Run_AD_Remote_Control.bat
 
 ## ⚙️ Group Policy & Administrator Setup Requirements
 
-### 1. Administrator Account Permissions
-- **Running the Application**: Launch `Windows AD Remote Administration Control Center v2.6.5.exe` (or `Run_AD_Remote_Control.bat`). Administrative privileges are verified automatically on launch. Non-admin users are blocked from executing the utility.
+### 1. Administrator Account Permissions & Authorization Policy
+
+> [!IMPORTANT]
+> **Strict Domain / Enterprise Administrative Authorization Enforcement**:  
+> To safeguard domain environments and prevent unauthorized workstation management, the application verifies the security identity of the launching user at startup. The application will **ONLY** launch if the user belongs to at least one of the following Domain / Enterprise administrative accounts:
+> - **Domain Admins** (Well-Known SID ending in `-512`)
+> - **Enterprise Admins** (Well-Known SID ending in `-519`)
+> - **Schema Admins** (Well-Known SID ending in `-518`)
+> - **Account Operators** (Well-Known SID ending in `-548`)
+> - **Server Operators** (Well-Known SID ending in `-549`)
+> - **Authorized Active Directory Administrative Groups** (e.g., `IT-Admins`, `IT Admins`, `IT Administrators`, `Server Admins`, `System Admins`, `Security Admins`, `Network Admins`, `Cloud Admins`).
+>
+> ⚠️ **Local Administrators are strictly disallowed on Domain-Joined Machines**: Users who are only granted local workstation administrative privileges (`BUILTIN\Administrators` / `Local Administrators`) are blocked from executing this suite to maintain enterprise governance.
+>
+> 💡 **Need custom groups added or removed?** If your organization uses specialized administrative group names or specific role requirements, please [request a feature or open an issue on GitHub](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/issues) or reach out via [Telegram](https://t.me/WADRACC), and the author will gladly make the changes for your environment!
+
 - **Domain Admins**: Fully privileged across all domain endpoints, Active Directory user objects, and admin shares out of the box.
-- **Delegated Helpdesk Technicians**: If operators are not Domain Admins:
-  1. Add their security group to the local **Administrators** group on domain workstations (via GPO Restricted Groups or Group Policy Preferences).
-  2. Delegate Active Directory permissions on target user OUs in `dsa.msc` for:
-     - *Reset user passwords and force password change at next logon*
-     - *Read and write Account Restrictions* (enables unlocking locked-out accounts).
+- **Delegated Helpdesk Technicians**: Ensure support staff are members of an authorized domain administrative group (e.g. `Domain Admins` or `IT-Admins`) with delegated Active Directory permissions on target user OUs in `dsa.msc` for password resets and account unlocking.
 
 ### 2. Enable Remote Shadowing (Auto-Attended & Attended)
 To enable shadowing without disconnecting active users:
@@ -198,6 +274,15 @@ When you publish a new version on GitHub Releases:
 | **`Ctrl + Shift + P`** | Reset domain user password |
 | **`Ctrl + Shift + U`** | Open 360° Active Directory User Profile Inspector |
 | **`ESC`** | Clear search text (when focused), or close any open popup modal |
+
+---
+
+## 🌟 How to Showcase, Support & Community Discussions
+
+If this application saves you and your IT team hours of tedious administrative work:
+- ⭐ **Star the Repository**: Drop a star on [GitHub](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center) to help other sysadmins discover this free tool!
+- 💬 **Join the Discussion**: Share workflow feedback, request custom administrative group authorizations, or submit feature requests on [GitHub Discussions](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/discussions) and [Telegram](https://t.me/WADRACC).
+- 📢 **Share with Fellow Sysadmins**: Mention it on Reddit (`r/sysadmin`, `r/PowerShell`), LinkedIn, or your internal IT engineering channels.
 
 ---
 
