@@ -1,4 +1,3 @@
-﻿Windows AD Remote Administration Control Center v2.6.5
+Windows AD Remote Administration Control Center v2.6.5
 SHA-256 Checksum:
-F9DA5EA1668637FE9FA47E800DF043B9DFBF6AA578D2CEAE1E0AA932C1BD2ECE  Windows AD-Admin Control Center v2.6.5.exe
-
+5C2B57367CF0942C4416B64D903BF5AEBD9D404D1CB62EB3DC6D91120333DC8B  Windows AD Remote Administration Control Center v2.6.5.exe

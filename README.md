@@ -271,7 +271,7 @@ Positioned directly beneath the DataGrid for rapid keyboard-first dispatching:
 
 ```text
 Windows_AD_Remote_Administration_Control_Center/
-├── Windows AD-Admin Control Center v2.6.5.exe  # Standalone portable Windows executable (~600 KB)
+├── Windows AD Remote Administration Control Center v2.6.5.exe  # Standalone portable Windows executable (~600 KB)
 ├── Configure_Endpoint_GPO.ps1          # Automated endpoint GPO & firewall configuration script
 ├── Run_AD_Remote_Control.bat           # 1-Click launcher script (auto-launches versioned exe)
 ├── CHECKSUMS.txt                      # Official SHA-256 integrity checksums
@@ -287,10 +287,10 @@ Windows_AD_Remote_Administration_Control_Center/
 ## 🚀 How to Run
 
 ### Option 1: Standalone Portable Executable
-Download the latest `Windows AD-Admin Control Center v2.6.5.exe` from [GitHub Releases](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases).  
-Right-click `Windows AD-Admin Control Center v2.6.5.exe` and select **Run as Administrator** (using Domain Admin credentials):
+Download the latest `Windows AD Remote Administration Control Center v2.6.5.exe` from [GitHub Releases](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases).  
+Right-click `Windows AD Remote Administration Control Center v2.6.5.exe` and select **Run as Administrator** (using Domain Admin credentials):
 ```cmd
-"Windows AD-Admin Control Center v2.6.5.exe"
+"Windows AD Remote Administration Control Center v2.6.5.exe"
 ```
 
 ### Option 2: 1-Click Convenience Launcher
