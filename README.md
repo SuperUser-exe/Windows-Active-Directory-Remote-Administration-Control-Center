@@ -1,4 +1,4 @@
-# ⚡ Windows AD Remote Administration Control Center — Enterprise Remote Control & Administration Suite
+﻿# ⚡ Windows AD Remote Administration Control Center — Enterprise Remote Control & Administration Suite
 
 [![Release](https://img.shields.io/badge/Release-v2.6.5-blue.svg?style=for-the-badge&logo=github)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011%20%7C%20Server-0078D6.svg?style=for-the-badge&logo=windows)](https://microsoft.com)
@@ -9,6 +9,12 @@
 
 > **Created & Developed by [Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)** ([LinkedIn](https://www.linkedin.com/in/askaralimattummal/) | [GitHub](https://github.com/SuperUser-exe) | [Telegram](https://t.me/WADRACC))  
 > *A high-performance, 100% agentless Windows & Active Directory remote management, screen mirroring, diagnostics, and IT helpdesk suite.*
+
+---
+
+<p align="center">
+  <img src="Dashbaord.png" alt="Windows AD Remote Administration Control Center Enterprise Dashboard" width="100%">
+</p>
 
 ---
 
@@ -187,6 +193,7 @@ Most remote management tools (RMMs) and commercial support platforms force you t
 * **`ℹ️ Usage Guide`**: In-app operator reference manual with searchable tabs, copy, and export features.
 * **`📜 Activity Log`**: Reverse-chronological audit trail of all administrative actions. Records timestamp, operator, target host, action, and detailed outcome status (`SUCCESS`, `FAILED`, `CANCELLED`).
 * **`🌙 Theme Toggle`**: Instantly switches between high-contrast Dark Mode and Light Mode with zero visual glitching.
+* **`💬 Feedback`**: In-app star rating and suggestion submission dialog allowing operators to submit 1 to 5 star ratings, bug reports, or feature suggestions with instant transmission.
 * **`💬 Community / Telegram`**: Direct link to the official Telegram community chat (`t.me/WADRACC`) for support and feedback.
 
 ### 2. ⚡ Top Bulk Actions Toolbar
@@ -271,7 +278,7 @@ Positioned directly beneath the DataGrid for rapid keyboard-first dispatching:
 
 ```text
 Windows_AD_Remote_Administration_Control_Center/
-├── Windows AD Remote Administration Control Center v2.6.5.exe  # Standalone portable Windows executable (~600 KB)
+├── Windows AD-Admin Control Center v2.6.5.exe  # Standalone portable Windows executable (~600 KB)
 ├── Configure_Endpoint_GPO.ps1          # Automated endpoint GPO & firewall configuration script
 ├── Run_AD_Remote_Control.bat           # 1-Click launcher script (auto-launches versioned exe)
 ├── CHECKSUMS.txt                      # Official SHA-256 integrity checksums
@@ -287,10 +294,10 @@ Windows_AD_Remote_Administration_Control_Center/
 ## 🚀 How to Run
 
 ### Option 1: Standalone Portable Executable
-Download the latest `Windows AD Remote Administration Control Center v2.6.5.exe` from [GitHub Releases](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases).  
-Right-click `Windows AD Remote Administration Control Center v2.6.5.exe` and select **Run as Administrator** (using Domain Admin credentials):
+Download the latest `Windows AD-Admin Control Center v2.6.5.exe` from [GitHub Releases](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases).  
+Right-click `Windows AD-Admin Control Center v2.6.5.exe` and select **Run as Administrator** (using Domain Admin credentials):
 ```cmd
-"Windows AD Remote Administration Control Center v2.6.5.exe"
+"Windows AD-Admin Control Center v2.6.5.exe"
 ```
 
 ### Option 2: 1-Click Convenience Launcher

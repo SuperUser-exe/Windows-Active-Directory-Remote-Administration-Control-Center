@@ -1,4 +1,4 @@
-# Windows AD Remote Administration Control Center — Enterprise Administration Suite
+﻿# Windows AD Remote Administration Control Center — Enterprise Administration Suite
 ## Complete Operator Reference Manual & Architecture Guide (v2.6.5 / Coming Soon v2.7.0)
 **Created & Developed by [Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)**
 
@@ -351,7 +351,7 @@ Click **🗄️ Mapped Drives** on the toolbar, press **`Ctrl + D`**, or right-c
   - **Engine 2 (Remote Network Storage Inspector)**: Inspects active mounted network disks to gather live free space, total storage capacity, volume labels, and active connection status.
 - **Adding a New Drive Mapping (`➕ Add Drive Mapping`)**:
   - **Drive Letter Selector**: Pre-selects the first available drive letter from `Z:` down to `D:`, flagging letters that are already in use.
-  - **Remote Share UNC Path**: Specify `\\server\share` or `\\192.168.x.x\folder`. Includes a **"🔍 Test Path"** button to verify accessibility directly from the admin console.
+  - **Remote Share UNC Path**: Specify `\\server\share` or `\\192.168.x.x\folder`. Includes a **"🔍 Test Path"** button to verify accessibility directly from the application.
   - **Target User Profile**: Automatically detects loaded user profiles (e.g. `DOMAIN\username (SID)`), allowing admins to target a specific user or the active interactive session.
   - **Reconnect at Sign-in**: Toggles persistent mapping so the drive reconnects automatically upon user sign-in.
   - **Instant Session Execution**: Mounts the drive dynamically in the active user's session so logged-in users see the drive mounted immediately without signing out.
@@ -763,9 +763,25 @@ Write-Host "[SUCCESS] Workstation is fully configured for Windows AD Remote Admi
 ---
 
 ### 27. Community, Support & Feedback
+
+#### 💬 Submitting In-App Feedback & Star Ratings
+Administrators and technical operators can share immediate workflow feedback, submit star ratings, report technical issues, or request new features directly inside the application:
+1. Click the **`💬 Feedback`** button located on the top header navigation bar.
+2. Select an overall satisfaction rating from **1 to 5 Stars**.
+3. Choose an appropriate category:
+   - **General Experience & Praise**: Share overall impressions, speed feedback, or positive workflow experiences.
+   - **Feature Request / Enhancement**: Propose new administrative tools, columns, or workflow automations.
+   - **Bug Report / Technical Issue**: Report unexpected errors, display quirks, or network timeout behavior.
+   - **Performance / Speed Suggestion**: Suggest optimizations for large-scale Active Directory forests or high-latency branch offices.
+4. Enter detailed comments or suggestions in the text area.
+5. Both a star rating (1 to 5 stars) and a written feedback message are required to ensure complete, actionable input.
+6. Click **`🚀 Submit Feedback`** to submit your feedback.
+
+#### 👥 Official Support & Community Channels
 - **Official GitHub Releases**: [SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases)
 - **Telegram Community Group**: Join [t.me/WADRACC](https://t.me/WADRACC) for real-time chat, instant support, updates, and feature suggestions.
 - **GitHub Discussions**: [Community Discussions & Feature Ideas](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/discussions)
 - **Developer Attribution**: [Askarali Mattummal on LinkedIn](https://www.linkedin.com/in/askaralimattummal/)
+
 
 

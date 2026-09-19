@@ -12,6 +12,14 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
 
 ### 🌟 New Features (Introduced in v2.7.0 - Coming Soon)
 
+#### 💬 In-App Feedback & Star Ratings System
+* **Mandatory Rating & Message Validation**:
+  - Requires operators to select both a star rating (1 to 5 stars) and enter detailed comments or suggestions before submitting, ensuring complete, actionable feedback for ongoing development.
+* **Granular Category Classification**:
+  - Allows operators to categorize submissions into General Experience & Praise, Feature Requests & Enhancements, Bug Reports & Technical Issues, or Performance Suggestions.
+* **Streamlined Telemetry Dispatch**:
+  - Automatically captures machine, user, and domain context seamlessly alongside ratings and feedback suggestions.
+
 #### 🖥️ Desktop Info HUD (Sysinternals BgInfo Wallpaper Engine & Floating Companion Widget)
 * **Classic Sysinternals BgInfo Direct-Wallpaper Stamping**:
   - Directly stamps live system telemetry onto the active desktop wallpaper without intrusive frames, dark boxes, or border lines (matching classic Sysinternals BgInfo layout).
