@@ -12,6 +12,347 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
 
 ### 🌟 New Features (Introduced in v2.7.0 - Coming Soon)
 
+#### 🛑 Remote Shadow Session Disconnect Notification
+* **Automated End-of-Support User Confirmation**:
+  - **What was updated**: When an administrator ends an interactive screen shadowing session where user notification or permission was active, the remote computer immediately displays a clean on-screen notice: "IT Support Helpdesk remote support session has ended."
+  - **Benefit**: Reassures the end-user that the remote assistance session is finished, their desktop is no longer being viewed or shared, and full privacy and input control are restored.
+
+#### 🖨️ Real-Time Remote Printer Queue Monitor with Smart Switching
+* **Live Print Job Polling & Low-Overhead Device Switching**:
+  - **What was updated**: Upgraded the Remote Printers & Print Queue Manager to actively stream print queue changes for the selected printer every 2 seconds without requiring manual refresh clicks. Switching between printers instantly targets the new queue with zero interface delay and without loading remote system event logs.
+  - **Benefit**: Allows technicians to observe real-time job arrival, document processing, and printer stall conditions dynamically while minimizing endpoint overhead and network traffic.
+* **Horizontal Scrolling & Adaptive Data Grids**:
+  - **What was updated**: Enabled independent horizontal scrolling and resizable columns on both the Installed Printers and Print Queue & Job History tables, ensuring clear visibility across wide document names, file sizes, and printer network addresses on any screen size.
+  - **Benefit**: Eliminates text truncation and visual clipping, allowing technicians to inspect detailed print job attributes with zero hassle.
+
+#### ⏰ Scheduled Remote Power Operations (Reboot, Shutdown, Log Off, Lock)
+* **Interactive Date/Time Task Scheduling & Grace Periods**:
+  - **What was updated**: Introduced a comprehensive Scheduled Power Actions suite under Security & Power Control menus for both individual workstations and bulk computer selections. Administrators can pick an exact execution date and time using calendar and clock selectors, provide an optional countdown warning message for active users, view currently scheduled power jobs, and cancel pending actions in a single click.
+  - **Benefit**: Streamlines after-hours maintenance and automated facility shutdowns without requiring technicians to remain logged in late or disrupt staff during business hours.
+
+#### 🖥️ Remote Screen Saver & Desktop Wallpaper Central Manager
+* **Centralized Security Lockout & Corporate Branding Control**:
+  - **What was updated**: Added centralized Remote Screen Saver configuration alongside bulk Wallpaper management, accessible via the context menu and a dedicated top toolbar button. IT administrators can remotely enable or disable the Windows screen saver, customize inactivity timeout durations, enforce password lockout upon resume, and deploy branded desktop backgrounds across single or multiple computers with detailed delivery reports.
+  - **Benefit**: Simplifies corporate compliance by enforcing workstation lockout policies and standardized corporate branding across all enterprise endpoints in seconds without tedious manual visits.
+
+#### 📈 Remote Windows Server Task Manager Disk Performance Counters
+* **One-Click Disk Counter Activation & Rebuild**:
+  - **What was updated**: Added a specialized diagnostic tool in the administration context menu to activate built-in Task Manager disk throughput metrics and refresh performance libraries on remote Windows Server systems.
+  - **Benefit**: Instantly brings real-time disk read/write throughput and response time graphs into the standard Task Manager on Windows Server installations where disk performance counters are disabled by default.
+
+#### 🌐 Active Directory Domain Controller & DNS Server Troubleshooting
+* **Dedicated Identity & Name Resolution Diagnostics**:
+  - **What was updated**: Added a specialized troubleshooting submenu that automatically displays whenever a Domain Controller or DNS server is selected. Features one-click actions to restart the DNS Server service, restart the DNS Client resolver cache, clear the DNS resolver cache, test external DNS reachability (pinging 8.8.8.8), and perform custom DNS name lookups with real-time diagnostic output.
+  - **Benefit**: Greatly accelerates Active Directory and domain name resolution diagnostics, enabling administrators to resolve DNS stalls and verify name resolution in seconds without initiating heavy remote desktop sessions.
+
+#### 💬 On-Screen Message Delivery & User Acknowledgement Tracker
+* **Real-Time Read Receipts & Acknowledgement Audit**:
+  - **What was updated**: When broadcasting urgent modal messages, the system launches an interactive delivery and user acknowledgement dashboard. The tracker monitors each target computer in real time, displaying the logged-in username, delivery status, and exact timestamp when each user clicks "OK" to acknowledge the message. When all recipients have confirmed, a completion banner displays: "The message has been acknowledged by everyone."
+  - **Benefit**: Delivers verified compliance and peace of mind for critical IT alerts, facility notices, and emergency communications by proving exactly which users read and acknowledged the notice.
+
+#### 📊 Real-Time Performance Monitor High-Density Deep History
+* **Full-Window Canvas Expansion & 10-Minute Historical Buffers**:
+  - **What was updated**: Upgraded the Live Performance & Hardware Monitor with a 600-sample historical rolling buffer. Clicking any metric chart (CPU, RAM, Network, Disk) maximizes it across the entire window width, dynamically adjusting time resolution to show up to 10 minutes of deep rolling telemetry with an informative duration header. Clicking again returns smoothly to the 4-quadrant layout.
+  - **Benefit**: Uncovers transient performance spikes, resource leaks, and network dropouts over extended observation windows while preserving the fast 4-chart dashboard overview.
+
+#### 🔍 Inactivity & Presence Monitoring Agent Health & Multi-Tier Diagnostics
+* **Four-Tier Deployment & Telemetry Verification Engine**:
+  - **What was updated**: Added an interactive agent health verification dialog accessible from the Diagnostics context menu ("Check Inactivity Agent Status & Diagnostics..."). Instantly diagnoses the remote monitoring agent using a definitive four-state model: "Installed & Active", "Installed but Not Active / Not Reporting", "Not Installed", and "Unknown / Unable to Detect". Cross-verifies background system services, process execution, binary files, and telemetry heartbeat freshness, with direct one-click remediation actions to start services or redeploy.
+  - **Benefit**: Eliminates ambiguity when endpoints appear idle or stop reporting telemetry, giving administrators precise visibility into agent health and instant tools to restore monitoring without manual intervention.
+
+#### 🖨️ Network Printer Supplies & Ink/Toner Level Telemetry
+* **Direct Network Marker Supply Monitoring (Toner, Ink & Drum)**:
+  - **What was updated**: Enhanced the Remote Printers & Print Queue Manager with native, agentless network telemetry querying for networked and shared printers. The system automatically extracts printer network addresses and queries live marker supply levels (Black, Cyan, Magenta, Yellow toners and drums) directly in the background. Displays intuitive color-coded supply badges (Green for healthy, Amber for low supplies under 20%, Red for critical replenishment under 10%) alongside exact percentages and detailed hover tooltips breaking down every consumable compartment. For local virtual devices or software print engines, the interface cleanly displays "Not Available / Unsupported".
+  - **Benefit**: Prevents unexpected printer stoppages and accelerates helpdesk resolution by allowing technicians to audit toner and ink levels in real time across the domain without accessing physical printer control panels or vendor web consoles.
+
+#### 🎯 Inactivity & Presence Monitoring Status Indicator — High-Contrast Multi-Theme Visual Status
+* **Intuitive Four-State Visual Color Mapping**:
+  - **What was updated**: Standardized the visual status dot in the main computer inventory list to strictly reflect the four-tier monitoring agent health model: Green (`#10B981`) for Installed & Active, Amber (`#F59E0B`) for Installed but Inactive, Dark Slate/Black (`#0F172A` with adaptive outline) for Not Installed, and Red (`#EF4444`) for Unknown / Host Offline. Enhanced the indicator with a dynamic multi-line tooltip revealing detailed agent service status, background process activity, and last recorded telemetry timestamp.
+  - **Benefit**: Enables administrators to audit agent deployment status across hundreds of domain computers at a single glance, instantly differentiating unmonitored systems from network unreachable hosts without opening diagnostic menus.
+
+#### 🗑️ Local Computer Users & Security Manager — Secure User Deletion & Safeguards
+* **Administrative Safeguard Confirmation Workflow**:
+  - **What was updated**: Added a dedicated **Delete User** action to the Local Computer Users & Security Manager interface and context menu. When invoked, the system presents an explicit confirmation dialog displaying the user's account details and a prominent warning: "Are you sure you want to delete this user? Once deleted, the user account cannot be restored." To prevent accidental removal, IT administrators must re-enter their administrative account password and type a confirmation keyword.
+  - **Benefit**: Empowers IT administrators to cleanly remove obsolete, orphaned, or unauthorized local user accounts remotely from endpoints with enterprise-grade safeguard protections, avoiding accidental lockout or destructive user removal.
+* **Essential Account Protection Shield**:
+  - **What was updated**: Built-in intelligent protection safeguards automatically block deletion attempts against essential system accounts, default guest profiles, and currently authenticated administrator accounts.
+  - **Benefit**: Protects workstations from accidental system corruption and lockout, ensuring critical local administrative access remains permanently intact.
+
+#### ⏱️ Remote System Restore Point Manager — Checkpoints, Recovery & State Management
+* **Remote System Restore Point Configuration & History**:
+  - **What was updated**: Introduced a comprehensive **System Restore Manager** accessible from the workstation context menu under Customization, Automation & Deployment and Diagnostics & Health. Administrators can remotely check whether System Restore protection is active, enable or disable protection on the system drive, create named on-demand restore points before executing risky installations or updates, view a chronological history of all available restore points with creation dates and sequence numbers, and remotely roll back the endpoint to any previous restore checkpoint with automatic restart confirmation.
+  - **Benefit**: Provides a crucial safety net for helpdesk and infrastructure teams, allowing them to capture snapshot checkpoints before applying major software changes or configuration updates, and effortlessly recover non-booting or misconfigured computers remotely without physical visits.
+* **Granular Checkpoint Details & Emergency Recovery Actions**:
+  - **What was updated**: The interactive restore manager displays the sequence number, creation date and time, restore point event type, and descriptive tags for every snapshot taken on the machine, accompanied by clear action buttons for immediate refresh, creation, and rollback.
+  - **Benefit**: Gives administrators full visibility into the machine's recovery history, enabling precise rollbacks to known-good operational states in emergencies.
+
+#### ⚙️ Master Administration — Fleet Gateway API & Cloud Settings
+* **Dedicated API Settings Management & Iconography**:
+  - **What was updated**: Renamed and clarified the Master Mode administrative action button to **API Settings** with updated gear iconography and descriptive tooltips. The underlying configuration dialog clearly explains its purpose for managing fleet telemetry gateway endpoints, private server synchronization addresses, connection timeouts, and cloud management policies.
+  - **Benefit**: Eliminates ambiguity between historical reporting and fleet gateway connectivity, giving senior system administrators clear and intuitive control over enterprise cloud synchronization and backend endpoint configuration.
+
+#### 📦 Comprehensive Installed Software Discovery & Architecture Detection
+* **Multi-Architecture 64-Bit & 32-Bit Registry & Directory Scan**:
+  - **What was updated**: Upgraded the remote software detection engine to perform a thorough, multi-architecture scan of all installed applications on the target computer. The discovery engine now inspects both 64-bit and 32-bit software registries, system-wide and user-specific application directories, and includes automated fallback discovery to guarantee that all business applications, browser extensions, productivity suites, and utilities are accurately identified and listed.
+  - **Benefit**: Ensures IT asset managers and systems administrators have an exhaustive, true-to-life inventory of all software installed on remote computers, eliminating "missing application" blind spots during software audits or remote uninstallation tasks.
+
+#### 🛡️ Remote Session Privacy Mode (Curtain & Blank Physical Screen)
+* **Physical Display Blanking & Privacy Curtain**:
+  - **What was updated**: Added a **Privacy Mode** toggle in the bottom connection panel directly alongside the session controls. When enabled, remote connections blank or curtain the remote computer's physical monitor, preventing anyone physically sitting in front of or walking past the workstation from viewing the screen while the IT administrator performs sensitive administrative tasks, enters credentials, or troubleshoots private employee data.
+  - **Benefit**: Guarantees organizational data privacy, confidentiality, and compliance with data protection policies when performing remote assistance on shared workstations, reception desks, or executive computers.
+
+#### 📐 Optimized Bottom Administration Panel Spacing & Visual Flow
+* **Visual Dividers & Toolbar Separation**:
+  - **What was updated**: Enhanced the visual separation and spacing in the lower toolbar, introducing a clean divider separator immediately after the Network Drives button before the Profile actions begin.
+  - **Benefit**: Improves visual clarity and ergonomic navigation across the administrative toolbar, preventing accidental clicks between shared folder actions and user profile operations.
+
+#### 📋 Enhanced LAPS Credential Clipboard Management
+* **Formatted Local Username & Credential Copy Actions**:
+  - **What was updated**: Expanded the Local Administrator Password Solution (LAPS) management window with quick-copy actions: administrators can now copy the managed username pre-formatted for direct local authentication (`.\Administrator` format), copy the plain password, or copy full formatted credentials (username and password together) with a single click.
+  - **Benefit**: Accelerates administrator logon workflows during remote troubleshooting, preventing domain prefix confusion when logging into local accounts and enabling seamless one-click credential pasting into remote login prompts.
+
+#### 🛡️ Streamlined Default Session Permissions & User Awareness
+* **User-Centric Default Connection Preferences**:
+  - **What was updated**: Optimized the default states for remote session connection toggles: **Alert User**, **Ask User Permission**, and **Full Control** are now enabled by default upon application launch.
+  - **Benefit**: Upholds user privacy and corporate courtesy standards by ensuring remote users are notified and prompted before their screens are shared, while immediately granting technicians full keyboard and mouse control once permission is granted.
+
+#### 🏷️ Dynamic Version Synchronization & Seamless Header Updating
+* **Centralized Version Representation Across All Screens**:
+  - **What was updated**: Streamlined version number propagation across all application components—including the splash loading screen, title header, about dialogs, and build packaging scripts. Version numbers are now centrally derived and updated across the user interface without leaving outdated static version tags.
+  - **Benefit**: Ensures administrators always see accurate, coherent version information across every screen and dialog during deployment, testing, and production operations.
+
+#### ⚡ Remote Group Policy Refresh — Guaranteed Remote Execution & Progress Tracking
+* **Guaranteed Remote Target Execution & Verification**:
+  - **What was updated**: Re-architected the remote group policy update tool to guarantee that policy refreshes execute strictly and directly on the targeted remote endpoint rather than the local administrator computer. Added interactive progress reporting, completion status codes, and direct access to remote event logs to verify successful policy application.
+  - **Benefit**: Assures systems administrators that group policy updates are reliably applied to remote machines on demand, with transparent verification and zero risk of unintentionally refreshing local administrator policies.
+
+#### ⚡ Remote Network Adapter — One-Click Network Repair & Reset Suite
+* **Autonomous Multi-Stage Network Reset Engine**:
+  - **What was updated**: Added a dedicated **One-Click Network Repair** action to the Remote Network Adapter configuration manager, the right-click Network & Connectivity context menu, and the Ping tools menu. When clicked, the application stages an autonomous repair script directly on the endpoint that sequentially executes a complete network overhaul: DNS cache flush, dynamic DNS registration, ARP/NetBIOS cache flush, Winsock catalog reset, TCP/IP stack reset, network adapter restart, and DHCP IP release and renewal.
+  - **Benefit**: Resolves complex remote network connectivity dropouts, stale DNS mappings, corrupted socket states, and IP conflicts in a single click without requiring an administrator to connect interactively or run disparate command-line tools.
+* **Resilient Disconnected Endpoint Execution & Rebind Polling**:
+  - **What was updated**: Engineered a resilient decoupled execution architecture that guarantees the repair process completes on the client PC even when the network interface temporarily loses IP connectivity during the DHCP release stage. The administrator console actively polls the client computer with intelligent backoff until the network adapter completes its renewal and re-establishes connectivity.
+  - **Benefit**: Prevents broken or orphaned remote troubleshooting sessions, ensuring the repair script runs to 100% completion and re-establishes contact automatically.
+* **Detailed Multi-Step Execution Results DataGrid**:
+  - **What was updated**: Designed an interactive results dialog featuring a real-time progress bar, overall status banner, and a structured DataGrid showing every individual command executed, execution status (Success, Failed, or Skipped), timestamp, completion exit code, and detailed command output, accompanied by a one-click clipboard copy button.
+  - **Benefit**: Gives network administrators granular visibility into which specific network subsystem reset succeeded or failed, providing instant audit proof and troubleshooting clarity.
+
+#### 📈 Unified Live Performance Monitor & Full-Screen Deep Monitoring Architecture
+* **Integrated Hardware, System Identity & Storage Architecture**:
+  - **What was updated**: Consolidated the standalone hardware diagnostics tools directly into the **Live Workstation Performance & Resource Monitor** under the dedicated **Hardware & Subsystems** tab. Administrators now have unified access to Motherboard & Service Tag identification (with 1-click clipboard copy), Operating System details, continuous uptime counter with automated warnings for systems running without rebooting for over 14 days, Processor core topology, physical RAM DIMM breakdown, logical storage volumes with visual capacity progress bars and health alerts, physical disk interfaces, and active network controllers with real link speeds.
+  - **Benefit**: Eliminates redundant dialog windows, allowing administrators to inspect both live real-time performance metrics and deep underlying hardware specifications within a single consolidated dashboard.
+* **Full-Screen Deep Monitoring View for Real-Time Charts**:
+  - **What was updated**: Added interactive deep monitoring expansion to the live performance graphs (CPU Utilization, Memory Allocation, Network Bandwidth, and Disk I/O). Double-clicking any graph or clicking the expand button immediately maximizes that single metric into a full-window deep monitoring view with timeline axis markings (-60s to Now), 4 real-time KPI indicator cards (Current, Peak/Max, Low/Min, and Rolling 60s Average), and high-resolution sparkline visualization.
+  - **Benefit**: Allows systems engineers to perform in-depth telemetry analysis on individual resource bottlenecks with expanded visual resolution, and quickly return to the 4-graph overview with a single click or by pressing Escape.
+* **One-Click System Specifications Export**:
+  - **What was updated**: Added a **📋 Copy Specs** button to the Live Performance Monitor footer that automatically copies a cleanly formatted, comprehensive text summary of the target workstation's hardware identity, operating system, processor, memory, storage volumes, and network adapters to the Windows clipboard.
+  - **Benefit**: Enables helpdesk technicians to paste complete computer specifications directly into IT support tickets, asset management databases, or vendor support requests in seconds.
+
+#### 🔓 Remote Desktop (RDP) Enablement, Diagnostic Suite & Multi-Action Controls
+* **Pre-Flight Port 3389 Reachability & Automated Activation Prompt**:
+  - **What was updated**: When an administrator initiates a Remote Desktop connection from the toolbar or context menu, the application automatically performs an ultra-fast pre-flight reachability check on TCP port 3389. If Remote Desktop is disabled or blocked on the target machine, a dedicated smart prompt appears immediately offering to enable Remote Desktop, configure the required background services, and open the firewall rule with a single click.
+  - **Benefit**: Eliminates frustrating timeout delays and connection failures caused by turned-off Remote Desktop settings or blocked firewall ports on target endpoints.
+* **Dedicated Remote Desktop Configuration & Diagnostic Center**:
+  - **What was updated**: Created an interactive diagnostic and configuration window accessible via the new RDP dropdown arrow on the main toolbar, right-click context menu, and lock screen controller. The window inspects the remote computer's current Remote Desktop enablement state, Network Level Authentication (NLA) enforcement, and TCP port 3389 listening status, with one-click toggles to enable or disable Remote Desktop, start background services, and configure firewall rules.
+  - **Benefit**: Provides administrators with complete visibility into remote terminal settings without having to run multiple manual troubleshooting tools or commands.
+* **Bulk Remote Desktop Configuration across Multiple Computers**:
+  - **What was updated**: Enabled bulk Remote Desktop activation across multiple selected workstations simultaneously from the multi-computer context menu, complete with real-time per-workstation progress tracking, automated background service configuration, and summary reporting.
+  - **Benefit**: Allows IT teams to prepare, enable, and standardize Remote Desktop access across dozens or hundreds of computers in a single automated operation during mass deployments or maintenance windows.
+* **Integrated Lock Screen Takeover Remote Desktop Activation**:
+  - **What was updated**: Added a dedicated Remote Desktop enablement button directly inside the Physical Lock Screen Takeover Controller card, allowing administrators to activate Remote Desktop and verify port readiness on locked workstations prior to taking them over.
+  - **Benefit**: Guarantees administrators can connect to and take over locked workstations even if Remote Desktop was previously disabled.
+
+#### 👁️ Show Password & Clipboard Copy — Local Computer Users & Security Manager
+* **Show / Hide Password Toggle**:
+  - **What was updated**: Added a **Show / Hide** toggle button next to the password field in both the **Create Local User** dialog and the **Reset Password** dialog inside the Local Computer Users & Security Manager. By default, the password is masked for privacy during screen sharing or over-the-shoulder situations. Clicking **👁️ Show** reveals the exact characters; clicking **🙈 Hide** returns to masked view.
+  - **Benefit**: System administrators can visually confirm the exact password they are about to set before committing, eliminating typo-related lockouts on remote accounts.
+* **One-Click Password Copy to Clipboard**:
+  - **What was updated**: Added a **📋 Copy** button alongside the password field in both dialogs. Clicking Copy places the current password directly on the Windows clipboard regardless of whether the field is in masked or visible mode.
+  - **Benefit**: Allows administrators to immediately paste the new password into a secure notes application, a credential vault, or a remote session window without retyping — reducing human error during password handoffs.
+* **Live Password Policy Banner**:
+  - **What was updated**: When the Create Local User dialog opens, the application automatically queries the target workstation's active security policy in the background and displays a live banner showing the minimum password length and whether complexity requirements are enforced (e.g. "minimum 8 characters; uppercase + lowercase + number + symbol required").
+  - **Benefit**: Administrators instantly know which password rules apply on the target machine before typing anything, preventing failed creation attempts due to unseen policy restrictions.
+
+
+
+#### 🔑 Windows LAPS & Local Administrator Password Management Suite — Native Decryption, Plain-Text Viewing, Instant Rotation & Expiration Scheduling
+* **Modern Windows LAPS & Encrypted Password Support**:
+  - **What was updated**: Upgraded the local administrator password engine with multi-tier architecture supporting modern Windows LAPS encrypted attributes, plaintext Windows LAPS attributes, and legacy Active Directory password solutions. The system automatically detects and decrypts protected local administrator credentials securely from the domain controller.
+  - **Benefit**: System administrators can inspect managed local credentials across modern operating systems even when centralized encryption policies are strictly enforced, eliminating false "not configured" alerts.
+* **Plain-Text Password Viewing & Instant Clipboard Copy**:
+  - **What was updated**: Added an interactive plain-text toggle to instantly switch between masked password bullets and clear-text view, along with dedicated display of the managed local administrator account name and a 1-click clipboard copy button.
+  - **Benefit**: Helpdesk and systems engineers can quickly verify, read, or copy the exact managed password when performing local maintenance or emergency console recovery on remote workstations.
+* **Instant Password Rotation ("Expire Now")**:
+  - **What was updated**: Introduced a 1-click password rotation capability that immediately sets the expiration timestamp to the current time in Active Directory and prompts the remote workstation to generate a fresh managed password and synchronize it back to the directory.
+  - **Benefit**: Enables administrators to instantly rotate compromised or shared local administrator passwords on demand without waiting for background group policy refresh cycles.
+* **Custom Calendar Expiration Scheduling & Quick Presets**:
+  - **What was updated**: Integrated a visual calendar picker and quick preset buttons (+7 Days, +30 Days, +60 Days, +90 Days) allowing administrators to extend or schedule the exact expiration date and time of the local administrator password directly from the console.
+  - **Benefit**: Gives administrators full lifecycle control over credential validity, streamlining emergency access windows and audit compliance.
+* **Real-Time Expiration Countdown & Security Governance Alignment**:
+  - **What was updated**: Displays live countdown badges indicating remaining days and hours until credential expiration, timestamps for the last password generation, and authorized security decryptor information. Synchronized governance policy flags with the Cloud Admin Console.
+  - **Benefit**: Provides complete visibility into endpoint password hygiene and aligns desktop administrative actions with central cloud governance.
+
+#### 🛡️ Enterprise Security Policies & Multi-Tier Lockout Governance — Native Experience & Admin Console Simulator
+* **Pixel-Accurate Multi-Tier Policy Screen**:
+  - **What was updated**: Redesigned the security policy lockout interface to match enterprise security standards with dedicated visual treatments for each policy condition: Version Retirement Policy (amber warning triangle with gold accents and retirement instructions), Workstation Quarantined (laptop icon with cyan glow, host quarantine notice, and isolation status), and Domain Access Suspended (office building icon with coral accents and renewal instructions).
+  - **Benefit**: Operators and endpoint users receive immediate, unambiguous visual feedback detailing the exact security policy in effect, their incident reference identifier, and next steps for resolution without confusion.
+* **Master Authorization & Request Unlock Workflow**:
+  - **What was updated**: Replaced technical override wording with an intuitive "Request Unlock" workflow across both desktop endpoints and the Cloud Admin Console. Includes an administrative verification dialog permitting authorized Active Directory domain administrators to apply temporary session bypasses or authorized overrides with full audit logging.
+  - **Benefit**: Streamlines the authorization process for helpdesk personnel and systems engineers while ensuring administrative actions are properly validated and tracked.
+* **Zero-Information-Disclosure Client Architecture**:
+  - **What was updated**: Enhanced client-side dialogs and telemetry error handling to ensure all backend and cloud management mechanisms remain entirely confidential. Client interfaces display clean enterprise security policy notifications without revealing internal management web addresses, backend server identities, or cloud control mechanics.
+  - **Benefit**: Protects infrastructure operational security and prevents reconnaissance by unauthorized operators or malicious actors on compromised workstations.
+* **Redesigned Access Restricted (Domain Admins Only) Dialog with Matching Visual Theme**:
+  - **What was updated**: Modernized the startup authorization dialog presented when a non-administrative user attempts to launch the application. Replaced the traditional Windows caption window with the same frameless dark theme container, draggable header, coral red glowing shield icon, structured account details box, dynamic verification probe, and clean exit actions matching the enterprise security policy design language. Also added a dedicated preview tab to the Cloud Admin Console simulator.
+  - **Benefit**: Ensures a unified, professional user experience across all security and policy screens while providing operators with immediate account status and self-service authorization re-checking.
+* **Granular Scope Lockout Policies & Targeted Workstation Hardware Lock**:
+  - **What was updated**: Enhanced the Granular Scope Lockout Policies panel in the Cloud Admin Console with an enrolled workstation selector, live datalist search, instant rule persistence, and background synchronization guards. Background telemetry cycles no longer interfere with active typing or workstation selection, and operators receive immediate visual loading feedback and status confirmation upon saving rules.
+  - **Benefit**: System administrators can select, queue, and enforce hardware-level lockout rules on specific compromised or unassigned workstations without unexpected input resets or failed policy transmissions.
+* **Centrally Designated Security Override Durations**:
+  - **What was updated**: Centralized the authorization duration choice in the Cloud Admin Console. Security administrators centrally configure and assign the authorized bypass window (such as 30 Minutes, 1 Hour, 4 Hours, 24 Hours, 7 Days, Single Session, or Permanent Bypass) when generating or rotating the master emergency security key. When an elevated Active Directory administrator enters the authorized passcode into the desktop client application, the system automatically detects, verifies, and activates the centrally assigned duration window without requiring or allowing the local operator to choose an unapproved duration.
+  - **Benefit**: Guarantees organizational compliance and principle of least privilege—end users and local administrators cannot bypass centrally mandated security policies for longer than the exact duration authorized by the central security team.
+* **Salted Master Security Key & Integrity Hash Push Targeting (Fleet-Wide, Domain Level, or Targeted Workstation)**:
+  - **What was updated**: Expanded the centralized Master Security Key and integrity hash deployment engine with granular target scope options. Security administrators can now designate whether a generated or rotated Master Security Passcode applies to **All Devices** across the entire enterprise fleet, is restricted to a **Specific Active Directory Domain** (such as `SMS.LOCAL`), or is locked down exclusively to a **Single Targeted Workstation** (such as `WS-FINANCE-01`). The Cloud Admin Console features dedicated scope selection buttons, interactive Active Directory domain selectors, and workstation search autocompletion with live status badges. Both the online validation service and the endpoint desktop client strictly enforce the active scope, rejecting passcode usage if entered from an unauthorized domain or workstation.
+  - **Benefit**: Delivers precision zero-trust security governance, enabling security teams to provide emergency unlock authorization to an isolated workstation or regional office without exposing or unlocking the entire organizational fleet.
+* **Interactive Cloud Admin Console Policy Simulator**:
+  - **What was updated**: Integrated a real-time desktop client simulator into the Cloud Admin Console Policy Matrix. Administrators can toggle preview modes between Live Computed Policy, Version Retirement, Workstation Quarantine, Domain Suspension, Global Lockout, and Access Restricted to preview exactly how policy dialogs will render on endpoint machines before rolling out changes fleet-wide. Includes interactive simulation for connection probes, authorization checks, and unlock requests.
+  - **Benefit**: Empowers security operations and identity teams to preview, test, and validate policy messages and visual workflows prior to enforcing broad fleet lockouts.
+
+#### ⚡ Workstation Right-Click Context Menu — Fast Action Search Bar, Target Header & Deduplicated Organization
+* **Integrated Fast Action Search Bar with Real-Time Dynamic Filtering**:
+  - **What was updated**: Positioned an interactive search bar directly at the top of the right-click menu. As soon as the menu opens, the search field is automatically focused and ready for typing. Entering any keyword (such as "ping", "event", "temp", "reboot", "rdp", "uac", "service", or "task") instantly filters through over 50 administration tools and displays all matching actions in a flat list with category badges. Operators can press Enter to launch the top result, press the Down Arrow to navigate through results, or press Escape to clear the query or dismiss the menu.
+  - **Benefit**: Eliminates hunting through nested submenus—system administrators can execute any remote management command in under two seconds with minimal keystrokes.
+* **Dedicated Target Device Header Banner**:
+  - **What was updated**: Added an informative header banner at the top of the context menu showing the targeted computer's hostname, IP address, and real-time connectivity status.
+  - **Benefit**: Gives operators immediate visual confirmation of the active workstation before initiating remote troubleshooting, file transfers, or power actions.
+* **Streamlined, Deduplicated Submenu Architecture**:
+  - **What was updated**: Restructured the entire right-click menu into 7 cleanly categorized submenus: System Administration & Management, Diagnostics & Health, Network & Connectivity, Active Directory & User Session, Files & Shared Folders, Customization, Automation & Deployment, and Security & Power Control. Removed all redundant and duplicate items previously scattered across multiple folders (such as desktop wallpaper, temp file cleaning, God Mode, and Wake-on-LAN).
+  - **Benefit**: Delivers a predictable, logical administrative hierarchy where every tool has a single, well-defined location, reducing visual clutter and cognitive overhead.
+* **Bulk Operations Fast Action Search & Layout Polish**:
+  - **What was updated**: Brought the same fast search bar and restructured category layout to multi-device bulk selections, enabling operators to filter and execute bulk operations across dozens or hundreds of computers simultaneously.
+  - **Benefit**: Accelerates fleet maintenance tasks such as bulk wallpaper changes, temp file purges, group policy refreshes, and software deployments.
+
+#### ⏱️ Inactivity & Idle Monitor Agent — Multi-Stage Teardown Lifecycle & Instant Fast Action Search
+* **Multi-Stage Remote Agent Teardown & Process Elimination**:
+  - **What was updated**: Re-architected the remote Inactivity Monitor removal routine to perform a thorough, multi-stage teardown. The application now resets service recovery actions, disables and stops the background service, deletes scheduled tasks across interactive sessions, terminates all running agent instances across user sessions using both privileged process termination and remote task management, applies multi-attempt retry logic with normal file attribute normalization to completely remove agent binaries and metrics data stores, and strictly verifies file deletion before reporting completion. If agent files remain locked, the routine reports detailed diagnostics instead of prematurely signaling success.
+  - **Benefit**: Guarantees complete, clean uninstallation of the monitoring agent from remote endpoints without leaving orphaned background processes, stale metrics files, or lingering lock screen timers behind.
+* **Dynamic Workstation State & Bulk Actions Synchronization**:
+  - **What was updated**: Enhanced real-time synchronization between endpoint monitoring status and application UI controllers. Upon successful removal, workstation state timers immediately reset to standard session statuses (clearing idle minutes), the top Bulk Action button dynamically transitions to "Install Monitor", and single-device context menus immediately enable fresh deployment actions while disabling removal.
+  - **Benefit**: Eliminates false "Installed" indicators and ensures operators always see the true, real-time installation and monitoring state of every computer across the Active Directory fleet.
+* **Standardized "Monitor" Terminology & Instant Fast Action Search**:
+  - **What was updated**: Standardized all menu item titles, action headers, and search keywords to include the word "Monitor" (such as "Deploy Inactivity & Idle Monitor Agent", "Uninstall Inactivity & Idle Monitor Agent", and "Inactivity Monitor Agent Already Installed").
+  - **Benefit**: Typing "Monitor" into the fast action search box in both single-device and bulk right-click menus immediately displays relevant deployment and removal actions, eliminating search misses.
+* **Local Cloud Admin Console 1-Click Launchers**:
+  - **What was updated**: Added dedicated 1-click startup scripts (`Start_Local_AdminConsole.bat` in the workspace root and `AdminConsole/Start_Server.bat`) to quickly launch the local Node.js administrative service on port 3000 with dependency checks and clear endpoint feedback.
+  - **Benefit**: Allows administrators and developers to spin up the local governance gateway and web management console instantly without manual command-line navigation.
+
+#### 📋 Remote Windows Event Viewer & Security Audit Hub — Comprehensive Presets, Real-Time Filtering & Channel Expansion
+* **Categorized Quick Presets Dropdown with Rich Visual Styling (Over 35 Enterprise Presets)**:
+  - **What was updated**: Upgraded the event log viewer with an organized Quick Presets dropdown library featuring over 35 enterprise forensic and troubleshooting presets with category-tailored visual palettes (emerald for users, amber for LAPS, indigo for groups, teal for file shares, sky blue for logon, rose for security threats/lockouts, purple for system diagnostics, orange for operations), high-contrast category badges, Segoe UI Emoji icons, clean display titles, and dedicated event identification pill tags. Includes Windows LAPS password audits (retrievals, automatic rotations, rotation failures), complete user account lifecycle (account creation, deletion, enable/disable status, lockouts, unlocks, attribute modifications, admin password resets, self-service password changes), security group operations (member additions, removals, group creations, deletions, modifications), network file share auditing (share connections, detailed file access checks, file creations, file edits, file deletions, permission modifications), logon and authentication diagnostics (successful logons, failed logons, administrator privilege assignments, explicit credentials, Kerberos pre-authentication errors, remote desktop connections), security and threat detection (new Windows services installed, audit policy tampering, firewall status modifications, Windows Defender malware alerts, PowerShell script executions, process creations), system reliability (clean reboots, shutdowns, unexpected power cuts, blue screen crashes, application hangs, service failures, hard drive bad blocks, BitLocker recovery key backup), and infrastructure diagnostics (completed print jobs, spooler failures, network IP conflicts, DNS timeouts, Windows Update patches, Group Policy processing errors, scheduled task failures).
+  - **Benefit**: Transforms the dropdown into an intuitive visual forensic catalog, allowing operators to rapidly distinguish between different categories of events and audit operations at a glance without memorizing event numbers or constructing complex queries.
+* **Instant Type-to-Find Preset Search with Continuous Keyboard Input**:
+  - **What was updated**: Enhanced the embedded quick-find search box beside the Quick Presets dropdown with continuous keyboard focus retention. Typing multi-letter keywords smoothly filters the preset catalog in real-time without losing focus or interrupting input, with Down Arrow key navigation to enter the dropdown list and Enter key selection to apply the top matching preset.
+  - **Benefit**: Eliminates focus interruptions after typing the first character, providing a rapid, seamless search experience that allows administrators to find and launch any event preset with minimal keystrokes.
+* **Forensic Entity Filtering Toolbar (User, Host, IP & File Operations)**:
+  - **What was updated**: Integrated a dedicated real-time Entity Filtering toolbar providing instant filtering across four core forensic dimensions: User / Account, Computer / Host, IP Address, and File / Object Path, complete with an interactive Exact File Match option and live filtered result counters.
+  - **Benefit**: Enables sysadmins and security responders to isolate specific user actions, trace individual client IP addresses, investigate single machine activities, or pinpoint exact file deletions and modifications in seconds without writing manual queries.
+* **Dedicated Sortable Forensic Columns**:
+  - **What was updated**: Added dedicated columns for User / Account, Computer / Host, IP Address, and File / Object Path directly in the main event grid with interactive one-click column header sorting.
+  - **Benefit**: Gives administrators full sorting capability across usernames, workstation hostnames, network addresses, and file paths alongside timestamp and severity levels.
+* **Native Remote Server-Side Filtering Engine**:
+  - **What was updated**: Upgraded the remote event query architecture to execute server-side filtering directly against the remote computer's native Windows Event Log subsystem. When a preset is chosen, the remote host processes the filter directly and transmits only matching event records over the network.
+  - **Benefit**: Maximizes query speed and responsiveness, retrieving hundreds or thousands of target records in milliseconds without transmitting irrelevant event records or missing historical events that occurred outside a narrow window.
+* **Full Multi-Channel Auditing & Coverage**:
+  - **What was updated**: Expanded channel selection to include Security, Windows LAPS, Setup, Remote Desktop Local Session Manager, Print Spooler, Task Scheduler, Windows Defender, DNS Client, Active Directory Directory Service, and DNS Server, alongside System and Application logs.
+  - **Benefit**: Provides comprehensive visibility into the entire Windows operational ecosystem and domain controller health from a single unified diagnostic interface.
+* **Vivid Audit Success, Audit Failure & Verbose Severity Badging**:
+  - **What was updated**: Introduced dedicated visual classification badges for Audit Success (vibrant Emerald Green), Audit Failure (vibrant Rose Red), and Verbose/Debug (rich Purple), complete with light and dark theme styling, distinct category filtering, and refined data grid pill formatting.
+  - **Benefit**: Dramatically enhances forensic readability, allowing administrators to immediately spot authentication rejections, unauthorized access attempts, and successful administrative actions at a glance.
+* **Massive Query Capacity (Up to 10,000 Records)**:
+  - **What was updated**: Expanded event limit options to include 1,000, 2,000, 5,000, and 10,000 events, supported by high-speed reverse-chronological streaming.
+  - **Benefit**: Delivers deep historical audit capacity for busy corporate servers and domain controllers, enabling thorough forensic investigations across weeks or months of activity.
+* **Rapid-Access Emergency Action Pills**:
+  - **What was updated**: Embedded dedicated one-click action pills for the most frequent emergency diagnostic scenarios: Critical Errors, Account Lockouts, User Account Operations, Group Memberships, File Share Access, Windows LAPS, Blue Screen Crashes, and System Reboots.
+  - **Benefit**: Provides immediate single-click access to urgent troubleshooting filters with zero configuration required.
+* **Dedicated Group Policy & GPUpdate Diagnostics Presets Suite**:
+  - **What was updated**: Added a comprehensive suite of Group Policy presets covering the entire policy lifecycle: All Policy & GPUpdate Activity (tracking policy refreshes, client-side extension executions, and processing results), Policy Errors & Failures (detecting unreachable domain controllers, network timeouts, access issues, and processing faults), Software Installation Deployment (monitoring software assigned, removed, installation failures, and reboot requirements), and Successful Policy Refreshes (verifying clean policy updates and newly detected settings).
+  - **Benefit**: Empowers administrators to immediately verify whether a policy refresh succeeded, identify exactly which policies or client-side extensions failed, and diagnose software deployment issues on any workstation in seconds.
+* **1-Click GPUpdate Diagnostic Action Pill**:
+  - **What was updated**: Added a dedicated single-click action pill button on the top presets toolbar that instantly loads and streams all Group Policy and policy refresh events for the target machine.
+  - **Benefit**: Provides zero-click configuration to check policy update results immediately without navigating menus or constructing manual filters.
+* **Group Policy Operational Channel Expansion**:
+  - **What was updated**: Added the dedicated Windows Group Policy Operational event channel to the channel selection dropdown, enabling native retrieval of deep policy processing logs and client-side extension execution timelines.
+  - **Benefit**: Gives sysadmins full visibility into granular policy processing stages, client-side extension durations, and detailed error reports directly from the remote workstation.
+* **Accurate Severity Level & Audit Badge Classification**:
+  - **What was updated**: Corrected event severity categorization so that non-security operational warnings and errors (such as Group Policy client-side extension warnings and software installation errors) are accurately identified and badged as Errors or Warnings rather than Audit Success.
+  - **Benefit**: Prevents diagnostic confusion by ensuring that warning and error states are clearly highlighted with vivid red and amber badges.
+* **Context Menu & GPUpdate Workflow Integration**:
+  - **What was updated**: Added direct context menu shortcuts to view Group Policy event logs, and updated the remote policy refresh action to offer immediate access to live event streaming upon triggering a policy update.
+  - **Benefit**: Seamlessly connects remote policy refresh commands with real-time verification logs, allowing operators to trigger an update and immediately verify the results on the target workstation.
+* **Group Policy Diagnostics & Streamlined Record Visibility**:
+  - **What was updated**: Refined in-memory filter coordination and stream completion indicators when executing Group Policy and policy refresh diagnostic presets. Remotely retrieved events appear immediately in the event grid without interference from filter field text, and the details pane displays a clear confirmation message as soon as event retrieval completes.
+  - **Benefit**: Guarantees that all retrieved Group Policy and policy refresh events are immediately visible and selectable, eliminating perceived loading stalls and providing instant confirmation that event streaming has completed.
+* **Enhanced Forensic Technical Details & CSV Audit Export**:
+  - **What was updated**: Enhanced the event technical details pane and CSV audit export to automatically parse and display structured entity metadata (user accounts, hostnames, IP addresses, and file paths), alongside raw event descriptions.
+  - **Benefit**: Accelerates incident documentation and evidence collection for compliance, auditing, and threat investigation workflows.
+
+#### 🏷️ Remote Computer Management & Identity Operations
+* **Encrypted Management Channel for Remote Computer Rename**:
+  - **What was updated**: Enforced packet-level privacy encryption across administrative remote control channels during remote computer rename operations and privileges diagnostic checks, supporting both current session credentials and alternate Domain Administrator credentials. Also reinforced script execution fallbacks with direct binary encoding.
+  - **Benefit**: Completely eliminates connection encryption rejections, enabling administrators to rename remote computers reliably across Active Directory networks with full compliance and zero security policy errors.
+
+#### 📈 Live Workstation Performance & Resource Telemetry — High-Resilience Engine & Layout Polish
+* **Resilient Non-Blocking Telemetry Engine**:
+  - Telemetry sampling across processor load, memory allocation, network throughput, and storage activity now executes sequentially with strict 3-second safeguards, eliminating remote background stalls and deadlocks when querying long-uptime workstations.
+  - Eliminates the need to restart client workstations to access real-time system performance telemetry.
+* **Instant Hardware Link Speed Detection**:
+  - Network interface inventory immediately identifies and displays true hardware connection speeds (e.g. 1.0 Gbps or 100 Mbps) during initial system connection, replacing generic auto-sensing placeholders with verified network interface metrics.
+* **Window-Level Network Telemetry Calibration Status Banner**:
+  - Added an informative, high-visibility status banner docked prominently at the bottom of the Live Performance Monitor window that clearly alerts administrators across all tabs while initial real-time bandwidth performance counters are calibrating (15–30 sec), transitioning seamlessly to confirmed active throughput reporting once counters synchronize.
+* **Proportional Auto-Fit Column Layout & Expanded Minimum Widths**:
+  - Redesigned the Network Adapters table with responsive, proportional column widths and generous minimum sizing that automatically fit to the full window width, ensuring network interface descriptions, real-time transfer speeds, and session bandwidth totals are cleanly presented without cramped columns or truncated text.
+* **Instant Fail-Safe Performance Fallbacks**:
+  - Automatically engages immediate standard system fallbacks if advanced high-frequency performance counters are sluggish or unavailable on remote computers, guaranteeing continuous live CPU and RAM reporting without interruption.
+* **Proactive Network Hardware Availability**:
+  - Automatically populates active network interfaces from verified hardware scan records if real-time bandwidth performance counters return empty, ensuring network adapters and IP addressing always display reliably.
+* **Asynchronous Core Services Discovery**:
+  - Windows Services catalog enumerates smoothly in the background without blocking core telemetry polling loops, ensuring instant visibility into processor, memory, and network throughput while services load.
+* **Windows Services Toolbar Layout Polish**:
+  - Fixed button positioning alignment on the Windows Services tab toolbar, ensuring action controls (Start, Stop, Restart, Start by Name) render with full width, clean spacing, and zero button clipping.
+
+#### 🛡️ Cloud Admin Console — Remote Kill Switch & Workstation Governance Matrix
+* **Targeted Lockout & Blocked Workstations View**:
+  - Automatically isolates and displays only locked, blocked, or quarantined endpoints on the Remote Kill Switch matrix, eliminating visual clutter when managing large corporate fleets.
+  - Interactive view filter toggle allows administrators to switch seamlessly between `🔒 Locked Only` and `🌐 All Nodes` on demand.
+  - Comprehensive zero-lockout status view clearly certifies when 100% of fleet computers are compliant without active restrictions.
+* **Draft vs. Live Enforced Real-Time Simulator**:
+  - Live pre-flight policy evaluation dynamically identifies whether a workstation is entered in an active server policy or queued in an unsaved draft.
+  - Distinct visual badges clearly differentiate pending configuration drafts from enforced live blocks with instant 1-click execution.
+* **Instant Multi-Field Workstation Search**:
+  - Embedded live search field allows administrators to filter restricted or fleet workstations in real time across Active Directory domain, computer name, assigned username, and IP address.
+  - Features real-time match counters, keyboard navigation shortcuts, and 1-click search clearing.
+
+#### 📢 In-App Broadcast Studio & Notification Dispatcher — Delivery & Read-Status Tracking System
+* **Complete Status Lifecycle (Sent ➔ Received ➔ Read ➔ Acknowledged)**:
+  - Replaced the previous static "Active" display with a granular delivery and read-status tracking lifecycle that monitors the actual progression of notifications on remote client workstations.
+  - **Sent / Pending**: Notification has been dispatched by administrators and queued for delivery across target workstations.
+  - **Received**: Notification has reached the remote client workstation and is currently displayed on the operator's screen.
+  - **Read**: Notification was viewed and dismissed by the operator clicking the close action.
+  - **Acknowledged**: When explicit acknowledgement is mandated, certifies that the operator clicked the confirmation button to acknowledge compliance.
+  - **Expired / Revoked**: Indicates broadcasts whose scheduled lifetime expired or which were manually withdrawn by administrators.
+* **Mandatory Acknowledgement Mode**:
+  - Broadcast Studio composer includes a 1-click **"Require Explicit Acknowledgment"** option.
+  - When enabled, the remote banner presents a prominent **`✓ Acknowledge`** button instead of a simple dismiss action, ensuring critical security advisories, policy updates, and emergency maintenance notices cannot be closed without verification.
+* **Contextual Action Lifecycle Management**:
+  - The **Deactivate** button is now contextually restricted to broadcasts that are actively circulating or pending on client workstations.
+  - Once all targeted endpoints have successfully read or acknowledged the notice, the broadcast automatically transitions to **`✓ Completed`**, preventing redundant deactivations.
+* **Dedicated Verification Action — Streamlined Single Acknowledge Interaction**:
+  - Eliminated the ambiguous close icon from client workstation banners in favor of a prominent, mandatory **`✓ Acknowledge`** action button.
+  - Ensures every operator interaction with on-screen notices delivers guaranteed verification receipts directly to the Cloud Admin Console without unconfirmed dismissals.
+* **Dynamic Fleet Reach Progress & Receipts Audit Ledger**:
+  - Replaced static placeholder percentages with dynamic reach analytics calculated in real-time from active workstations in the target scope.
+  - Interactive **`📋 Receipts`** inspection modal opens an itemized compliance audit trail detailing workstation computer names, logged-in operators, Active Directory domains, delivery timestamps, and receipt status badges.
+
 #### 💬 In-App Feedback & Star Ratings System
 * **Mandatory Rating & Message Validation**:
   - Requires operators to select both a star rating (1 to 5 stars) and enter detailed comments or suggestions before submitting, ensuring complete, actionable feedback for ongoing development.
@@ -134,9 +475,30 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
   - Main computers table features a dedicated `OU (Computer / User)` column displaying both Computer OU and logged-in User OU with distinct visual indicators (`🖥️` Computer OU in Sky Blue, `👤` User OU in Purple).
   - Column widths optimized to prevent text clipping across display resolutions.
 
+#### ✅ Accurate Activity Logging — Local Account Operations
+* **Truthful Operation Result Recording**:
+  - **What was updated**: Corrected a silent reporting flaw in the Local Computer Users & Security Manager where the activity log recorded "success" even when a local user account was not actually created on the target workstation. Logs now only record a success entry after verifying that the account genuinely exists on the target machine. Failed attempts record the precise reason for failure, including the actual rejection message from Windows (such as minimum length, complexity, or duplicate account).
+  - **Benefit**: System administrators can trust the Activity Log as an accurate record of what actually occurred on each workstation, eliminating confusion from misleading success entries that masked silent failures.
+
+#### 🔐 Automatic Windows Password Policy Enforcement — Local Account Creation
+* **Pre-Validation Before Account Submission**:
+  - **What was updated**: When creating a local user account, the application now automatically reads the active password security policy from the target workstation in the background and validates the chosen password before any creation attempt is made. If the password is too short for the configured minimum length, a clear dialog explains the exact requirement and prevents submission. If complexity requirements are enabled, the application checks whether the password meets the minimum category requirements and explains which categories are missing.
+  - **Benefit**: Administrators immediately understand why a simple password such as "123" cannot be used on a secured workstation — instead of receiving a misleading success message or a cryptic Windows error — and are guided toward choosing a compliant password before the account creation attempt is made.
+* **Real Windows Error Reporting on Failure**:
+  - **What was updated**: When Windows rejects an account creation due to policy restrictions or any other reason, the application now captures and surfaces the actual error message returned by Windows (such as "The password does not meet the password policy requirements") instead of silently reporting the operation as successful.
+  - **Benefit**: Removes all ambiguity from failed account creation — administrators can read the exact reason Windows rejected the operation and take the correct corrective action.
+
 ---
 
 ### 🔄 Updated & Enhanced Features (Upgraded from v2.6.5 - Coming Soon)
+
+#### 🎨 High-Contrast Modal Dialogs & Action Button Hover Clarity (Upgraded)
+* **What was updated**:
+  - Engineered a uniform high-contrast visual styling system across all modal dialogs, security alerts, Quarantine notices, God Mode controllers, and administrative dialogs.
+  - Eliminated washed-out button backgrounds and zero-contrast hover states where default operating system templates produced light cyan overlays against white button text.
+  - Action buttons (including Close Application, Emergency Unlock, Browse, Apply Selected Configuration, and Remove Tweaks) now feature smooth, dark-accented hover and pressed states with crisp, high-visibility text across both Dark Mode and Light Mode.
+  - **Single-Instance Quarantine Guard & Automatic Window Restoration**: Implemented single-instance application control and active synchronization locks. When a workstation is quarantined, exactly one security alert window appears; the moment SecOps releases the workstation from administrative quarantine, the application automatically dismisses the restricted notice and restores the full administrative interface without requiring an application restart.
+* **Benefit**: Guarantees seamless administrative continuity, eliminating manual application restarts and duplicate popups during security quarantine and release workflows.
 
 #### 🖨️ Remote Printers & Print Queue Infrastructure Manager (Upgraded)
 * **What was updated**:
