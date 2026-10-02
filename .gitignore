@@ -1,14 +1,17 @@
-﻿# Strict Blacklist: Source files must NEVER be pushed to Public Repo
+﻿# Strict Blacklist: Source files and internal systems must NEVER be pushed to Public Repo
 *.cs
 *.pdb
 *.log
-*.ico
-*.ps1
 sync_version.ps1
-Build_Exe.bat
+verify_all_docs.ps1
+publish_public_release.ps1
+Build_Exe*.bat
 obfuscar.xml
 Release_Protected/
 docs/
+AdminConsole/
+Simulation/
+Security_Audit_Report/
 .vs/
 bin/
 obj/

@@ -1,16 +1,67 @@
 # 📜 Windows AD Remote Administration Control Center - Version History & Changelog
-**Created & Developed by [Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)**
+**Created & Developed by Askarali Mattummal**
 
 All notable changes and upgrades to **Windows AD Remote Administration Control Center** are documented in this file.
 
-## 🏷️ Version 2.7.0 (Coming Soon — In Active Development & Testing)
-
-> [!NOTE]
-> **Release Status Notice**: The latest officially released public version of this suite is **Version 2.6.5**. Version 2.7.0 is currently in active development and testing (If you have any idea and suggessions please send me will try to add on the next update). The features, enhancements, and upgrades below are **Coming Soon** in the upcoming v2.7.0 release.
+## 🏷️ Version 2.7.0 (Official Enterprise Release)
 
 ---
 
-### 🌟 New Features (Introduced in v2.7.0 - Coming Soon)
+### 🌟 New Features (Introduced in v2.7.0)
+
+#### 🎨 Modern Windows 11 Fluent Icon & Transparent Silhouette
+* **New App Icon with Transparent Background**:
+  - Updated the application icon to a modern Fluent-style design with a transparent background. It blends naturally into both light and dark Windows 11 taskbars without a dark box behind it.
+
+
+#### 📂 Company-Internal Network File Share Auditing & Structured Incident Extraction
+* **Comprehensive Entity Resolution for Local File & Share Auditing**:
+  - **What was updated**: Upgraded the Remote Event Log Viewer and Security Incident Stream to extract and present structured auditing metadata for network file share operations directly on the local administrator workstation. The system parses and displays dedicated indicators for the responsible User Account, Source Workstation or IP Address, Network Share Location, Specific File Name, and Performed Action. CSV exports from the Event Log Viewer include separate columns for Action, Network Share, and File Name for compliance reporting. In keeping with strict enterprise privacy standards, all user file access details remain completely local and company-internal.
+  - **Benefit**: Empowers administrators and security officers to instantly determine who accessed or modified sensitive files across enterprise network shares and maintain comprehensive audit records, while ensuring employee file activities are never transmitted outside the company boundary.
+
+#### 🎯 Remote Event Viewer Deep Entity Search & Authoritative Scope
+* **Authoritative Date-Ranged Search for Users, Workstations, IP Addresses, and Files**:
+  - **What was updated**: Upgraded the Remote Event Log Viewer's entity filters (Username, Computer Name, IP Address, File Path / Name, and Search Text) to perform an authoritative search across the entire selected date range on the remote computer, returning matching records up to your chosen display limit. Searching is no longer constrained to pre-loaded rows, ensuring that specific security incidents, file accesses, or administrative actions are discovered even when thousands of newer routine events exist. Added a dedicated "Search Logs" button and instant execution on pressing Enter in any filter input field.
+  - **Benefit**: Technicians and security auditors can immediately locate specific user actions, source machines, or file operations across large event logs without needing to manually fetch thousands of unrelated records first.
+
+#### 📅 Custom Date & Time Range Filtering with High-Performance Traversal
+* **Precision Date-Time Picker for Forensic Investigations**:
+  - **What was updated**: Added an interactive Custom Date Range selection panel to the Remote Event Log Viewer, featuring dedicated pickers for Start Date, Start Time, End Date, and End Time. When searching in reverse chronological order, the query engine automatically bypasses newer events outside the range and terminates log scanning immediately upon reaching events older than the requested start time.
+  - **Benefit**: Enables rapid, surgical investigation of security events or system issues that occurred during specific operational windows, drastically reducing wait times on busy servers and domain controllers.
+
+
+#### 🖥️ Remote Screen Saver Manager Interface Reliability
+* **Full Theme-Adaptive Screen Saver Policy Management**:
+  - **What was updated**: Enhanced the Remote Screen Saver Manager to reliably present its control panel with complete adaptive styling for both light and dark themes. The interface provides interactive configuration for remote screen saver activation, password lock requirements upon wake, and idle timeouts across default profiles and active user sessions.
+  - **Benefit**: Guarantees dependable, visual policy management for endpoint screen security and lock timeouts across managed network computers without display inconsistencies.
+
+
+#### 📈 Adaptive Light & Dark Theming for Deep Performance Telemetry Tiles
+* **Dynamic Theme Synchronization for Expanded Live Graph Metrics**:
+  - **What was updated**: Enhanced the full-screen deep monitoring telemetry cards below the real-time resource graphs to fully support both light and dark themes. In light mode, the timeline bar and individual metric tiles now display on clean, high-contrast card surfaces with subtle borders and optimized typography, rather than retaining fixed dark backgrounds. Metric values and health indicators dynamically adjust their color intensity for maximum legibility in both environments.
+  - **Benefit**: Delivers a seamless visual experience across all workstation monitoring screens, eliminating harsh dark boxes when operating in light theme and ensuring live telemetry figures remain crystal clear under all lighting conditions.
+
+#### 🗂️ Refined Bottom Administration Category Architecture & Visual Flow
+* **Sleek Category Section Labels & Accent Pillars**:
+  - **What was updated**: Redesigned the "Quick Tools", "Folders & Users", and "Profile" section indicators in the bottom navigation panel from button-style boxes into elegant, non-clickable category labels featuring vertical accent pillars. Removed obsolete privacy mode controls to streamline the session connection row.
+  - **Benefit**: Eliminates operator click ambiguity by clearly distinguishing category organization headers from interactive tool actions, providing a cleaner, more intuitive administrative experience.
+
+#### 🖨️ Enhanced Fleet Printing Report & Analytics Interface
+* **Clean Header Architecture & Actionable Custom Data Selection**:
+  - **What was updated**: Streamlined the Per-User Printing Report header by eliminating development badges, centered the report title in modern executive styling, and upgraded the custom Print Server and User selection tools into prominent, styled action buttons with pencil icons and dedicated custom input dialogs.
+  - **Benefit**: Delivers a polished, production-ready reporting environment and improves operational efficiency when auditing print activity for ad-hoc hostnames or specific enterprise usernames.
+
+#### ⚡ Streamlined Quick Action Toolbar & Context Menu Harmonization
+* **Streamlined Quick Action Toolbar**:
+  - **What was updated**: Redesigned the primary multi-select workstation toolbar above the main computers inventory grid, renaming the section to **Quick Action**. Streamlined the default toolbar layout to focus strictly on high-priority daily monitoring and broadcast communication tasks (`Inactivity & Idle Monitor Agent` and `Bulk Message`), while seamlessly preserving all bulk power operations (Bulk Wake-on-LAN, Bulk Reboot, Bulk Shutdown) and bulk custom wallpaper deployments within the multi-select right-click context menu.
+  - **Benefit**: Provides an uncluttered, distraction-free inventory header with dedicated focus on primary operational controls, while keeping all bulk power and management capabilities instantly accessible to administrators through intuitive right-click multi-selection.
+
+
+#### Clean Activity Log for Local Operations
+* **Activity Log Dedicated to Administrator Actions**:
+  - **What was updated**: Refined the Activity Log to record only direct administrator-initiated actions on managed endpoints. Background network health checks now run silently without adding noise to the audit trail.
+  - **Benefit**: Keeps the Activity Log clean and easy to review, showing only the actions you performed on each workstation.
+
 
 #### 🛑 Remote Shadow Session Disconnect Notification
 * **Automated End-of-Support User Confirmation**:
@@ -21,9 +72,50 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
 * **Live Print Job Polling & Low-Overhead Device Switching**:
   - **What was updated**: Upgraded the Remote Printers & Print Queue Manager to actively stream print queue changes for the selected printer every 2 seconds without requiring manual refresh clicks. Switching between printers instantly targets the new queue with zero interface delay and without loading remote system event logs.
   - **Benefit**: Allows technicians to observe real-time job arrival, document processing, and printer stall conditions dynamically while minimizing endpoint overhead and network traffic.
+* **Multi-Color Ink and Toner Consumable Indicators with Standardized Severity Scaling & Cross-Workstation Resolution**:
+  - **What was updated**: Upgraded the Ink and Toner Level telemetry in the Printer Management Dashboard with individual consumable chips for each physical cartridge (Black, Cyan, Magenta, Yellow, and monochrome supplies). Each cartridge maintains its distinctive cartridge identity and visual color badge (Cyan, Magenta, Yellow, Black) while uniformly adhering to a 6-tier severity scale: 100–50% (Good, Green), 49–25% (Low, Yellow), 24–10% (Very Low, Orange), 9–1% (Critical, Red), 0% (Empty, Dark Red), and Unknown / Cannot Detect (Gray). Added automated network address resolution for domain-shared network printers when inspecting client workstations, querying print server configurations and directory services to accurately detect physical printer addresses and retrieve live supply metrics from any endpoint. Includes interactive column sorting by lowest remaining consumable level and comprehensive tooltips detailing individual supply metrics and threshold scales.
+  - **Benefit**: Empowers helpdesk technicians and system administrators to immediately recognize which specific color cartridge requires replacement and evaluate supply urgency at a glance directly from any user workstation or print server, preventing unexpected printer downtime and streamlining proactive consumable restocking.
 * **Horizontal Scrolling & Adaptive Data Grids**:
   - **What was updated**: Enabled independent horizontal scrolling and resizable columns on both the Installed Printers and Print Queue & Job History tables, ensuring clear visibility across wide document names, file sizes, and printer network addresses on any screen size.
   - **Benefit**: Eliminates text truncation and visual clipping, allowing technicians to inspect detailed print job attributes with zero hassle.
+
+#### 📊 Per-User Printing Report, Fleet Consumption Analytics & Print Job Statistics
+* **Automated Print Server Detection & Best-Accuracy Guidance Banner**:
+  - **What was updated**: Added an automated detection banner at the top of the Printing Report window that queries Active Directory and network configuration to identify the primary central Print Server name, fully qualified hostname, and IP address. Includes an interactive quick-switch button to immediately query the authoritative print server, or displays a confirmation badge when connected directly to the print server.
+  - **Benefit**: Guarantees administrators always know where authoritative domain print spooler logs are hosted, preventing empty reports caused by querying individual client workstations that do not maintain print queues.
+* **Centralized Print Server Telemetry & Multi-Dimensional In-Memory Filtering**:
+  - **What was updated**: Upgraded the fleet print audit report so that event logs are always collected centrally from the authoritative domain Print Server, while all client workstations, individual users, printer queues, job statuses, minimum page thresholds, and date periods act as instant, in-memory filters over the server-side dataset. Selecting the Print Server displays the full fleet data across all workstations and users; selecting a specific user or workstation narrows the report strictly to that target's records; selecting a printer queue filters by that device; and selecting All Printers or resetting filters restores the fleet view without returning empty data.
+  - **Benefit**: Completely eliminates empty report screens caused by querying individual client workstations directly, provides instantaneous sub-second filter switching across hosts, users, and printer devices simultaneously, and guarantees 100% data integrity against centralized enterprise print server logs.
+* **High-Performance Event Log Query Engine**:
+  - **What was updated**: Optimized remote event retrieval with an accelerated query engine that reads and parses tens of thousands of operational print log records in seconds, backed by an extended 45-second execution allowance.
+  - **Benefit**: Ensures fast and dependable report generation even on high-traffic enterprise print servers with hundreds of thousands of accumulated print jobs.
+* **Comprehensive Per-User & Per-Printer Consumption Reporting**:
+  - **What was updated**: Introduced a full-featured Printing Reports & Fleet Analytics engine that mines print server audit logs to generate aggregated per-user printing totals, printer queue utilization breakdowns, daily volume trends, and workstation consumption statistics across any selected date range.
+  - **Benefit**: Provides IT administrators and finance managers with instant visibility into who is printing the most documents and which physical printers bear the heaviest workload, enabling accurate departmental cost accounting, paper waste reduction, and proactive hardware maintenance.
+* **Automatic Print Server & Workstation Discovery Across Any Network**:
+  - **What was updated**: Built-in intelligent discovery automatically searches Active Directory domain services to detect registered print servers and print queues across the corporate network, with an editable selector allowing administrators to target any print server or client workstation hostname or IP address on demand.
+  - **Benefit**: Eliminates manual server configuration, allowing technicians to audit printing volume seamlessly across multiple branch offices, subnets, and domain structures.
+* **Client Workstation Friendly Printer Name Resolution**:
+  - **What was updated**: Enhanced the printing audit engine to automatically translate internal client-side printer connection identifiers into real, friendly printer names across all user workstations and print servers. Mappings are resolved on the fly using local device configurations, ensuring printer queues and devices display their true model and department names everywhere.
+  - **Benefit**: Technicians no longer see cryptic internal identifier strings when analyzing reports from client computers, allowing immediate recognition of target printer hardware across the entire fleet.
+* **Smart Target & Active User Pre-Selection**:
+  - **What was updated**: When opening the report from any computer, printer queue, or workstation menu, the Print Server / Host and User dropdowns automatically pre-select the targeted computer and active logged-in user, while preserving selections during real-time data refreshes.
+  - **Benefit**: Eliminates manual dropdown navigation and speeds up troubleshooting by immediately focusing the audit report on the exact machine and operator being analyzed.
+* **Multi-Status Print Audit Telemetry (Completed, Failed, Cancelled & Rendering Errors)**:
+  - **What was updated**: Expanded the audit engine to query and count all print job lifecycle events—including successfully printed jobs, failed or paused print runs, cancelled or deleted jobs, and document rendering errors. Added dedicated KPI metrics for Completed vs Failed/Cancelled jobs, with the status filter defaulting to all print activity.
+  - **Benefit**: Provides complete visibility into printing reliability and failure rates, helping administrators identify troublesome drivers, jammed queues, and discarded jobs alongside successful page counts.
+* **Extended Multi-Dimensional Filtering & Date Range Presets**:
+  - **What was updated**: Equipped the reporting engine with instant date presets (Today, Yesterday, This Week, This Month, Last 30 Days, Last 90 Days, This Year, All History, and Custom Date Pickers), printer queue filters, user selectors, minimum page count thresholds to isolate bulk print runs, and job completion status filters.
+  - **Benefit**: Empowers administrators to drill down into specific user behavior, isolate high-volume print runs, and generate tailored compliance reports in seconds.
+* **Dynamic Log Retention & Large Buffer Year-to-Date Support**:
+  - **What was updated**: Designed the reporting query engine to dynamically adapt to any server log buffer size without artificial caps. The system streams and calculates all available print events across the entire year-to-date span, accurately reporting total fleet pages, job counts, and average pages per job.
+  - **Benefit**: Ensures reliable year-end and quarterly consumption audits regardless of whether the server buffer is configured for standard, large, or enterprise multi-year capacity.
+* **Integrated Privacy Compliance Guide & Setup Instructions**:
+  - **What was updated**: Added an in-app setup guide explaining the default Windows document name masking behavior, providing side-by-side visual comparisons of masked vs unmasked audit records, and offering step-by-step Group Policy and registry configuration steps to log original document file names.
+  - **Benefit**: Helps organizations balance employee privacy requirements with document tracking compliance while giving administrators straightforward instructions to unlock full file name auditing.
+* **Multi-Format Export & One-Click Printable Reports**:
+  - **What was updated**: Enabled instant export to CSV spreadsheets, one-click clipboard copying formatted for spreadsheet pasting, and generation of professional, executive-ready printable HTML audit reports complete with summary KPI metric cards, volume share progress bars, and top-consumer rankings.
+  - **Benefit**: Saves administrators significant time when preparing departmental chargeback reports, executive summaries, and paper consumption audits.
 
 #### ⏰ Scheduled Remote Power Operations (Reboot, Shutdown, Log Off, Lock)
 * **Interactive Date/Time Task Scheduling & Grace Periods**:
@@ -64,6 +156,9 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
 * **Direct Network Marker Supply Monitoring (Toner, Ink & Drum)**:
   - **What was updated**: Enhanced the Remote Printers & Print Queue Manager with native, agentless network telemetry querying for networked and shared printers. The system automatically extracts printer network addresses and queries live marker supply levels (Black, Cyan, Magenta, Yellow toners and drums) directly in the background. Displays intuitive color-coded supply badges (Green for healthy, Amber for low supplies under 20%, Red for critical replenishment under 10%) alongside exact percentages and detailed hover tooltips breaking down every consumable compartment. For local virtual devices or software print engines, the interface cleanly displays "Not Available / Unsupported".
   - **Benefit**: Prevents unexpected printer stoppages and accelerates helpdesk resolution by allowing technicians to audit toner and ink levels in real time across the domain without accessing physical printer control panels or vendor web consoles.
+* **Underlying Network Port Resolution & Clear Device Offline Distinction**:
+  - **What was updated**: Added automatic cross-referencing of printer queues with their underlying network port definitions to resolve the actual host address, ensuring devices whose port names differ from their target IP address are seamlessly discovered. When a networked printer is powered off or unplugged from the local network, the interface distinctly reports "Offline / Unreachable" with an informative hover tooltip detailing the unreachable address and network timeout, clearly separating powered-off hardware from virtual or unsupported devices.
+  - **Benefit**: Eliminates confusion by pinpointing whether a missing supply reading is due to an unplugged or powered-off physical device versus unsupported hardware, while resolving misnamed print server ports without requiring manual configuration changes.
 
 #### 🎯 Inactivity & Presence Monitoring Status Indicator — High-Contrast Multi-Theme Visual Status
 * **Intuitive Four-State Visual Color Mapping**:
@@ -86,20 +181,12 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
   - **What was updated**: The interactive restore manager displays the sequence number, creation date and time, restore point event type, and descriptive tags for every snapshot taken on the machine, accompanied by clear action buttons for immediate refresh, creation, and rollback.
   - **Benefit**: Gives administrators full visibility into the machine's recovery history, enabling precise rollbacks to known-good operational states in emergencies.
 
-#### ⚙️ Master Administration — Fleet Gateway API & Cloud Settings
-* **Dedicated API Settings Management & Iconography**:
-  - **What was updated**: Renamed and clarified the Master Mode administrative action button to **API Settings** with updated gear iconography and descriptive tooltips. The underlying configuration dialog clearly explains its purpose for managing fleet telemetry gateway endpoints, private server synchronization addresses, connection timeouts, and cloud management policies.
-  - **Benefit**: Eliminates ambiguity between historical reporting and fleet gateway connectivity, giving senior system administrators clear and intuitive control over enterprise cloud synchronization and backend endpoint configuration.
 
 #### 📦 Comprehensive Installed Software Discovery & Architecture Detection
 * **Multi-Architecture 64-Bit & 32-Bit Registry & Directory Scan**:
   - **What was updated**: Upgraded the remote software detection engine to perform a thorough, multi-architecture scan of all installed applications on the target computer. The discovery engine now inspects both 64-bit and 32-bit software registries, system-wide and user-specific application directories, and includes automated fallback discovery to guarantee that all business applications, browser extensions, productivity suites, and utilities are accurately identified and listed.
   - **Benefit**: Ensures IT asset managers and systems administrators have an exhaustive, true-to-life inventory of all software installed on remote computers, eliminating "missing application" blind spots during software audits or remote uninstallation tasks.
 
-#### 🛡️ Remote Session Privacy Mode (Curtain & Blank Physical Screen)
-* **Physical Display Blanking & Privacy Curtain**:
-  - **What was updated**: Added a **Privacy Mode** toggle in the bottom connection panel directly alongside the session controls. When enabled, remote connections blank or curtain the remote computer's physical monitor, preventing anyone physically sitting in front of or walking past the workstation from viewing the screen while the IT administrator performs sensitive administrative tasks, enters credentials, or troubleshoots private employee data.
-  - **Benefit**: Guarantees organizational data privacy, confidentiality, and compliance with data protection policies when performing remote assistance on shared workstations, reception desks, or executive computers.
 
 #### 📐 Optimized Bottom Administration Panel Spacing & Visual Flow
 * **Visual Dividers & Toolbar Separation**:
@@ -188,46 +275,25 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
 * **Custom Calendar Expiration Scheduling & Quick Presets**:
   - **What was updated**: Integrated a visual calendar picker and quick preset buttons (+7 Days, +30 Days, +60 Days, +90 Days) allowing administrators to extend or schedule the exact expiration date and time of the local administrator password directly from the console.
   - **Benefit**: Gives administrators full lifecycle control over credential validity, streamlining emergency access windows and audit compliance.
-* **Real-Time Expiration Countdown & Security Governance Alignment**:
-  - **What was updated**: Displays live countdown badges indicating remaining days and hours until credential expiration, timestamps for the last password generation, and authorized security decryptor information. Synchronized governance policy flags with the Cloud Admin Console.
-  - **Benefit**: Provides complete visibility into endpoint password hygiene and aligns desktop administrative actions with central cloud governance.
-
-#### 🛡️ Enterprise Security Policies & Multi-Tier Lockout Governance — Native Experience & Admin Console Simulator
-* **Pixel-Accurate Multi-Tier Policy Screen**:
-  - **What was updated**: Redesigned the security policy lockout interface to match enterprise security standards with dedicated visual treatments for each policy condition: Version Retirement Policy (amber warning triangle with gold accents and retirement instructions), Workstation Quarantined (laptop icon with cyan glow, host quarantine notice, and isolation status), and Domain Access Suspended (office building icon with coral accents and renewal instructions).
-  - **Benefit**: Operators and endpoint users receive immediate, unambiguous visual feedback detailing the exact security policy in effect, their incident reference identifier, and next steps for resolution without confusion.
-* **Master Authorization & Request Unlock Workflow**:
-  - **What was updated**: Replaced technical override wording with an intuitive "Request Unlock" workflow across both desktop endpoints and the Cloud Admin Console. Includes an administrative verification dialog permitting authorized Active Directory domain administrators to apply temporary session bypasses or authorized overrides with full audit logging.
-  - **Benefit**: Streamlines the authorization process for helpdesk personnel and systems engineers while ensuring administrative actions are properly validated and tracked.
-* **Zero-Information-Disclosure Client Architecture**:
-  - **What was updated**: Enhanced client-side dialogs and telemetry error handling to ensure all backend and cloud management mechanisms remain entirely confidential. Client interfaces display clean enterprise security policy notifications without revealing internal management web addresses, backend server identities, or cloud control mechanics.
-  - **Benefit**: Protects infrastructure operational security and prevents reconnaissance by unauthorized operators or malicious actors on compromised workstations.
-* **Redesigned Access Restricted (Domain Admins Only) Dialog with Matching Visual Theme**:
-  - **What was updated**: Modernized the startup authorization dialog presented when a non-administrative user attempts to launch the application. Replaced the traditional Windows caption window with the same frameless dark theme container, draggable header, coral red glowing shield icon, structured account details box, dynamic verification probe, and clean exit actions matching the enterprise security policy design language. Also added a dedicated preview tab to the Cloud Admin Console simulator.
-  - **Benefit**: Ensures a unified, professional user experience across all security and policy screens while providing operators with immediate account status and self-service authorization re-checking.
-* **Granular Scope Lockout Policies & Targeted Workstation Hardware Lock**:
-  - **What was updated**: Enhanced the Granular Scope Lockout Policies panel in the Cloud Admin Console with an enrolled workstation selector, live datalist search, instant rule persistence, and background synchronization guards. Background telemetry cycles no longer interfere with active typing or workstation selection, and operators receive immediate visual loading feedback and status confirmation upon saving rules.
-  - **Benefit**: System administrators can select, queue, and enforce hardware-level lockout rules on specific compromised or unassigned workstations without unexpected input resets or failed policy transmissions.
-* **Centrally Designated Security Override Durations**:
-  - **What was updated**: Centralized the authorization duration choice in the Cloud Admin Console. Security administrators centrally configure and assign the authorized bypass window (such as 30 Minutes, 1 Hour, 4 Hours, 24 Hours, 7 Days, Single Session, or Permanent Bypass) when generating or rotating the master emergency security key. When an elevated Active Directory administrator enters the authorized passcode into the desktop client application, the system automatically detects, verifies, and activates the centrally assigned duration window without requiring or allowing the local operator to choose an unapproved duration.
-  - **Benefit**: Guarantees organizational compliance and principle of least privilege—end users and local administrators cannot bypass centrally mandated security policies for longer than the exact duration authorized by the central security team.
-* **Salted Master Security Key & Integrity Hash Push Targeting (Fleet-Wide, Domain Level, or Targeted Workstation)**:
-  - **What was updated**: Expanded the centralized Master Security Key and integrity hash deployment engine with granular target scope options. Security administrators can now designate whether a generated or rotated Master Security Passcode applies to **All Devices** across the entire enterprise fleet, is restricted to a **Specific Active Directory Domain** (such as `SMS.LOCAL`), or is locked down exclusively to a **Single Targeted Workstation** (such as `WS-FINANCE-01`). The Cloud Admin Console features dedicated scope selection buttons, interactive Active Directory domain selectors, and workstation search autocompletion with live status badges. Both the online validation service and the endpoint desktop client strictly enforce the active scope, rejecting passcode usage if entered from an unauthorized domain or workstation.
-  - **Benefit**: Delivers precision zero-trust security governance, enabling security teams to provide emergency unlock authorization to an isolated workstation or regional office without exposing or unlocking the entire organizational fleet.
-* **Interactive Cloud Admin Console Policy Simulator**:
-  - **What was updated**: Integrated a real-time desktop client simulator into the Cloud Admin Console Policy Matrix. Administrators can toggle preview modes between Live Computed Policy, Version Retirement, Workstation Quarantine, Domain Suspension, Global Lockout, and Access Restricted to preview exactly how policy dialogs will render on endpoint machines before rolling out changes fleet-wide. Includes interactive simulation for connection probes, authorization checks, and unlock requests.
-  - **Benefit**: Empowers security operations and identity teams to preview, test, and validate policy messages and visual workflows prior to enforcing broad fleet lockouts.
+* **Real-Time Expiration Countdown**:
+  - Shows a live countdown of days and hours remaining before the credential expires, including the last rotation timestamp. Helps administrators stay on top of password hygiene without checking Active Directory manually.
+#### 🛡️ Enterprise Security Policies & Multi-Tier Lockout Governance
+* **Security Policy Screens**:
+  - When access is restricted by a security policy, the application shows a dedicated screen identifying the exact policy in effect (outdated version, quarantined device, or suspended domain), the incident reference ID, and clear next steps.
+* **Request Unlock Workflow**:
+  - Restricted administrators can request a temporary unlock directly in the application. An authorized Domain Administrator grants a time-limited bypass — no restarts or manual configuration needed.
+* **Access Restricted Alert (Domain Admins Only)**:
+  - Non-admin users who try to open the application see a clear alert explaining that Domain Administrator privileges are required, with a self-service option to recheck authorization.
+* **Scoped Security Keys**:
+  - Emergency unlock keys can target the entire fleet, a specific domain, or a single workstation — ensuring one key cannot unlock unintended machines.
 
 #### ⚡ Workstation Right-Click Context Menu — Fast Action Search Bar, Target Header & Deduplicated Organization
-* **Integrated Fast Action Search Bar with Real-Time Dynamic Filtering**:
-  - **What was updated**: Positioned an interactive search bar directly at the top of the right-click menu. As soon as the menu opens, the search field is automatically focused and ready for typing. Entering any keyword (such as "ping", "event", "temp", "reboot", "rdp", "uac", "service", or "task") instantly filters through over 50 administration tools and displays all matching actions in a flat list with category badges. Operators can press Enter to launch the top result, press the Down Arrow to navigate through results, or press Escape to clear the query or dismiss the menu.
-  - **Benefit**: Eliminates hunting through nested submenus—system administrators can execute any remote management command in under two seconds with minimal keystrokes.
-* **Dedicated Target Device Header Banner**:
-  - **What was updated**: Added an informative header banner at the top of the context menu showing the targeted computer's hostname, IP address, and real-time connectivity status.
-  - **Benefit**: Gives operators immediate visual confirmation of the active workstation before initiating remote troubleshooting, file transfers, or power actions.
-* **Streamlined, Deduplicated Submenu Architecture**:
-  - **What was updated**: Restructured the entire right-click menu into 7 cleanly categorized submenus: System Administration & Management, Diagnostics & Health, Network & Connectivity, Active Directory & User Session, Files & Shared Folders, Customization, Automation & Deployment, and Security & Power Control. Removed all redundant and duplicate items previously scattered across multiple folders (such as desktop wallpaper, temp file cleaning, God Mode, and Wake-on-LAN).
-  - **Benefit**: Delivers a predictable, logical administrative hierarchy where every tool has a single, well-defined location, reducing visual clutter and cognitive overhead.
+* **Fast Action Search**:
+  - Type any keyword (e.g. "rdp", "reboot", "ping") into the right-click menu to instantly filter all tools. Press Enter to launch the top result.
+* **Target Device Header**:
+  - Shows the targeted computer name, IP, and live status at the top of the menu so you always know which machine you're acting on.
+* **Reorganized Submenu Structure**:
+  - The right-click menu is now organized into 7 clear categories (Administration, Diagnostics, Network, Active Directory, Files, Customization, Power). All tools appear once, in the right place — no duplicates.
 * **Bulk Operations Fast Action Search & Layout Polish**:
   - **What was updated**: Brought the same fast search bar and restructured category layout to multi-device bulk selections, enabling operators to filter and execute bulk operations across dozens or hundreds of computers simultaneously.
   - **Benefit**: Accelerates fleet maintenance tasks such as bulk wallpaper changes, temp file purges, group policy refreshes, and software deployments.
@@ -242,9 +308,7 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
 * **Standardized "Monitor" Terminology & Instant Fast Action Search**:
   - **What was updated**: Standardized all menu item titles, action headers, and search keywords to include the word "Monitor" (such as "Deploy Inactivity & Idle Monitor Agent", "Uninstall Inactivity & Idle Monitor Agent", and "Inactivity Monitor Agent Already Installed").
   - **Benefit**: Typing "Monitor" into the fast action search box in both single-device and bulk right-click menus immediately displays relevant deployment and removal actions, eliminating search misses.
-* **Local Cloud Admin Console 1-Click Launchers**:
-  - **What was updated**: Added dedicated 1-click startup scripts (`Start_Local_AdminConsole.bat` in the workspace root and `AdminConsole/Start_Server.bat`) to quickly launch the local Node.js administrative service on port 3000 with dependency checks and clear endpoint feedback.
-  - **Benefit**: Allows administrators and developers to spin up the local governance gateway and web management console instantly without manual command-line navigation.
+
 
 #### 📋 Remote Windows Event Viewer & Security Audit Hub — Comprehensive Presets, Real-Time Filtering & Channel Expansion
 * **Categorized Quick Presets Dropdown with Rich Visual Styling (Over 35 Enterprise Presets)**:
@@ -320,17 +384,6 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
 * **Windows Services Toolbar Layout Polish**:
   - Fixed button positioning alignment on the Windows Services tab toolbar, ensuring action controls (Start, Stop, Restart, Start by Name) render with full width, clean spacing, and zero button clipping.
 
-#### 🛡️ Cloud Admin Console — Remote Kill Switch & Workstation Governance Matrix
-* **Targeted Lockout & Blocked Workstations View**:
-  - Automatically isolates and displays only locked, blocked, or quarantined endpoints on the Remote Kill Switch matrix, eliminating visual clutter when managing large corporate fleets.
-  - Interactive view filter toggle allows administrators to switch seamlessly between `🔒 Locked Only` and `🌐 All Nodes` on demand.
-  - Comprehensive zero-lockout status view clearly certifies when 100% of fleet computers are compliant without active restrictions.
-* **Draft vs. Live Enforced Real-Time Simulator**:
-  - Live pre-flight policy evaluation dynamically identifies whether a workstation is entered in an active server policy or queued in an unsaved draft.
-  - Distinct visual badges clearly differentiate pending configuration drafts from enforced live blocks with instant 1-click execution.
-* **Instant Multi-Field Workstation Search**:
-  - Embedded live search field allows administrators to filter restricted or fleet workstations in real time across Active Directory domain, computer name, assigned username, and IP address.
-  - Features real-time match counters, keyboard navigation shortcuts, and 1-click search clearing.
 
 #### 📢 In-App Broadcast Studio & Notification Dispatcher — Delivery & Read-Status Tracking System
 * **Complete Status Lifecycle (Sent ➔ Received ➔ Read ➔ Acknowledged)**:
@@ -348,7 +401,7 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
   - Once all targeted endpoints have successfully read or acknowledged the notice, the broadcast automatically transitions to **`✓ Completed`**, preventing redundant deactivations.
 * **Dedicated Verification Action — Streamlined Single Acknowledge Interaction**:
   - Eliminated the ambiguous close icon from client workstation banners in favor of a prominent, mandatory **`✓ Acknowledge`** action button.
-  - Ensures every operator interaction with on-screen notices delivers guaranteed verification receipts directly to the Cloud Admin Console without unconfirmed dismissals.
+  - Ensures notices are confirmed before they can be dismissed — no silent closes.
 * **Dynamic Fleet Reach Progress & Receipts Audit Ledger**:
   - Replaced static placeholder percentages with dynamic reach analytics calculated in real-time from active workstations in the target scope.
   - Interactive **`📋 Receipts`** inspection modal opens an itemized compliance audit trail detailing workstation computer names, logged-in operators, Active Directory domains, delivery timestamps, and receipt status badges.
@@ -978,3 +1031,5 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
 * Active Directory computer enumeration with LDAP search paging.
 * Real-time ping latency check and status badges.
 * Auto-Attended Remote Shadowing (`mstsc /shadow`) and Remote Desktop (`mstsc /admin`).
+
+
