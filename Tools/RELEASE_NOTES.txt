@@ -1,0 +1,19 @@
+ADRC TOOLS COMPANION UTILITIES — RELEASE NOTES & CHANGELOG
+=============================================================
+
+Version 1.1 (Active Release)
+------------------------------
+• Component: ADRC_IdleAgent.exe (Endpoint Activity & Inactivity Presence Monitor)
+• File Version: 1.1.0.0 | Architecture: Standalone Windows Service & Helper
+• Key Features & Enhancements:
+  - Real-Time Activity & Idle Detection: Win32 interactive session telemetry tracking live mouse and keyboard idle time with zero keystroke logging or screen recording.
+  - 24/7 Background System Service: ADRC_IdleMonitor Windows Service registered under NT AUTHORITY\SYSTEM, starting at Windows boot before user login.
+  - Enterprise Anti-Tamper Security: Hardened DACL process security preventing standard non-admin users from stopping or killing the monitoring service.
+  - Stealth System Integration: Operates silently without creating entries in Programs & Features or Task Manager Startup Apps.
+  - Dynamic Session State Sensing: Automatically detects screen saver engagement, Windows logon lock screen, user logoff, and workstation switching.
+  - System Boot & Uptime Telemetry: Automatically captures workstation boot timestamp and calculates accurate uptime durations.
+
+Version 1.0 (Baseline Release)
+--------------------------------
+• Component: ADRC_IdleAgent.exe
+• Initial release of agentless companion deployment and endpoint activity tracking.

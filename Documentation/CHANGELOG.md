@@ -1,7 +1,128 @@
-# 📜 Windows AD Remote Administration Control Center - Version History & Changelog
+﻿# 📜 Windows AD Remote Administration Control Center - Version History & Changelog
 **Created & Developed by Askarali Mattummal**
 
 All notable changes and upgrades to **Windows AD Remote Administration Control Center** are documented in this file.
+
+## 🏷️ Version 2.8.0 (Official Enterprise Release)
+
+---
+
+### 🌟 New Features (Introduced in v2.8.0)
+
+#### ⏱️ Inactivity Monitor Update Tracking, Fleet Status Telemetry & Decoupled Ping HUD
+* **Fleet Inactivity Status Bar & Interactive Quick-Filter Pills**:
+  - **What was updated**: Added an interactive status bar directly above the main computer inventory grid featuring real-time fleet counters across six key operational states: `Monitored`, `🟢 Up to Date`, `🟡 Need Update`, `🔴 Failed`, `⚪ Offline`, and `⚫ Not Installed`. Administrators can click any status pill to instantly filter the dashboard view to machines in that specific state, with active visual highlights and a 1-click Reset button to return to the full fleet list.
+  - **Benefit**: Delivers instant, at-a-glance fleet visibility and allows administrators to immediately isolate computers running outdated monitor versions, experiencing errors, or lacking coverage.
+* **Dedicated Inactivity Monitor Column & Color-Coded Status Badges**:
+  - **What was updated**: Added an **Inactivity Monitor** column to the primary inventory data grid. Displays clean, color-coded badges with intuitive status icons: `🟢 Up to Date (vX.X)`, `🟡 Update to vX.X`, `🔵 Updating...`, `🔴 Update Failed`, `⚪ Offline / Unchecked`, and `⚫ Not Monitored`. Includes intelligent multi-tier sorting that automatically groups machines needing updates or attention to the top of the grid upon column sort.
+  - **Benefit**: Provides direct visibility into monitoring module versions across all computers alongside workstation status and active users without needing to dig into secondary menus.
+* **One-Click "Update All Outdated" Bulk Deployment Action**:
+  - **What was updated**: When any online computer is detected running an older companion agent version or in an update error state, a prominent **"⚡ Update All Outdated"** action button appears dynamically on the status bar. Clicking this button triggers an automated update process across all eligible online endpoints simultaneously, skipping up-to-date and offline systems.
+  - **Benefit**: Allows administrators to upgrade an entire enterprise fleet to the latest companion agent version in a single click with zero guesswork.
+* **Decoupled Inactivity Monitor Operations from Network Ping HUD**:
+  - **What was updated**: Completely removed automatic ping invocations from the companion agent installation, update, and uninstallation workflows. Deploying, upgrading, or removing monitoring modules on endpoints now completes seamlessly in the background without triggering or opening the bottom Ping information panel. The Ping information panel opens strictly when an administrator explicitly clicks the dedicated Ping button.
+  - **Benefit**: Keeps the workspace clean and focused during endpoint administration, ensuring diagnostic panels appear only when deliberately summoned by the operator.
+* **Interactive Update Failure Diagnostics & Quick Retry**:
+  - **What was updated**: When a companion agent update or deployment encounters an error (such as network timeout, access denial, or RPC failure), the target computer displays a failure badge. Right-clicking the endpoint provides a dedicated **"🔴 View Inactivity Monitor Update Failure Reason..."** diagnostic action showing clean root-cause explanations and a direct **"🔄 Retry Update Now"** action.
+  - **Benefit**: Eliminates ambiguity when remote operations fail and offers immediate 1-click remediation without leaving the console.
+
+#### 🎛️ Dashboard Column Title Filtering, Custom Column Visibility & Preference Persistence
+* **Column Title Filtering with Multi-Mode Match Engine & Quick-Select Fleet Pills**:
+  - **What was updated**: Added interactive column filtering to all 12 dashboard columns. Administrators can double-click any column header or right-click and select "Filter by [Column]..." to open a dedicated filter window. Supports flexible matching modes including Contains, Equals (Exact Match), Starts With, Does Not Contain, Blanks / Empty Only, and Non-Empty Only. Also includes intelligent quick-select pills displaying distinct values currently present in the loaded fleet for instant one-click criteria selection. Active filters display a search indicator icon (`🔍`) directly in the column title, work seamlessly alongside existing sorting and global search filters, and aggregate into an interactive floating filter pill with a one-click clear button.
+  - **Benefit**: Allows administrators to effortlessly slice, isolate, and audit specific subsets of machines (such as by specific Operating System version, Organizational Unit, or active user) across thousands of inventory items in seconds.
+* **Custom Column Visibility Checklist & Dynamic Layout Adjustment**:
+  - **What was updated**: Introduced a dedicated **Columns** visibility menu on the primary toolbar and within column header context menus. Administrators can check or uncheck individual columns to show or hide them dynamically, with built-in safeguards ensuring at least one column remains visible. Includes one-click options to "Show All Columns" and "Reset to Default Layout".
+  - **Benefit**: Streamlines the dashboard workspace to fit individual administrative workflows and screen sizes, decluttering unused columns while keeping critical metrics front and center.
+* **Per-User Column Layout Persistence Across Sessions**:
+  - **What was updated**: Column visibility configurations are automatically saved to local user application preferences upon change and restored on application startup. Filter criteria remain dynamic and transient per session, ensuring the dashboard opens cleanly on each launch while preserving the administrator's personalized column layout.
+  - **Benefit**: Eliminates the frustration of having to reconfigure hidden columns every time the application is reopened.
+
+#### 🌐 Live Performance Network Adapters IP Address & Interface Telemetry
+* **Dedicated IP Address Telemetry & Dual-Stack Network Interface Resolution**:
+  - **What was updated**: Added an interactive **IP Address** column to the **Live Performance → Network Adapters** monitoring grid. The monitor now dynamically displays the interface-specific IP addresses for each individual network interface adapter (supporting IPv4 and IPv6 dual-stack addressing, multiple IP assignments, and unassigned status indications) rather than a single generic system address. Includes intelligent interface name normalization and integrates directly into the real-time adapter search filter.
+  - **Benefit**: Gives network administrators and systems engineers immediate, real-time visibility into which IP addresses are bound to specific physical or virtual network adapters alongside live download, upload, and session throughput metrics.
+
+#### 📞 Active Directory Phone Number Column & Dynamic Profile Telemetry
+* **Direct Directory Profile Phone Retrieval & Grid Integration**:
+  - **What was updated**: Added a dedicated **Phone** column to the primary computer inventory grid. When querying active workstation sessions, the application directly queries each logged-in user's Active Directory account profile to retrieve their telephone number. Telephone numbers are dynamically displayed with phone icons, fully indexed in real-time search filtering, sortable, and included in inventory CSV exports. Live profile edits instantly synchronize to the main grid.
+  - **Benefit**: Provides IT operators, service desk engineers, and field technicians with immediate contact visibility for whichever user is actively logged in at any endpoint, eliminating the need to cross-reference directory lookup tools before calling users for remote support.
+
+#### 👥 Bulk Active Directory User Profile Attributes Updater (CSV, Excel & Notepad TXT)
+* **High-Speed Batch Attribute Updates with Safety Dry-Run Pre-Flight Engine**:
+  - **What was updated**: Introduced a dedicated bulk updater interface accessible from the action toolbar and context menu. Administrators can upload a CSV, Excel export, or plain Notepad text file (supporting comma, semicolon, tab, and pipe delimiters) containing user accounts and new profile attributes. The tool supports updating First Name, Initials, Last Name, Display Name, Job Description, Office Location, Telephone Number, and Email Address.
+  - **Mandatory Pre-Flight Validation & Visual Dry Run**: Before touching Active Directory, the engine performs a complete read-only pre-flight inspection. It validates user account existence in the domain, detects duplicate file rows, verifies schema length constraints and email formats, and presents an interactive preview table with real-time status counters and category filters.
+  - **Strict Safety Preservation of Blank Fields**: Empty cells in uploaded files are strictly preserved and will never overwrite or blank out existing directory attributes.
+  - **1-Click Sample Template & Execution Audit Report**: Includes a built-in template generator to download correctly formatted sample files, a mandatory confirmation prompt before writing changes, real-time progress tracking, and post-update CSV execution summary report export.
+  - **Benefit**: Empowers systems administrators to update hundreds of employee directory profiles in seconds with 100% confidence, zero risk of accidental data clearing, and full compliance reporting.
+
+#### 🚀 Tools Companion Executable Update Notifications & Streamlined Agent Updates
+* **Automatic Detection & In-App Release Notification**:
+  - **What was updated**: Added automatic version detection for the Tools companion executable (`Tools/ADRC_IdleAgent.exe`). When a new or updated Tools package is available, the application displays a prominent, dismissible in-app notification banner highlighting the new version number and key capabilities. Administrators can click to immediately open an interactive Release Highlights window summarizing all improvements and architectural features. Once acknowledged, the notification remains dismissed and will not repeatedly prompt until a newer version is detected.
+  - **Benefit**: Keeps administrators instantly informed about companion agent enhancements and performance improvements without requiring manual directory checks or external update logs.
+* **Streamlined "Update" Action for Endpoint Inactivity Monitors**:
+  - **What was updated**: Renamed the deployment action in the **Customization, Automation & Deploy** menu from "Upgrade Available" to **"Update"**. When selecting "Update" for a single computer or across multiple endpoints, the system automatically checks each endpoint's installed agent version and selectively updates only those endpoints that are running older versions. Endpoints that are already running the latest version are automatically preserved and skipped without redundant reinstallation. Current status indicators (`Installed & Active` and `Installed (Inactive)`) remain clearly displayed.
+  - **Benefit**: Ensures fast, safe, and efficient fleet-wide agent updates by upgrading only the computers that need updates, preventing unnecessary service restarts and eliminating downtime on systems that are already up to date.
+
+#### 🌐 Dynamic Active Directory Domain Switcher & Custom Forest Discovery
+* **Multi-Domain Navigation and Manual Forest Targeting**:
+  - **What was updated**: Upgraded the Domain discovery banner into an interactive, editable selection menu that automatically discovers and lists all accessible Active Directory domains, forest roots, and trust relationships. Administrators can also manually type any specific domain name or fully qualified domain name and click Refresh to synchronize computers from that target domain.
+  - **Benefit**: Empowers enterprise administrators to manage complex multi-domain environments and separate branch office domains seamlessly from a single console window without reconfiguring host settings.
+
+#### 🛡️ Enterprise Remote Power & Workstation Lock Reason Confirmation
+* **Operational Auditing, Reason Tracking & Safety Countdown**:
+  - **What was updated**: Initiating remote restarts, shutdowns, or screen lock operations now opens a dedicated confirmation window requiring a documented operational reason (such as System Updates, Hardware Maintenance, Troubleshooting, Off-Hours Power Conservation, Security Incident Response, Scheduled Maintenance, or Custom Notes). Administrators can configure an automatic countdown grace period and choose whether to force-close active applications.
+  - **Benefit**: Protects enterprise operations against accidental system reboots or power interruptions, enforces compliance change-management records, and gives remote operators clear on-screen warnings before maintenance begins.
+
+#### 🎯 Dynamic Multi-Selection Inventory Counter & Action Toolbar Badges
+* **Live Selection Counters and Target Badge Indicators**:
+  - **What was updated**: Selecting multiple computers in the inventory grid dynamically updates the status counter below the table to display both total computer counts and selected target tallies. Simultaneously, bottom administrative buttons and quick-action toolbar buttons dynamically update to reflect the exact number of selected targets (e.g. `🔄 Restart (3)`, `🛑 Shutdown (3)`, `🔒 Lock Screen (3)`, `🖼️ Wallpaper (3)`).
+  - **Benefit**: Gives systems engineers immediate visual verification of their selected operational scope, preventing accidental actions on unintended machines.
+
+#### 🖥️ Remote Display & Monitor Power Management (`Turn Off Monitor`)
+* **Instant Remote Display Power-Down & Energy Optimization**:
+  - **What was updated**: Added native remote monitor power-saving control to both individual computer and bulk multi-computer context menus. Administrators can instantly signal physical monitors to enter standby power-saving mode (`Turn Off Monitor (Power Saving)` and `Turn Off Monitors (Bulk)`).
+  - **Benefit**: Allows administrators to securely blank remote displays after hours or during remote management to protect confidential information on unattended screens and reduce energy consumption across office facilities.
+
+#### 🔒 Dual-Layer Session-Safe Physical Mouse & Keyboard Input Lock (`Block Mouse & Keyboard Input`)
+* **Hardware-Level Local Input Suppression for Screen Shadowing & Maintenance**:
+  - **What was updated**: Upgraded the input locking mechanism into an enterprise dual-layer suppression engine. It dynamically suppresses physical USB and PS/2 mouse and keyboard hardware at the device level while strictly preserving virtual Remote Desktop input devices. Administrators can temporarily lock physical input on the target computer while performing remote interventions, completely preventing local users or passersby from moving the mouse or typing.
+  - **Session Safety & Automatic Recovery**: Features an automatic 30-minute safety timeout watchdog, immediate restoration in less than a second via one-click toggle, and automatic input restoration whenever the administrator disconnects from remote shadowing or exits the administrative application.
+  - **Benefit**: Ensures uninterrupted, conflict-free administrative troubleshooting on shared workstations, executive desks, and interactive public kiosks without requiring user logoff.
+
+#### 🔓 Direct Credential Session Unlock (`Remote Workstation Lock & Unlock Controller`)
+* **Silent Password-Based Workstation Unlock**:
+  - **What was updated**: Restored the direct, completely silent credential-based session unlock mechanism inside the Remote Workstation Lock & Unlock Controller. Administrators can enter the user password to silently transition and unlock the active session directly on the target physical console without intrusive prompts or security warnings.
+  - **Benefit**: Provides seamless, silent session unlocking from within the Remote Workstation Lock & Unlock Controller dialog, eliminating manual connection steps and avoiding intrusive remote desktop connection prompts.
+
+#### 📊 Remote Group Policy HTML Diagnostic Report (`Generate GPResult Report`)
+* **Interactive In-Browser Group Policy Audit & Resultant Set of Policy Inspector**:
+  - **What was updated**: Added a 1-click diagnostic tool to generate a full, authoritative HTML Group Policy result report on any domain endpoint. Upon completion, an interactive prompt offers to open the resulting HTML report immediately in the administrator's default web browser across the network share.
+  - **Benefit**: Dramatically reduces the time needed to troubleshoot applied Group Policy Objects, security settings, registry preferences, and user rights assignments without opening remote command prompts or manually querying policy engines.
+
+#### 🔓 Real-Time Remote Desktop Status Probing & Dynamic Visual Indicator
+* **Live Discovery and Polling of Endpoint Remote Desktop Accessibility**:
+  - **What was updated**: Integrated real-time verification of Remote Desktop terminal server connectivity into endpoint status scans. The inventory grid displays distinct visual badges (🟢 Remote Desktop Active / 🔴 Remote Desktop Disabled / ⚪ Offline) with informative tooltip diagnostics, and automatically synchronizes when Remote Desktop is toggled or configured.
+  - **Benefit**: Gives administrators at-a-glance awareness of which computers are ready for Remote Desktop management, eliminating connection timeouts before launching sessions.
+
+#### 📡 Interactive In-App Ping Telemetry HUD, Layer 2 Diagnostics & Route Inspector
+* **Continuous Real-Time Ping Telemetry & Dynamic Stop/Start Button**:
+  - **What was updated**: Upgraded ping execution into a live continuous telemetry stream running at 1-second intervals. Clicking Ping dynamically toggles the action button to `⏹ Stop Ping` with real-time latency, connection health, and inventory status updates. Clicking the button again halts execution cleanly. Selecting a different endpoint in the computer inventory automatically shifts real-time probing to the newly selected target.
+  - **Benefit**: Empowers administrators to actively monitor network stability in real time during reboots, patch installations, or network maintenance without repeatedly clicking the button.
+* **Instant Diagnostic Clearance on HUD Dismissal**:
+  - **What was updated**: Dismissing the Telemetry HUD automatically terminates active background ping loops, cancels in-progress route traces, and immediately clears live status badges from the bottom action bar.
+  - **Benefit**: Ensures the workspace remains clutter-free and eliminates unnecessary background network traffic once diagnostic troubleshooting is complete.
+* **Contained Scrollable Viewport for Hop-by-Hop Traceroute**:
+  - **What was updated**: Enclosed intermediate traceroute hops within a dedicated scrollable viewport with full mouse-wheel support. Long multi-hop routes remain smoothly navigable inside the telemetry frame without resizing or expanding the main application window.
+  - **Benefit**: Delivers a stable, polished layout when tracing complex routing paths with up to 30 hops across enterprise subnets.
+* **Sliding Telemetry Diagnostics HUD with 4 Deep Inspection Views**:
+  - **What was updated**: Clicking the status pill slides down an integrated diagnostic HUD strip above the bottom toolbar offering four specialized operational views:
+    1. **Quick Metrics**: Instant summary of round-trip latency, TTL, resolved IP and DNS status, management ports, and active user session.
+    2. **Hop Traceroute**: Visual step-by-step route hops up to 30 intermediate waypoints from your console to the remote target with individual hop latencies, fast reverse hostname lookups, live stop and re-trace controls, min/avg/max latency telemetry, and a 1-click `📋 Copy Route` button for incident tickets. Full dynamic synchronization ensures crystal-clear readability across both light and dark themes.
+    3. **Layer 2 (MAC & NIC)**: Hardware MAC address, network adapter vendor identification, link speed and duplex status, VLAN tag, and connectivity verification across key management ports (RPC, SMB, RDP, WinRM).
+    4. **Live Pulse Graph**: A continuous real-time latency monitor rendering a live sparkline waveform graph, tracking packet jitter, min/avg/max latency, and packet loss in real time with pause and resume controls.
+  - **Benefit**: Provides systems engineers and network administrators with comprehensive Layer 2 and Layer 3 diagnostic intelligence directly within the application, accelerating root-cause analysis for connectivity, routing, and hardware interface issues.
+
+---
 
 ## 🏷️ Version 2.7.0 (Official Enterprise Release)
 
@@ -1031,5 +1152,3 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
 * Active Directory computer enumeration with LDAP search paging.
 * Real-time ping latency check and status badges.
 * Auto-Attended Remote Shadowing (`mstsc /shadow`) and Remote Desktop (`mstsc /admin`).
-
-

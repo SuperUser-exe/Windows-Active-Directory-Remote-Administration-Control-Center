@@ -1,5 +1,5 @@
 ﻿# Windows AD Remote Administration Control Center — Enterprise Administration Suite
-## Complete Operator Reference Manual & Architecture Guide (v2.6.5 / Coming Soon v2.7.0)
+## Complete Operator Reference Manual & Architecture Guide (v2.8.0)
 **Created & Developed by Askarali Mattummal**
 
 ---
@@ -18,6 +18,9 @@
    - [D. Quick Assist Remote Assistance](#d-quick-assist-remote-assistance)
    - [E. UAC Shadow Session Compatibility & Black Screen Remediation](#e-uac-shadow-session-compatibility--black-screen-remediation)
    - [F. Comparison Table of Connection Modes](#f-comparison-table-of-connection-modes)
+   - [G. Remote Display Power & Screen Standby (Turn Off Monitor)](#g-remote-display-power--screen-standby-turn-off-monitor)
+   - [H. Session-Safe Physical Mouse & Keyboard Input Lock](#h-session-safe-physical-mouse--keyboard-input-lock)
+   - [I. Live Remote Desktop Status Probing & Dynamic Visual Indicator](#i-live-remote-desktop-status-probing--dynamic-visual-indicator)
 6. [Interactive Remote Terminal Console (CMD & PowerShell)](#6-interactive-remote-terminal-console-cmd--powershell)
 7. [Hardware Specs & Real-Time Performance Diagnostics Monitor](#7-hardware-specs--real-time-performance-diagnostics-monitor)
 8. [Systems Administration & Controllers](#8-systems-administration--controllers)
@@ -48,10 +51,11 @@
     - [A. Silent Software & Script Deployer](#a-silent-software--script-deployer)
     - [B. Remote File & Script Transfer (Push to Remote PC)](#b-remote-file--script-transfer-push-to-remote-pc)
     - [C. Remote Group Policy Refresh (GPUpdate /force)](#c-remote-group-policy-refresh-gpupdate-force)
-    - [D. Windows God Mode & Power Tweaks](#d-windows-god-mode--power-tweaks)
-    - [E. Desktop Info HUD (BgInfo & Floating Companion Widget)](#e-desktop-info-hud-bginfo--floating-companion-widget)
-    - [F. Remote Desktop Wallpaper Changer & Manager](#f-remote-desktop-wallpaper-changer--manager)
-    - [G. Remote Screen Saver Configuration](#g-remote-screen-saver-configuration)
+    - [D. Remote Group Policy Diagnostic Report Generator (GPResult HTML)](#d-remote-group-policy-diagnostic-report-generator-gpresult-html)
+    - [E. Windows God Mode & Power Tweaks](#e-windows-god-mode--power-tweaks)
+    - [F. Desktop Info HUD (BgInfo & Floating Companion Widget)](#f-desktop-info-hud-bginfo--floating-companion-widget)
+    - [G. Remote Desktop Wallpaper Changer & Manager](#g-remote-desktop-wallpaper-changer--manager)
+    - [H. Remote Screen Saver Configuration](#h-remote-screen-saver-configuration)
 18. [Inactivity & Idle Monitor Agent (Enterprise Feature)](#18-inactivity--idle-monitor-agent-enterprise-feature)
 19. [Network Diagnostics & Connectivity Tools](#19-network-diagnostics--connectivity-tools)
     - [A. Ping Host & Latency Query](#a-ping-host--latency-query)
@@ -80,7 +84,7 @@
 
 ### 1. Overview & Architecture
 
-**Windows AD Remote Administration Control Center** (v2.6.5 / Coming Soon v2.7.0) is a standalone, high-performance Windows systems administration and remote assistance suite built specifically for Active Directory Domain Administrators, Systems Engineers, and IT Helpdesk specialists.
+**Windows AD-Admin Control Center** (v2.8.0) is a standalone, high-performance Windows systems administration and remote assistance suite built specifically for Active Directory Domain Administrators, Systems Engineers, and IT Helpdesk specialists.
 
 Unlike commercial remote assistance tools that require installing proprietary background services or paying recurring cloud subscriptions, Windows AD Remote Administration Control Center operates **100% agentlessly**. It interacts natively with Windows endpoints using standard enterprise protocols:
 - **Active Directory / LDAP (ADSI)**: Discovers all domain-joined workstations and servers in real-time.
@@ -109,7 +113,7 @@ Run_AD_Remote_Control.bat
 
 #### Structured Package Architecture
 When extracting or deploying the public release package, assets are organized into dedicated subdirectories:
-- **Release Root**: Contains the primary executable (Windows AD-Admin Control Center v2.7.0.exe), the 1-click convenience launcher (Run_AD_Remote_Control.bat), cryptographic integrity hashes (CHECKSUMS.txt), and quick start notes.
+- **Release Root**: Contains the primary executable (Windows AD-Admin Control Center v2.8.0.exe), the 1-click convenience launcher (Run_AD_Remote_Control.bat), cryptographic integrity hashes (CHECKSUMS.txt), and quick start notes.
 - **Documentation/**: Complete administrator reference manuals, version changelogs, architecture documentation, and software license files.
 - **Tools/**: Auxiliary endpoint utilities, including the Activity & Inactivity Monitor Agent (ADRC_IdleAgent.exe).
 - **PS Scripts/**: Automated domain deployment scripts, including the Group Policy and Windows Firewall setup utility (Configure_Endpoint_GPO.ps1).
@@ -134,7 +138,9 @@ The central table displays real-time presence indicators with standardized color
 | :--- | :--- | :--- | :--- | :--- |
 | 🟢 Active | **Active** | 🟢 Emerald Green | User actively moving mouse or typing within the last 5 minutes | Active session (< 5m) |
 | 🔷 💤 Idle | **Idle** | 🔷 Sky Blue | User session inactive with no mouse or keyboard input for 5+ minutes | Idle (13m), Idle (1h 30m), Idle (1d 4h) |
-| 🟡 🔒 Locked | **Locked** | 🟡 Amber Gold | Workstation screen is locked by user (Win + L) or screen saver | Locked (18m), Locked (1h 30m), Locked (1d 4h) |
+| 🔷 💤 Idle (Screensaver) | **Idle (Screensaver)** | 🔷 Sky Blue | Workstation screen saver is actively running with an unlocked user session | Idle (Screensaver) |
+| 🟡 💤 Locked (Screensaver) | **Locked (Screensaver)** | 🟡 Amber Gold | Workstation is locked and screen saver is actively running | Locked (Screensaver) |
+| 🟡 🔒 Locked | **Locked** | 🟡 Amber Gold | Workstation screen is locked by user (Win + L) or screen saver security policy | Locked (18m), Locked (1h 30m), Locked (1d 4h) |
 | 🌹 🚪 Disconnected | **Disconnected** | 🌹 Coral Red | User session is disconnected (RDP disconnect or session switch) | Disconnected session |
 | ⚪ Logged Off | **Logged Off** | ⚪ Slate Gray | Workstation is powered on and online, but no interactive user is logged on | Console at Windows login screen |
 | 🔴 Offline | **Offline** | 🔴 Crimson Red | Workstation is turned off, sleeping, or unreachable over ICMP/network | System unreachable |
@@ -143,11 +149,12 @@ The central table displays real-time presence indicators with standardized color
 
 | Column Name | Type / Format | Description & Interactivity |
 | :--- | :--- | :--- |
-| **Computer Name** | String / Hostname | NetBIOS computer name. Features agent dot: 🟢 Active, 🟡 Stale, ⚫ Not Installed, 🔴 Offline. Double-click opens AD User Profile Card. |
+| **Computer Name** | Multi-Mode Sortable Column | NetBIOS computer name with presence indicator dot (🟢 Active, 🟡 Stale, ⚫ Not Installed, 🔴 Offline) and RDP availability badge. Click column title repeatedly to cycle sorting: **Alphabetical (A–Z)** → **Reverse (Z–A)** → **Monitor Color Indication** → **Remote Desktop Status**. Double-click opens AD User Profile Card. |
 | **IP Address** | IPv4 String | Real-time IP address resolved over ICMP/DNS queries. |
 | **Ping Latency** | Numeric (ms) | Round-trip ping response time in milliseconds. Color-coded green (<30ms) or amber. |
-| **Workstation State** | Dynamic Presence | Live user state (🟢 Active, 💤 Idle, 🔒 Locked, 🚪 Disconnected, ⚪ Logged Off, 🔴 Offline) with exact duration format. |
+| **Workstation State** | Dynamic Presence | Live user state (🟢 Active, 💤 Idle, 💤 Idle (Screensaver), 💤 Locked (Screensaver), 🔒 Locked, 🚪 Disconnected, ⚪ Logged Off, 🔴 Offline) with exact duration format. |
 | **Logged-in User** | Domain Account | Authenticated console or RDP interactive user (DOMAIN\User). |
+| **Phone** | String / Contact | Telephone number directly queried from the active user's Active Directory account profile. Fully indexed in search filtering and inventory CSV exports. |
 | **Logon Time** | Date / Time | Timestamp of when the active user logged on to the session. |
 | **Uptime** | Elapsed Time | Live system uptime (⏱️ 3d 12h). Click header for accurate numeric sorting. Hover tooltip reveals exact boot date/time. |
 | **Operating System** | String / Edition | Windows edition, release version, and architecture (e.g. Windows 11 Pro 64-bit). |
@@ -157,6 +164,12 @@ The central table displays real-time presence indicators with standardized color
 - **Quick Search Bar (Ctrl + S / Ctrl + F)**: Filter computer records in real-time by hostname, IP address, user name, or OS.
 - **Organizational Unit / Category Filter**: Filter workstation list by Active Directory OU or functional category.
 - **Multi-Selection Support**: Select multiple workstations using Shift + Click or Ctrl + Click to perform bulk actions (wallpaper change, deep temp clean, remote restart, software deployment, RDP enablement).
+
+#### Dashboard Column Title Filters, Visibility & Custom Layout
+- **Column Title Filtering**: Double-click any column title or right-click and select **Filter by [Column]...** to open a column filter window. Choose from multiple match modes (Contains, Equals, Starts With, Does Not Contain, Blanks / Empty Only, Non-Empty Only) or click on any of the fleet value suggestion pills to filter records instantly.
+- **Active Filter Indicators & Summary**: Columns with active filters display a search indicator icon (`🔍`). When any filter is active, an interactive floating filter pill appears on the action bar indicating active counts. Click the pill to review or remove individual filters, or click the **✕** button to immediately clear all filters and restore the default view.
+- **Column Visibility Checklist**: Click the **👁️ Columns** button on the toolbar or right-click any column title and select **Column Visibility...** to toggle individual columns on or off using checkable items. Quick actions allow showing all columns or resetting back to the default layout with a single click.
+- **Per-User Layout Persistence**: Your customized column visibility preferences are automatically saved per user across sessions, ensuring your preferred view is preserved on every launch while filter criteria reset cleanly.
 
 ---
 
@@ -175,6 +188,9 @@ Both Single and Bulk context menus feature an embedded **Fast Action Search Box*
 | **Top-Level Remote Access** | 🖥️ Remote Desktop (RDP Login) | 🔵 Royal Blue | Launches standard mstsc.exe session directly to the target machine. |
 | **Top-Level Remote Access** | 🔓 Enable Remote Desktop (RDP) on Host... | 🟢 Emerald Green | Remotely configures Terminal Server registry, starts service, opens firewall. |
 | **Top-Level Remote Access** | 💻 Remote Console Terminal (CMD & PS) | 🔷 Sky Cyan | Opens interactive remote command-line terminal for CMD and PowerShell. |
+| **Top-Level Remote Access** | 🖥️ Turn Off Monitor (Power Saving) | 🌙 Dark Blue | Powers off the remote physical monitor to enter energy-saving mode. |
+| **Top-Level Remote Access** | 🔒 Block Mouse & Keyboard Input | 🔴 Crimson Red | Temporarily disables physical input devices to prevent user interference. |
+| **Top-Level Remote Access** | 🔓 Restore Mouse & Keyboard Input | 🟢 Emerald Green | Restores physical input devices back to normal operation. |
 | **⚙️ Administration & Management** | 📊 Remote Task Manager / End Process | 🌸 Rose Pink | Live process list, working set memory, CPU time, and 1-click process termination. |
 | **⚙️ Administration & Management** | ⚙️ Remote Services Manager | 🟡 Amber Gold | Full service inventory; Start, Stop, Restart, and change service startup modes. |
 | **⚙️ Administration & Management** | 📦 Installed Software & Silent Uninstaller | 🟣 Indigo | 64-bit/32-bit/HKU software scan with 1-click silent uninstallation. |
@@ -200,6 +216,7 @@ Both Single and Bulk context menus feature an embedded **Fast Action Search Box*
 | **📊 Diagnostics & Health** | 🔍 Check Inactivity Agent Status & Diagnostics... | 🟢 Emerald Green | Four-tier diagnostic verification of the activity monitoring agent. |
 | **📊 Diagnostics & Health** | 🛠️ Repair Remote WMI Repository (mofcomp / resync)... | 🟡 Amber Gold | Recompiles MOF definitions and resynchronizes corrupt WMI performance counters. |
 | **📊 Diagnostics & Health** | 📜 Open Activity Log for This Computer | 🟣 Royal Purple | Filters application activity audit log specifically to the targeted machine. |
+| **📊 Diagnostics & Health** | 📊 Generate GPResult HTML Report... | 🔷 Sky Blue | Generates full Group Policy diagnostic report and opens it in browser. |
 | **🌐 Network & Connectivity** | 📡 Ping Host & Query Info | 🔷 Sky Cyan | Real-time ICMP ping test with latency and packet loss metrics. |
 | **🌐 Network & Connectivity** | 🌐 Remote Network & IP Configuration... | 🔷 Sky Blue | Inspect and configure IP addresses, DHCP vs. Static mode, and DNS servers. |
 | **🌐 Network & Connectivity** | 🔍 DNS Name Resolution & Reverse Lookup (nslookup)... | 🟢 Emerald Green | Performs forward and reverse DNS queries for hostname/IP verification. |
@@ -254,6 +271,7 @@ When selecting multiple computers in the inventory grid (via Shift + Click, Ctrl
 | **Maintenance** | 📁 Push File / Script to Remote PCs (Bulk)... | 🔵 Royal Blue | Uploads files or scripts directly to C$\Temp on all selected targets. |
 | **Maintenance** | 🛡️ Configure UAC Shadow Compatibility (Bulk)... | 🟢 Emerald Green | Enables shadow compatibility settings across all selected machines. |
 | **Maintenance** | 🔓 Enable Remote Desktop (RDP) (Bulk)... | 🔵 Royal Blue | Enables RDP, starts services, and unblocks port 3389 across all targets. |
+| **Maintenance** | 🖥️ Turn Off Monitors (Bulk)... | 🌙 Dark Blue | Concurrently powers off physical displays across all selected endpoints. |
 | **Maintenance** | 🚀 Deploy Inactivity & Idle Monitor Agent (Bulk)... | 🟢 Emerald Green | Deploys presence monitoring agent across selected machines concurrently. |
 | **Maintenance** | 🛑 Uninstall Inactivity & Idle Monitor Agent (Bulk)... | 🔴 Crimson Red | Removes presence monitoring agent across selected machines. |
 | **Network & Messaging** | 💬 Send Toast Notification to All Users (Bulk)... | 🟣 Royal Purple | Dispatches Action Center toast alerts or modal announcements to all targets. |
@@ -330,6 +348,43 @@ Right-click any computer -> **🛡️ Fix UAC Black Screen...** (or bulk configu
 | **Quick Assist** | 🚀 Quick Assist | HTTPS / Cloud Tunnel | User grants control via 6-digit Microsoft assistance code | Remote workers over Internet, VPN users, laptops off-domain |
 | **Remote Console** | 💻 Terminal | WMI / RPC / WinRM | Completely invisible; background execution with zero display impact | Quick scripts, silent commands, service diagnostics |
 
+#### G. Remote Display Power & Screen Standby (Turn Off Monitor)
+- **Instant Display Power-Down**:
+  - Access via multiple intuitive entry points:
+    - Click **🖥️ Monitor Off** on the bottom **Quick Tools** toolbar.
+    - Right-click either the **⚡ Shadow Session** or **🖥️ Remote Desktop (mstsc)** top toolbar buttons and choose **Turn Off Remote Monitor (Power Saving)**.
+    - Right-click any computer in the directory grid and select **🖥️ Turn Off Monitor (Power Saving)**, or select multiple computers and choose **🖥️ Turn Off Monitors (Bulk)...**.
+  - Sends a native display power-off signal to the target computer's physical monitors, switching screens into power-saving standby mode immediately.
+  - Unlike a screen lock or logoff, the user session remains completely active and untouched. The screen awakens as soon as physical movement or administrative activity resumes.
+- **Key Operational Benefits**:
+  - **Confidentiality & Privacy**: Darkens unattended conference room screens, reception displays, or executive workstations when sensitive maintenance or updates are running in the background.
+  - **Energy Efficiency**: Reduces office power consumption across hundreds of machines during off-hours or after support sessions.
+
+#### H. Session-Safe Physical Mouse & Keyboard Input Lock
+- **Suppressing Local Physical Input During Remote Support**:
+  - Right-click any computer and choose **🔒 Block Mouse & Keyboard Input**, or right-click the top **⚡ Shadow Session** button and select **Block / Unblock Mouse & Keyboard Input**. The menu dynamically toggles to **🔓 Restore Mouse & Keyboard Input**.
+  - Temporarily suppresses hardware mouse and keyboard input on the target computer while administrative support or shadowing is in progress.
+  - Prevents the end-user from accidentally clicking, closing active terminal windows, or interrupting critical troubleshooting procedures.
+- **Dual-Layer Physical Suppression Engine**:
+  - **Hardware Device Level**: Dynamically suppresses physical USB and PS/2 mouse and keyboard hardware at the device level while keeping virtual Remote Desktop input devices fully operational. The administrator enjoys smooth, uninterrupted remote control without any interference from the physical desk.
+  - **Session Guard Watchdog**: Maintains active input suppression with continuous real-time monitoring.
+- **Fail-Safe Protections & Automatic Recovery**:
+  - **Instant 1-Click Restoration**: Selecting the option again immediately restores all physical input devices in less than a second.
+  - **Automatic 30-Minute Safety Timeout**: If left unattended, the lock automatically expires and restores input after 30 minutes to ensure users are never permanently locked out.
+  - **Auto-Restoration on Shadow Exit**: When closing a remote shadowing session, physical mouse and keyboard inputs are restored immediately.
+  - **Auto-Restoration on Application Close**: If the administrative console closes or exits, all active input locks are automatically released across the network.
+
+#### I. Live Remote Desktop Status Probing & Dynamic Visual Indicator
+- **Continuous Discovery & Real-Time Status Verification**:
+  - Endpoint discovery and status polling dynamically probe Terminal Services accessibility on each computer.
+  - Workstations display distinct status indicators:
+    - 🟢 **Remote Desktop Active**: Ready for immediate connection.
+    - 🔴 **Remote Desktop Disabled**: Remote connections are currently denied on this host. Right-click and choose **🔓 Enable Remote Desktop (RDP) on Host...** to enable with one click.
+    - ⚪ **Offline**: Computer is turned off or unreachable.
+  - **Theme-Adaptive Vector Badge**: Active Remote Desktop endpoints display a crisp vector monitor badge beside the computer name, dynamically styled to harmonize with both Light and Dark themes, and transitioning into a crisp, high-contrast badge when rows are selected.
+  - **Zero-Lag Asynchronous Discovery**: Initial endpoint discovery performs non-blocking background LAN probes, allowing hundreds of workstations to appear instantaneously on screen without waiting for port timeouts.
+  - Probing updates in real time whenever Remote Desktop is enabled or disabled.
+
 ---
 
 ### 6. Interactive Remote Terminal Console (CMD & PowerShell)
@@ -369,6 +424,9 @@ Click **📊 Live Perf** or **📈 Specs** on the toolbar (or press Ctrl + Shift
   - **Physical Memory Modules**: Total installed RAM, technology (DDR4/DDR5), clock speed in MHz, and per-slot physical DIMM module breakdown.
   - **Logical Storage Volumes**: Drive letters, volume names, file systems, capacity progress bars, free space percentages, and health status badges.
   - **Network Adapters & Link Speeds**: Network interface description, link speed (e.g. 1.0 Gbps), IPv4 address, default gateway, MAC address, and DHCP status.
+- **Real-Time Network Adapters Bandwidth & Interface IP Addresses**:
+  - **Live Throughput**: Real-time download/upload rates, total throughput, cumulative session data usage, link speed, and connection status for each network adapter.
+  - **Interface IP Address Resolution**: Displays interface-specific IP addresses for each individual network interface (supporting IPv4 and IPv6 dual-stack configurations, multiple assigned IP addresses, and unassigned status indicators) with real-time text search filtering.
 - **One-Click System Specifications Export**:
   - Click **📋 Copy Specs** in the window footer to copy a complete, structured summary of the computer's identity, OS, CPU, RAM, disks, and network configuration to the Windows clipboard.
 
@@ -380,13 +438,15 @@ Click **📊 Live Perf** or **📈 Specs** on the toolbar (or press Ctrl + Shift
 Click **📊 Task Mgr** on the toolbar or right-click any computer -> **⚙️ Administration & Management** -> **📊 Remote Task Manager / End Process**.
 - Live process list with PID, Name, Working Set Memory (MB), and CPU time.
 - Search filter box to find specific executables instantly.
+- **⚡ New Task**: Prominently located in the Process toolbar; allows administrators to launch new programs, executables, or administrative commands on remote endpoints directly from Task Manager.
+- **🔄 Restart Task**: Select any process and restart it with a single click.
 - **🛑 End Process**: Remotely terminates hung or unresponsive applications with instant remote process termination.
 
 #### B. Remote Windows Services Controller & Print Spooler Fix
 Click **⚙️ Services** on the toolbar or right-click any computer -> **⚙️ Administration & Management** -> **⚙️ Remote Services Manager**.
 - Inventory of all Windows services with Display Name, Service Name, Current State (Running/Stopped), and Start Mode (Auto/Manual/Disabled).
 - Color-coded state indicators (🟢 Running, 🔴 Stopped).
-- **Controls**: **Start**, **Stop**, **Restart**, and set Start Mode.
+- **Controls**: **Start Service**, **Stop Service**, **Restart Service**, and **Start Service by Name**.
 - **1-Click Print Spooler Fix**: Toolbar button **🔄 Restart Print Spooler** restarts the spooler service in one click across selected computers.
 
 #### C. Remote Startup Applications (Autorun Manager)
@@ -565,6 +625,33 @@ Click **👤 User Profile** on the toolbar or right-click any computer -> **👤
 Right-click any computer -> **👤 Active Directory & User Session** -> **✏️ Edit AD User Profile Attributes...** (or click **✏️ Edit Profile** inside the User Profile Card).
 - Update First Name, Last Name, Display Name, Job Title, Department, Company, Office Location, Telephone, Mobile, Email, Street Address, City, State, Postal Code directly in Active Directory Domain Services.
 
+#### Bulk Active Directory User Profile Attributes Updater (📋 Bulk AD Update)
+Click **📋 Bulk AD Update** on the bottom toolbar or right-click any computer -> **👤 Active Directory & User Session** -> **👥 Bulk Update AD User Attributes (CSV / Excel / TXT)...**.
+
+- **Multi-Format File Support**: Upload CSV, Excel CSV export, or Notepad plain text files (auto-detects comma, semicolon, tab, and pipe delimiters).
+- **Supported Active Directory Attributes**:
+  - User Identifier: `Username` / `sAMAccountName` (required to identify user account)
+  - `First Name`
+  - `Initials`
+  - `Last Name`
+  - `Display Name`
+  - `Description` (Job Description / Notes)
+  - `Office` (Office Location)
+  - `Telephone Number` (Phone)
+  - `Email` (Email Address)
+- **Built-In Sample Template**: Click **📄 Download Sample Template (.csv)** to generate and inspect a properly structured template with example records and header guidance.
+- **Mandatory Read-Only Pre-Flight Dry Run**:
+  - Runs a comprehensive validation pass against domain Active Directory before any changes can be written.
+  - KPI Dashboard Cards: **Total Users Analyzed**, **Attributes Ready to Update**, **Validation Errors**, and **Preserved / Unchanged**.
+  - Interactive Filter Tabs: View All Attributes, Ready to Update, Errors Only, or Skipped / Identical rows with instant search filtering.
+  - Validation Rules: Flags non-existent domain users, duplicate user accounts in the file, string values exceeding directory schema limits, and malformed email addresses.
+- **Strict Safety Preservation of Blank Fields**:
+  - Blank or empty cells in the uploaded file are strictly preserved and will never overwrite or blank out existing directory attributes.
+- **Audited Execution & CSV Report**:
+  - The "Apply Updates" button remains locked until all blocking errors are resolved.
+  - Prompts for explicit confirmation before writing changes.
+  - Generates a complete post-update execution summary report with 1-click CSV export for change management records.
+
 ---
 
 ### 14. Active Directory Account Security & Password Management
@@ -669,11 +756,27 @@ Click **🔄 GPUpdate** on toolbar or right-click computer -> **🛠️ Customiz
 - Guarantees execution strictly on the remote target endpoint.
 - Displays progress indicators and provides direct links to inspect the remote event log to verify policy enforcement.
 
-#### D. Windows God Mode & Power Tweaks
+#### D. Remote Group Policy Diagnostic Report Generator (GPResult HTML)
+Access via multiple convenient shortcuts:
+- Click **📊 GPResult** on the bottom **Quick Tools** toolbar.
+- Right-click either the **⚡ Shadow Session** or **🖥️ Remote Desktop (mstsc)** top toolbar buttons and choose **Generate Group Policy (GPResult) HTML Report...**.
+- Right-click any computer -> **📊 Diagnostics & Health** -> **📊 Generate GPResult HTML Report...**.
+- **1-Click Policy Forensics**: Executes an authoritative Group Policy result diagnosis directly on the target machine and compiles the full diagnostic results into a formatted HTML document (`C:\report.html`).
+- **Instant Browser Verification**: Upon generation, prompts the administrator with a confirmation dialog:
+  ```text
+  Group Policy HTML report generated successfully on [Host]!
+  File Location: C:\report.html
+  Network Path: \\[Host]\C$\report.html
+  
+  Would you like to open the interactive HTML report in your browser now?
+  ```
+- **Frictionless Inspection**: Selecting **Yes** automatically launches your local default browser connected across the administrative network share, giving technicians immediate visual insight into Applied GPOs, Denied GPOs, Security Group memberships, WMI filters, and registry preference extensions.
+
+#### E. Windows God Mode & Power Tweaks
 Right-click any computer (or bulk select) -> **🛠️ Customization, Automation & Deploy** -> **👑 Windows God Mode & Power Tweaks...**.
 - Remotely configures Windows System settings, Control Panel master shortcuts, high-performance power plans, and system performance tweaks across single or multiple computers.
 
-#### E. Desktop Info HUD (BgInfo & Floating Companion Widget)
+#### F. Desktop Info HUD (BgInfo & Floating Companion Widget)
 Click **🖥️ HUD (BgInfo)** on toolbar or right-click computer -> **🛠️ Customization, Automation & Deploy** -> **🖥️ Desktop Info HUD (BgInfo)...**.
 - **Classic Sysinternals BgInfo Mode**: Composites live system telemetry directly onto desktop wallpaper without intrusive frames, using high-contrast text and drop shadows.
 - **Deployment Target Modes**:
@@ -683,13 +786,14 @@ Click **🖥️ HUD (BgInfo)** on toolbar or right-click computer -> **🛠️ C
 - **Theme-Accurate Preview**: Dynamic preview matching Classic, Cyber Emerald, Midnight Violet, Solar Flare, and other color schemes.
 - **1-Click Wallpaper Backup & Restore**: Automatically backs up original wallpaper before first application and allows restoring original desktop backgrounds in one click.
 
-#### F. Remote Desktop Wallpaper Changer & Manager
+#### G. Remote Desktop Wallpaper Changer & Manager
 Click **🖼️ Wallpaper** on toolbar or right-click computer (or bulk select) -> **🛠️ Customization, Automation & Deploy** -> **🖼️ Change Desktop Wallpaper...**.
 - Remotely updates desktop wallpaper image backgrounds across single or multiple computers for corporate branding, security announcements, or policy updates.
 
-#### G. Remote Screen Saver Configuration
+#### H. Remote Screen Saver Configuration
 Right-click any computer (or bulk select) -> **🛠️ Customization, Automation & Deploy** -> **🖥️ Remote Screen Saver Configuration...**.
 - Enables or disables Windows screen savers remotely, customizes inactivity timeouts, and enforces password lockout upon resume across single or multiple workstations.
+- When an active screen saver is running on a target workstation with an interactive user logged in, the application's real-time inventory presence dynamically reflects the state as **`💤 Idle (Screensaver)`** (when unlocked) or **`💤 Locked (Screensaver)`** (when locked).
 
 ---
 
@@ -699,8 +803,22 @@ Right-click any computer -> **🛠️ Customization, Automation & Deploy** -> **
 
 - **Deployment & Lifecycle**:
   - Deploy or uninstall the lightweight monitoring module (ADRC_IdleAgent.exe) across single or bulk workstation selections in seconds.
+  - **Fleet Status Bar & Interactive Quick-Filter Pills**: Positioned directly above the computer grid, the status bar displays live fleet telemetry counters across six operational states:
+    - **`Monitored`**: Total workstations with monitoring module installed.
+    - **`🟢 Up to Date`**: Endpoints running the latest version matching the local console package.
+    - **`🟡 Need Update`**: Endpoints active on the domain running older agent versions.
+    - **`🔴 Failed`**: Endpoints where deployment or update encountered an error.
+    - **`⚪ Offline`**: Endpoints currently disconnected or powered off (deferred from updates until online).
+    - **`⚫ Not Installed`**: Online endpoints without monitoring coverage.
+  - **Interactive Filtering**: Clicking any status pill instantly filters the inventory grid to display only matching endpoints. Clicking the same pill again or clicking **`✕ Reset`** restores the full list.
+  - **`⚡ Update All Outdated` Action**: When endpoints needing updates or with update errors are detected, a one-click button appears on the status bar to initiate batch updates for all eligible online computers simultaneously.
+  - **Dedicated Inactivity Monitor Column**: Displays color-coded badges indicating current agent version and update status (`🟢 Up to Date (v1.1.2)`, `🟡 Update to v1.1.2`, `🔵 Updating...`, `🔴 Update Failed`, `⚪ Offline / Unchecked`, `⚫ Not Monitored`). Includes intelligent multi-tier sorting to group machines needing attention to the top.
+  - **Interactive Failure Diagnostics & Quick Retry**: When an update or deployment fails, right-clicking the host reveals **`🔴 View Inactivity Monitor Update Failure Reason...`** with diagnostic error details and a 1-click **`🔄 Retry Update Now`** action.
+  - **Smart "Update" Workflow**: In the **Customization, Automation & Deploy** menu, endpoints running older agent versions display **`🔄 Update Inactivity Monitor Agent (v{installed} ➔ v{latest})...`**. Executing an update (for single or bulk selections) selectively upgrades endpoints requiring an update while automatically skipping machines already on the latest version to prevent redundant installations. Statuses for **`✅ Installed (Active)`** and **`🟡 Installed (Inactive)`** remain clearly displayed.
+  - **Tools Version Notification Banner**: Automatically detects new companion executable updates upon launch, displaying a top banner with the new version and quick access to release highlights and changelog notes.
+  - **Release Notes & Documentation Viewer**: Access detailed companion release notes and feature summaries anytime via the menu item **`📋 Tools Companion Release Notes & Updates...`** or directly from the update banner.
 - **Real-Time Presence Tracking**:
-  - Tracks user input activity (mouse and keyboard) to compute continuous active, idle, and display lock durations with high accuracy.
+  - Tracks user input activity (mouse and keyboard) and active system processes to compute continuous active (`🟢 Active`), screen saver engagement (`💤 Idle (Screensaver)` / `💤 Locked (Screensaver)`), idle duration (`💤 Idle (...)`), workstation lock (`🔒 Locked (...)`), and logoff presence with high accuracy.
 - **Four-Tier Health & Diagnostics Inspector**:
   - Right-click any computer -> **📊 Diagnostics & Health** -> **🔍 Check Inactivity Agent Status & Diagnostics...**.
   - Evaluates monitoring agent health using a four-state diagnostic model: Installed & Active, Installed but Not Active / Not Reporting, Not Installed, Unknown / Unable to Detect.
@@ -712,7 +830,17 @@ Right-click any computer -> **🛠️ Customization, Automation & Deploy** -> **
 
 #### A. Ping Host & Latency Query (Ctrl + P)
 Click **📡 Ping** on toolbar or press **Ctrl + P**.
-- Performs real-time ICMP ping tests, returning round-trip latency (ms), packet loss metrics, and reachability status.
+- **Continuous Real-Time Telemetry Stream**: Initiates an active diagnostic ping loop running every 1 second. The toolbar button dynamically shifts to **`⏹ Stop Ping`** while active. Clicking **Stop Ping** halts execution cleanly and restores the idle button.
+- **Dynamic Inline Status Pill**: Displays real-time round-trip latency (ms), IP address, and connection status, updating every second alongside embedded quick-action badges to reset probing (`🔄 Re-Ping`) or launch a route trace (`🧭 Trace`).
+- **Target Selection Synchronization**: Selecting a different computer in the inventory grid automatically transfers active real-time monitoring to the newly selected host.
+- **Strictly On-Demand Invocation**: The Ping Telemetry HUD is completely decoupled from agent administration tasks. Deploying, updating, or removing Inactivity Monitor agents runs in the background without opening the Ping HUD; the HUD opens strictly when an administrator explicitly invokes ping commands.
+- **Sliding Telemetry HUD & Clean Dismissal**:
+  - Clicking the status pill expands a diagnostic HUD strip above the bottom toolbar with four dedicated diagnostic tabs:
+    1. **Quick Metrics**: Real-time summary of round-trip latency, TTL, resolved IP and DNS status, management ports, and active user session.
+    2. **Hop Traceroute**: Visual step-by-step route hops up to 30 intermediate waypoints from your console to the remote target with individual hop latencies, fast reverse hostname lookups, live stop and re-trace controls, min/avg/max latency telemetry, a 1-click `📋 Copy Route` button for incident reporting, and an internal scrollable viewport with mouse-wheel support that keeps window height stable.
+    3. **Layer 2 (MAC & NIC)**: Hardware MAC address, network vendor identification, link speed and duplex status, VLAN tag, and connectivity verification across key management ports (RPC, SMB, RDP, WinRM).
+    4. **Live Pulse Graph**: A continuous real-time latency monitor rendering a live sparkline waveform graph, tracking packet jitter, min/avg/max latency, and packet loss in real time with pause and resume controls.
+  - **Clean Dismissal (`✕` Close HUD)**: Closing the Telemetry HUD automatically terminates the real-time ping stream, cancels any running traceroute, and clears all live status badges from the bottom action bar.
 
 #### B. Remote Network & IP Configuration Manager
 Click **🌐 Net Config** on toolbar or right-click computer -> **🌐 Network & Connectivity** -> **🌐 Remote Network & IP Configuration...**.
@@ -762,16 +890,37 @@ Located on the main bottom toolbar and right-click menus:
 | Power Action | Toolbar Button | Context Menu Path | User Impact & Behavior |
 | :--- | :--- | :--- | :--- |
 | **Wake-on-LAN** | ⚡ WOL | 🌐 Network & Connectivity ▸ ⚡ Wake-on-LAN | Transmits UDP magic packets to wake sleeping machines. |
-| **Instant Lock** | 🔒 Lock | ⚡ Security & Power Control ▸ 🔒 Instant Lock | Immediately locks desktop display; user session remains active. |
+| **Instant Lock** | 🔒 Lock Screen | ⚡ Security & Power Control ▸ 🔒 Instant Lock | Prompts confirmation reason and immediately locks display session. |
 | **Logoff User** | 🚪 Logoff | 👤 Active Directory & User Session ▸ 🚪 Logoff Active User Session | Gracefully closes user applications and ends session. |
-| **Reboot / Restart** | 🔄 Restart | ⚡ Security & Power Control ▸ 🔄 Restart Computer | Reboots workstation with clean 5-second notification countdown. |
-| **Shutdown** | 🛑 Shutdown | ⚡ Security & Power Control ▸ 🛑 Shutdown Computer | Powers off workstation with clean 5-second notification countdown. |
+| **Reboot / Restart** | 🔄 Restart | ⚡ Security & Power Control ▸ 🔄 Restart Computer | Prompts operational reason confirmation and reboots with countdown grace period. |
+| **Shutdown** | 🛑 Shutdown | ⚡ Security & Power Control ▸ 🛑 Shutdown Computer | Prompts operational reason confirmation and powers off with countdown grace period. |
 
-#### B. Remote Workstation Lock & Unlock Controller
+#### B. Enterprise Power Confirmation & Change-Management Reason Selection
+When initiating **Restart**, **Shutdown**, or **Lock Screen** on one or multiple computers:
+- **Reason Logging**: Select from pre-classified operational reasons (System Updates, Hardware Maintenance, Troubleshooting, Off-Hours Power Conservation, Security Incident Response, Scheduled Maintenance, or Custom Note).
+- **Grace Period Timer**: Configure an optional countdown warning from 0 seconds (immediate) up to 300 seconds (5 minutes) with user notifications.
+- **Forced Application Closure**: Option to cleanly terminate hung applications to ensure reliable power cycling.
+- **Audit Logging**: Every action is recorded with administrator identity, selected reason, and timestamps in the local Activity Log.
+
+#### C. Dynamic Multi-Selection Badges & Bulk Action Counts
+When multi-selecting computers in the inventory grid:
+- **Tally Indicator**: The status badge below the table displays live selection counts: `Total (Workstations, Servers) • 🎯 N Selected`.
+- **Button Badges**: Action buttons dynamically update their labels to reflect target counts (e.g. `🔄 Restart (3)`, `🛑 Shutdown (3)`, `🔒 Lock Screen (3)`, `🖼️ Wallpaper (3)`), ensuring clear operational awareness before executing bulk tasks.
+
+#### D. Interactive Domain Selector & Custom Forest Discovery
+Located in the top header domain bar:
+- Automatically discovers all available Active Directory domains and forests.
+- Allows typing custom domain names or fully qualified domain names and clicking **🔄 Refresh AD** to synchronize computers from any target domain.
+
+#### E. Remote Workstation Lock & Unlock Controller & Direct Credential Session Unlock
 Right-click any computer -> **⚡ Security & Power Control** -> **🔒 Remote Workstation Lock & Unlock Controller**.
-- Interactively locks or unlocks workstation input controls and display screens during administrative maintenance.
+- **Real-Time Workstation Lock Detection**: Inspects whether the screen is actively locked, unlocked, or disconnected.
+- **Direct Credential Session Unlock**:
+  - Unlocks locked workstations directly with the user password silently on the target physical console.
+  - Transmits session credentials securely to the session manager to transition the locked session directly to the console desktop without third-party connection prompts or manual approvals.
+- **Fast Console Reconnect**: Instantly reconnects disconnected or separated user sessions back to the physical screen.
 
-#### C. Scheduled Remote Power Operations (Reboot, Shutdown, Logoff, Lock)
+#### F. Scheduled Remote Power Operations (Reboot, Shutdown, Logoff, Lock)
 Right-click any computer (or bulk select) -> **⚡ Security & Power Control** -> **⏰ Schedule Power Action...**.
 - Allows scheduling future power actions (Restart, Shutdown, Logoff, Lock) for single or multiple computers.
 - Select exact date and time using visual calendar pickers, configure optional on-screen countdown warnings for logged-in users, view scheduled tasks, or cancel pending jobs in one click.
