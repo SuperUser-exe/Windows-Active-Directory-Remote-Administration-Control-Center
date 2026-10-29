@@ -64,6 +64,7 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
 * **Telemetry Synchronization & Dynamic Refresh**:
   - **What was updated**: Integrated port detection into real-time ping telemetry and endpoint diagnostics. When inspecting or pinging an endpoint, the inventory badge updates dynamically to reflect live network accessibility.
   - **Benefit**: Provides live, continuous feedback without requiring manual directory rescans or application restarts.
+  
 #### 🖥️ Intelligent Remote Shadow & Terminal Services Self-Healing Engine
 * **Automated Remote Service Validation & Self-Healing**:
   - **What was updated**: Implemented automated diagnostic and self-healing mechanisms for Remote Desktop screen shadowing. Prior to initiating mirror sessions, the system verifies that the target workstation's terminal services components are healthy, connection policies are enabled, and required service dependencies are properly registered. Missing or corrupted service configurations are automatically restored and idle services are seamlessly started.
@@ -71,19 +72,6 @@ All notable changes and upgrades to **Windows AD Remote Administration Control C
 * **Proactive Port and Listener Readiness Check**:
   - **What was updated**: Added background listener verification before dispatching screen connection requests. If the remote service is stopped or the listener is inactive, the system initiates the service remotely and ensures the port is actively listening before presenting the connection window.
   - **Benefit**: Ensures seamless administrator workflows and prevents unexpected connection timeouts or system error dialogs when supporting end-user workstations.
-#### 🧹 IT Administrator Inventory Database Synchronization & Workgroup Device Pruning
-* **Real-Time Database Workstation Reconciliation**:
-  - **What was updated**: Implemented automated bi-directional reconciliation between the live administrative database and local directory cache. When workstations are deleted or modified in the database, the fleet directory instantly detects the change, prunes obsolete entries, and displays only active, registered machines.
-  - **Benefit**: Eliminates ghost or orphaned records from the directory interface after database maintenance, ensuring that what exists in the database matches the administrative console with 100% fidelity.
-* **One-Click Database Sync & Workgroup Device Cleanup**:
-  - **What was updated**: Added dedicated **"🔄 Sync with DB"** and **"🧹 Clean Workgroups"** actions to the IT Administrators inventory header. Administrators can trigger on-demand database synchronization or purge all standalone and non-domain devices from the directory with a single click.
-  - **Benefit**: Provides administrators with immediate control over directory cleanliness without needing manual database scripts or server restarts.
-* **Granular Workstation Inventory Deletion**:
-  - **What was updated**: Added direct workstation deletion actions (🗑️) across both the directory table rows and the detailed Workstation Inspector dialog. Operators can now remove individual decommissioned or unauthorized machines directly from the console interface with confirmation safeguards.
-  - **Benefit**: Allows quick, surgical removal of individual machines from the fleet directory directly from the web interface.
-* **Device Classification Filter**:
-  - **What was updated**: Added a device classification filter dropdown allowing operators to isolate All Devices, Enterprise Domain Joined machines, or Workgroup / Standalone devices.
-  - **Benefit**: Enables operators to quickly isolate non-domain test machines or auditing targets in large environments.
 
 #### 🛡️ Domain-Joined PC Enforcement & Redesigned Access Restriction Architecture
 * **Strict Active Directory Domain-Joined Computer Requirement**:
