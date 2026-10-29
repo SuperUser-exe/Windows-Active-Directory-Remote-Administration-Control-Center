@@ -3,11 +3,98 @@
 
 All notable changes and upgrades to **Windows AD Remote Administration Control Center** are documented in this file.
 
-## 🏷️ Version 2.8.0 (Official Enterprise Release)
+## 🏷️ Version 2.9.0 (Official Enterprise Release)
 
 ---
 
-### 🌟 New Features (Introduced in v2.8.0)
+### 🌟 New Features (Introduced in v2.9.0)
+
+#### 🔑 Active Directory User Credentials Validation & Diagnostics Controller
+* **Non-Interactive Credential Verification & Login Diagnostics**:
+  - **What was updated**: Added a dedicated Active Directory User Credentials Tester accessible directly from the Quick Actions toolbar at the top of the application and the right-click context menu. Administrators can enter any domain username and password to safely verify credentials against the domain controller without requiring the user to log in or initiate a remote session.
+  - **Benefit**: Empowers helpdesk teams and administrators to instantly verify whether a user's password is valid when troubleshooting login failures, expired credentials, or forgotten passwords, saving valuable support time.
+* **Instant Visual Outcome & Diagnostic Status Reporting**:
+  - **What was updated**: Implemented clear, color-coded outcome badges and descriptive messages confirming whether authentication succeeded ("Valid Credentials — Authentication successful.") or failed ("Invalid Credentials — Authentication failed. Invalid username or password.").
+  - **Benefit**: Provides definitive clarity on authentication status at a glance, removing guesswork when diagnosing password-related issues.
+* **Integrated Account Lockout Detection & 1-Click Unlock**:
+  - **What was updated**: Added real-time account lockout detection that immediately alerts administrators if an account is locked out in Active Directory due to repeated incorrect password attempts, accompanied by a prominent 1-click "Unlock Account Now" button.
+  - **Benefit**: Allows administrators to inspect lockout states and immediately restore user account access directly within the testing dialog without opening separate directory management tools.
+* **Comprehensive Account Identity Overview & Password Lifecycle Details**:
+  - **What was updated**: Displays full directory identity details upon lookup, including User Display Name, User Principal Name, SAM Account Name, Account Status (Enabled or Disabled), Lockout Status, Password Last Set timestamp, and Password Expiration policy status.
+  - **Benefit**: Provides administrators with an immediate complete picture of the account's operational and security posture while validating credentials.
+* **Password Visibility Toggle & Ergonomic Input Controls**:
+  - **What was updated**: Added an interactive visibility eye toggle to show or hide the password string, clipboard paste support, pre-filling of the currently selected workstation's logged-in user, and quick clear controls.
+  - **Benefit**: Eliminates typographical errors when testing complex passwords containing special characters and speeds up repeat testing across multiple users.
+
+#### 🛡️ Remote Network Profile Management (Public / Private Network Switch)
+* **Real-Time Network Profile Category Diagnostic & Inspection**:
+  - **What was updated**: Added real-time remote inspection of network profile categories across client workstations. Support personnel can view the active status of every connected network adapter (Ethernet, Wi-Fi, virtual connections) and determine whether the network is classified as Public, Private, or Domain-Authenticated.
+  - **Benefit**: Allows helpdesk technicians and network administrators to instantly diagnose network connectivity, file discovery, and printer access problems without asking the user to open Windows network settings.
+* **1-Click Remote Public / Private Network Switching**:
+  - **What was updated**: Implemented 1-click remote switching between Public and Private network categories. Technicians can switch individual network adapters or switch all active connections on the remote computer to Private in a single operation.
+  - **Benefit**: Immediately resolves issues where Windows erroneously defaults an office network to "Public", unblocking Network Discovery, Windows File Sharing, and local network printers in seconds without disrupting the end-user.
+* **Fleet-Wide Bulk Network Profile Management**:
+  - **What was updated**: Enabled multi-computer network profile management across bulk workstation selections. Administrators can view network category statuses across dozens of machines simultaneously and apply Private or Public classifications fleet-wide with live progress tracking and summary reporting.
+  - **Benefit**: Dramatically accelerates large-scale office network reconfigurations, migrations, and post-update troubleshooting across multiple departments.
+* **Automatic Domain Network Protection & Troubleshooting Guidance**:
+  - **What was updated**: Integrated automatic safeguards that protect Active Directory Domain networks from accidental reclassification, along with a built-in operational guidance panel explaining firewall impacts and providing 1-click clipboard diagnostic scripts.
+  - **Benefit**: Eliminates human error and ensures enterprise domain security policies remain strictly intact while giving support staff clear, actionable guidance.
+
+#### 🛣️ Win32 Long Path Support Manager & Real-Time Filesystem Policy Controller
+* **Real-Time Long Path Status Diagnostic & Verification**:
+  - **What was updated**: Added comprehensive real-time detection for Windows Win32 long path support across local workstations and remote network computers. The diagnostic engine queries both system filesystem configuration parameters and Windows Group Policy settings to determine whether deep directory paths exceeding the standard 260-character limitation are enabled.
+  - **Benefit**: Empowers system administrators to instantly identify which computers are restricted by legacy path limitations, avoiding unexpected file copy crashes, backup failures, or directory cleanup interruptions.
+* **1-Click Local and Fleet-Wide Long Path Enablement**:
+  - **What was updated**: Implemented automated 1-click enablement and restoration of Win32 long path support. Administrators can enable long path support on individual workstations or deploy it simultaneously across multiple selected computers, configuring both the operating system filesystem registry and policy management settings in a single operation.
+  - **Benefit**: Saves significant administrative time by eliminating the need to manually open registry editors or remote PowerShell consoles on every workstation. Deep nested folder hierarchies, build outputs, and automated maintenance scripts can navigate paths up to 32,767 characters without errors.
+* **Interactive PowerShell Script Generator & Safety Guidance**:
+  - **What was updated**: Integrated a dedicated interactive management dialog with 1-click clipboard script copying, real-time status indicators, and operational safety recommendations (such as utilizing dry-run testing modes during file cleanup procedures and managing domain-wide Group Policy deployment).
+  - **Benefit**: Provides administrators and helpdesk engineers with immediate reference scripts and clear best practices to safely validate automated maintenance tasks before performing permanent disk operations.
+* **Integration into Windows God Mode & Power Tweaks**:
+  - **What was updated**: Added Win32 Long Path support as a toggleable optimization within the Windows God Mode & Enterprise System Power Tweaks controller, featuring live status badges and automatic application alongside other administrative system enhancements.
+  - **Benefit**: Provides a unified, single-screen control panel for managing performance, interface optimizations, and file system capabilities across enterprise workstations.
+
+#### ⚡ High-Fidelity Remote Desktop Status Engine & Persistent Port Detection
+* **Direct IP Port 3389 Probing Architecture**:
+  - **What was updated**: Redesigned the Remote Desktop detection engine to directly probe endpoint IP addresses on port 3389, bypassing DNS resolution latency and decoupling port status verification from remote management service connectivity.
+  - **Benefit**: Ensures that 100% of computers with Remote Desktop enabled immediately and accurately display their status badge across the entire directory list, eliminating false negatives or missing indicators caused by hostname lookups.
+* **Persistent Cache Storage & Instant Startup Loading**:
+  - **What was updated**: Added Remote Desktop capability tracking to the local directory cache. The status is preserved across application restarts, instantly rendering status badges upon launch before background network scans complete.
+  - **Benefit**: Eliminates badge flicker and provides administrators with instantaneous visual indicators of connection readiness when opening the application.
+* **Telemetry Synchronization & Dynamic Refresh**:
+  - **What was updated**: Integrated port detection into real-time ping telemetry and endpoint diagnostics. When inspecting or pinging an endpoint, the inventory badge updates dynamically to reflect live network accessibility.
+  - **Benefit**: Provides live, continuous feedback without requiring manual directory rescans or application restarts.
+#### 🖥️ Intelligent Remote Shadow & Terminal Services Self-Healing Engine
+* **Automated Remote Service Validation & Self-Healing**:
+  - **What was updated**: Implemented automated diagnostic and self-healing mechanisms for Remote Desktop screen shadowing. Prior to initiating mirror sessions, the system verifies that the target workstation's terminal services components are healthy, connection policies are enabled, and required service dependencies are properly registered. Missing or corrupted service configurations are automatically restored and idle services are seamlessly started.
+  - **Benefit**: Completely eliminates confusing and misleading system errors (such as "Shadow Error: This computer name is invalid") caused by stopped terminal services or damaged registration. Remote screen shadowing works reliably on the first attempt without requiring manual command-line troubleshooting.
+* **Proactive Port and Listener Readiness Check**:
+  - **What was updated**: Added background listener verification before dispatching screen connection requests. If the remote service is stopped or the listener is inactive, the system initiates the service remotely and ensures the port is actively listening before presenting the connection window.
+  - **Benefit**: Ensures seamless administrator workflows and prevents unexpected connection timeouts or system error dialogs when supporting end-user workstations.
+#### 🧹 IT Administrator Inventory Database Synchronization & Workgroup Device Pruning
+* **Real-Time Database Workstation Reconciliation**:
+  - **What was updated**: Implemented automated bi-directional reconciliation between the live administrative database and local directory cache. When workstations are deleted or modified in the database, the fleet directory instantly detects the change, prunes obsolete entries, and displays only active, registered machines.
+  - **Benefit**: Eliminates ghost or orphaned records from the directory interface after database maintenance, ensuring that what exists in the database matches the administrative console with 100% fidelity.
+* **One-Click Database Sync & Workgroup Device Cleanup**:
+  - **What was updated**: Added dedicated **"🔄 Sync with DB"** and **"🧹 Clean Workgroups"** actions to the IT Administrators inventory header. Administrators can trigger on-demand database synchronization or purge all standalone and non-domain devices from the directory with a single click.
+  - **Benefit**: Provides administrators with immediate control over directory cleanliness without needing manual database scripts or server restarts.
+* **Granular Workstation Inventory Deletion**:
+  - **What was updated**: Added direct workstation deletion actions (🗑️) across both the directory table rows and the detailed Workstation Inspector dialog. Operators can now remove individual decommissioned or unauthorized machines directly from the console interface with confirmation safeguards.
+  - **Benefit**: Allows quick, surgical removal of individual machines from the fleet directory directly from the web interface.
+* **Device Classification Filter**:
+  - **What was updated**: Added a device classification filter dropdown allowing operators to isolate All Devices, Enterprise Domain Joined machines, or Workgroup / Standalone devices.
+  - **Benefit**: Enables operators to quickly isolate non-domain test machines or auditing targets in large environments.
+
+#### 🛡️ Domain-Joined PC Enforcement & Redesigned Access Restriction Architecture
+* **Strict Active Directory Domain-Joined Computer Requirement**:
+  - **What was updated**: Enforced strict Active Directory domain membership verification during application startup. The application verifies that the host computer is actively joined to an Active Directory domain before permitting execution. Standalone computers and workgroup devices are completely restricted from running the application or enrolling into enterprise administrative directories.
+  - **Benefit**: Ensures enterprise administrative operations remain strictly confined to authorized domain-joined assets, preventing rogue, unauthorized, or workgroup machines from accessing Active Directory management tools or transmitting telemetry.
+* **Separated Domain Membership & Administrator Permission Architecture**:
+  - **What was updated**: Architecture decoupled the device domain membership verification from the operator permission check. The system first validates that the computer belongs to an authorized Active Directory domain, and subsequently validates that the logged-in administrator possesses appropriate Active Directory Domain Administrator privileges.
+  - **Benefit**: Prevents non-domain machines from bypassing security via local administrator elevation, while providing clear, specific failure indicators depending on whether the computer or the user account requires remediation.
+* **User-Friendly Professional Access Restriction Guidance**:
+  - **What was updated**: Completely redesigned the access restriction modal window with clear, professional, and informative guidance. Clearly articulates that the application is built specifically for IT administrators within an Active Directory environment, requiring both a domain-joined computer and an authorized Domain Administrator account. Features dynamic environment cards showing current account, environment, status, client machine, and security policy details, with a built-in authorization re-verification action.
+  - **Benefit**: Provides immediate operational clarity to technical operators, eliminating confusion by explaining exactly why access is restricted and what steps are required to run the application.
 
 #### ⏱️ Inactivity Monitor Update Tracking, Fleet Status Telemetry & Decoupled Ping HUD
 * **Fleet Inactivity Status Bar & Interactive Quick-Filter Pills**:

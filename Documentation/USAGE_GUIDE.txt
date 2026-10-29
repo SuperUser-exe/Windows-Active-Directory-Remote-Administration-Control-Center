@@ -1,5 +1,5 @@
 ﻿# Windows AD Remote Administration Control Center — Enterprise Administration Suite
-## Complete Operator Reference Manual & Architecture Guide (v2.8.0)
+## Complete Operator Reference Manual & Architecture Guide (v2.9.0)
 **Created & Developed by Askarali Mattummal**
 
 ---
@@ -40,9 +40,10 @@
 14. [Active Directory Account Security & Password Management](#14-active-directory-account-security--password-management)
     - [A. Active Directory Account Unlocker](#a-active-directory-account-unlocker)
     - [B. Active Directory Password Reset](#b-active-directory-password-reset)
-    - [C. Password Expiration Date Inspection](#c-password-expiration-date-inspection)
-    - [D. Windows LAPS Local Administrator Password Management](#d-windows-laps-local-administrator-password-management)
-    - [E. BitLocker Drive Encryption & Recovery Keys](#e-bitlocker-drive-encryption--recovery-keys)
+    - [C. Active Directory User Credentials Validation Tester](#c-active-directory-user-credentials-validation-tester)
+    - [D. Password Expiration Date Inspection](#d-password-expiration-date-inspection)
+    - [E. Windows LAPS Local Administrator Password Management](#e-windows-laps-local-administrator-password-management)
+    - [F. BitLocker Drive Encryption & Recovery Keys](#f-bitlocker-drive-encryption--recovery-keys)
 15. [Local Computer Users & Security Manager](#15-local-computer-users--security-manager)
 16. [Remote File Explorer Quick Links & Mapped Drives Manager](#16-remote-file-explorer-quick-links--mapped-drives-manager)
     - [A. Administrative Share & User Folder Quick Links](#a-administrative-share--user-folder-quick-links)
@@ -56,6 +57,7 @@
     - [F. Desktop Info HUD (BgInfo & Floating Companion Widget)](#f-desktop-info-hud-bginfo--floating-companion-widget)
     - [G. Remote Desktop Wallpaper Changer & Manager](#g-remote-desktop-wallpaper-changer--manager)
     - [H. Remote Screen Saver Configuration](#h-remote-screen-saver-configuration)
+    - [I. Windows Win32 Long Path Support Manager](#i-windows-win32-long-path-support-manager)
 18. [Inactivity & Idle Monitor Agent (Enterprise Feature)](#18-inactivity--idle-monitor-agent-enterprise-feature)
 19. [Network Diagnostics & Connectivity Tools](#19-network-diagnostics--connectivity-tools)
     - [A. Ping Host & Latency Query](#a-ping-host--latency-query)
@@ -65,6 +67,7 @@
     - [E. One-Click Network Repair & Reset](#e-one-click-network-repair--reset)
     - [F. Enable Remote ICMP Ping Echo (Windows Firewall)](#f-enable-remote-icmp-ping-echo-windows-firewall)
     - [G. Remote Browser URL & Application Launcher](#g-remote-browser-url--application-launcher)
+    - [H. Remote Network Profile Manager (Public / Private Switch)](#h-remote-network-profile-manager-public--private-network-switch)
 20. [Domain Controller & DNS Server Troubleshooting Suite](#20-domain-controller--dns-server-troubleshooting-suite)
 21. [Remote Power Actions & Scheduled Task Operations](#21-remote-power-actions--scheduled-task-operations)
     - [A. Immediate Remote Power Actions](#a-immediate-remote-power-actions)
@@ -84,7 +87,7 @@
 
 ### 1. Overview & Architecture
 
-**Windows AD-Admin Control Center** (v2.8.0) is a standalone, high-performance Windows systems administration and remote assistance suite built specifically for Active Directory Domain Administrators, Systems Engineers, and IT Helpdesk specialists.
+**Windows AD-Admin Control Center** (v2.9.0) is a standalone, high-performance Windows systems administration and remote assistance suite built specifically for Active Directory Domain Administrators, Systems Engineers, and IT Helpdesk specialists.
 
 Unlike commercial remote assistance tools that require installing proprietary background services or paying recurring cloud subscriptions, Windows AD Remote Administration Control Center operates **100% agentlessly**. It interacts natively with Windows endpoints using standard enterprise protocols:
 - **Active Directory / LDAP (ADSI)**: Discovers all domain-joined workstations and servers in real-time.
@@ -113,7 +116,7 @@ Run_AD_Remote_Control.bat
 
 #### Structured Package Architecture
 When extracting or deploying the public release package, assets are organized into dedicated subdirectories:
-- **Release Root**: Contains the primary executable (Windows AD-Admin Control Center v2.8.0.exe), the 1-click convenience launcher (Run_AD_Remote_Control.bat), cryptographic integrity hashes (CHECKSUMS.txt), and quick start notes.
+- **Release Root**: Contains the primary executable (Windows AD-Admin Control Center v2.9.0.exe), the 1-click convenience launcher (Run_AD_Remote_Control.bat), cryptographic integrity hashes (CHECKSUMS.txt), and quick start notes.
 - **Documentation/**: Complete administrator reference manuals, version changelogs, architecture documentation, and software license files.
 - **Tools/**: Auxiliary endpoint utilities, including the Activity & Inactivity Monitor Agent (ADRC_IdleAgent.exe).
 - **PS Scripts/**: Automated domain deployment scripts, including the Group Policy and Windows Firewall setup utility (Configure_Endpoint_GPO.ps1).
@@ -222,6 +225,7 @@ Both Single and Bulk context menus feature an embedded **Fast Action Search Box*
 | **🌐 Network & Connectivity** | 🔍 DNS Name Resolution & Reverse Lookup (nslookup)... | 🟢 Emerald Green | Performs forward and reverse DNS queries for hostname/IP verification. |
 | **🌐 Network & Connectivity** | 🌐 Flush Remote DNS (ipconfig /flushdns) | 🔷 Sky Cyan | Clears the remote endpoint's DNS resolver cache. |
 | **🌐 Network & Connectivity** | ⚡ One-Click Network Repair & Reset... | 🟢 Emerald Green | Automated sequence: release, renew, flushdns, winsock reset, adapter reset. |
+| **🌐 Network & Connectivity** | 🛡️ Network Profile Manager (Public / Private Switch)... | 🟡 Amber Gold | View and switch network categories (Public vs. Private) to resolve discovery and sharing issues remotely. |
 | **🌐 Network & Connectivity** | 📶 Enable Remote ICMP Ping Echo (Windows Firewall)... | 🟡 Amber Gold | Unblocks inbound ICMPv4 echo requests in Windows Defender Firewall. |
 | **🌐 Network & Connectivity** | 🔗 Open Website URL in Remote User's Browser... | 🔷 Sky Blue | Spawns web URLs or web applications in the remote user's browser session. |
 | **🌐 Network & Connectivity** | ⚡ Wake-on-LAN (WOL Wakeup) | 🟡 Amber Gold | Sends magic packets to power on sleeping workstations. |
@@ -229,6 +233,7 @@ Both Single and Bulk context menus feature an embedded **Fast Action Search Box*
 | **👤 Active Directory & User Session** | ✏️ Edit AD User Profile Attributes... | 🟡 Amber Gold | In-app editor for First Name, Last Name, Title, Dept, Phone, Email, Office. |
 | **👤 Active Directory & User Session** | 🔓 Unlock User Account (Active Directory) | 🟢 Emerald Green | Clears locked-out account flags in Active Directory immediately. |
 | **👤 Active Directory & User Session** | 🔑 Reset User Password (Active Directory) | 🟡 Amber Gold | Sets new temporary password with optional force-change-at-logon toggle. |
+| **👤 Active Directory & User Session** | 🔑 Test User Credentials (AD Authentication)... | 🟢 Emerald Green | Non-interactively validates credentials and account lockout status against Active Directory. |
 | **👤 Active Directory & User Session** | ⏰ Check User Password Expiration Date... | 🟡 Amber Gold | Displays exact password expiration timestamp and days remaining. |
 | **👤 Active Directory & User Session** | 💬 Send Toast Notification to User | 🟣 Royal Purple | Sends Windows Action Center toast alert with chime sound. |
 | **👤 Active Directory & User Session** | 🚪 Logoff Active User Session | 🟠 Deep Orange | Gracefully terminates the remote user's interactive session. |
@@ -238,6 +243,7 @@ Both Single and Bulk context menus feature an embedded **Fast Action Search Box*
 | **📁 Files & Shared Folders** | 📄 Open Documents Folder | 🟣 Royal Purple | Opens active user's remote Documents directory. |
 | **📁 Files & Shared Folders** | 🗄️ Remote Mapped Network Drives Manager | 🔵 Royal Blue | Inspect, map new drive letters, edit paths, or disconnect remote drives. |
 | **📁 Files & Shared Folders** | 📁 Push File / Script to Remote PC (C$\Temp)... | 🔵 Royal Blue | Uploads local files or scripts directly to remote C$\Temp folder. |
+| **📁 Files & Shared Folders** | 🛣️ Win32 Long Path Support (260+ Chars Check & Enable)... | 🟢 Emerald Green | Inspects and configures operating system and Group Policy long path support beyond 260 characters. |
 | **🛠️ Customization, Automation & Deploy** | 📦 Silent Software / Script Deployer | 🟣 Royal Purple | Silent execution of MSI, EXE, BAT, or PS1 packages with exit codes. |
 | **🛠️ Customization, Automation & Deploy** | 🔄 Force Remote GPUpdate (gpupdate /force) | 🟢 Emerald Green | Forces immediate Group Policy evaluation strictly on the remote target. |
 | **🛠️ Customization, Automation & Deploy** | 📜 View GPUpdate & GPO Event Logs | 🌊 Dark Teal | Direct jump to Event Log Viewer scoped to Group Policy processing events. |
@@ -269,6 +275,7 @@ When selecting multiple computers in the inventory grid (via Shift + Click, Ctrl
 | **Maintenance** | 🔄 Force Remote GPUpdate (Bulk) | 🟢 Emerald Green | Triggers concurrent gpupdate /force on all selected machines. |
 | **Maintenance** | 📦 Silent Software / Script Deployer (Bulk)... | 🟣 Royal Purple | Deploys software packages or setup scripts across multiple computers. |
 | **Maintenance** | 📁 Push File / Script to Remote PCs (Bulk)... | 🔵 Royal Blue | Uploads files or scripts directly to C$\Temp on all selected targets. |
+| **Maintenance** | 🛣️ Win32 Long Path Support (Bulk)... | 🟢 Emerald Green | Checks and enables Win32 long path support across all selected workstations simultaneously. |
 | **Maintenance** | 🛡️ Configure UAC Shadow Compatibility (Bulk)... | 🟢 Emerald Green | Enables shadow compatibility settings across all selected machines. |
 | **Maintenance** | 🔓 Enable Remote Desktop (RDP) (Bulk)... | 🔵 Royal Blue | Enables RDP, starts services, and unblocks port 3389 across all targets. |
 | **Maintenance** | 🖥️ Turn Off Monitors (Bulk)... | 🌙 Dark Blue | Concurrently powers off physical displays across all selected endpoints. |
@@ -302,6 +309,9 @@ Remote Desktop Shadowing attaches directly to an active physical display session
 - **Multi-Monitor (/multimon)**: Spans across multi-monitor setups.
 - **Automatic Session Detection**:
   - Automatically identifies active console session IDs without requiring manual entry.
+- **Intelligent Service Health & Self-Healing Engine**:
+  - Automatically verifies that the remote endpoint's terminal services components are fully registered and active before initiating connection.
+  - Automatically repairs missing or damaged service dependencies and activates idle services on demand, preventing misleading connection errors (such as "Shadow Error: This computer name is invalid").
 
 #### B. Pre-Shadow Toast Alert Notification
 - When **🔔 Alert User** is checked (default: enabled), the application automatically transmits a modern Windows Action Center Toast notification accompanied by a chime sound directly to the user's taskbar clock:
@@ -665,11 +675,26 @@ Click **📋 Bulk AD Update** on the bottom toolbar or right-click any computer 
 - Opens a secure password reset dialog (Ctrl + Shift + P).
 - Specify a new temporary password and optionally check **"User must change password at next logon"**.
 
-#### C. Password Expiration Date Inspection
+#### C. Active Directory User Credentials Validation Tester (🔑 Test Login)
+- **Direct Multi-Location Access**: Available via the top **Quick Action: 🔑 Test Login** button, or by right-clicking any workstation -> **👤 Active Directory & User Session** -> **🔑 Test User Credentials (AD Authentication)...**.
+- **Non-Interactive Verification**: Safely tests whether a user's Active Directory username and password are valid without requiring the user to log in or initiate a remote session.
+- **Pre-Filled User Account**: Automatically pre-populates with the currently selected workstation's logged-in user, while allowing administrators to enter any arbitrary domain user account (formats supported: `username`, `DOMAIN\username`, or `user@domain.com`).
+- **Show/Hide Password & Quick Paste**: Features an interactive visibility eye toggle (**👁️ Show** / **🙈 Hide**) to inspect complex special characters and prevent typos, along with a 1-click **📋 Paste** button.
+- **Definitive Visual Outcome Badges**:
+  - **✅ Valid Credentials**: Displays a prominent emerald green confirmation: *"Valid Credentials — Authentication successful."* confirming that the Active Directory domain controller accepted the credentials.
+  - **❌ Invalid Credentials**: Displays a clear crimson red notification: *"Invalid Credentials — Authentication failed. Invalid username or password."* with specific details if the account was not found or disabled.
+- **Live Account Lockout Detection & 1-Click Unlock**:
+  - If the user account is locked out in Active Directory due to repeated incorrect password attempts, a dedicated amber alert card is revealed.
+  - An integrated **🔓 Unlock Account Now** button allows the administrator to immediately clear the account lockout without opening separate administrative tools, followed by instant credential re-testing.
+- **Directory Identity & Password Lifecycle Diagnostics**:
+  - Displays full account identity attributes: Display Name, SAM Account Name, User Principal Name (UPN), Account Status (Enabled or Disabled), Lockout Status, Password Last Set timestamp, Password Expiration policy, and the Authenticating Domain Controller.
+- **Audit Logging**: Every test and lockout resolution is recorded to the local Activity Log for full administrative accountability.
+
+#### D. Password Expiration Date Inspection
 - Right-click any computer -> **👤 Active Directory & User Session** -> **⏰ Check User Password Expiration Date...**.
 - Displays exact password expiration timestamps and remaining validity days for the logged-in user.
 
-#### D. Windows LAPS Local Administrator Password Management
+#### E. Windows LAPS Local Administrator Password Management
 Right-click any computer -> **⚡ Security & Power Control** -> **🔑 LAPS Local Administrator Password...**.
 - **Automatic Decryption**: Queries Active Directory for managed local administrator credentials across modern Windows LAPS (encrypted/plaintext) and legacy Microsoft LAPS deployments.
 - **Account Identification**: Displays the managed local admin username (e.g. Administrator).
@@ -682,7 +707,7 @@ Right-click any computer -> **⚡ Security & Power Control** -> **🔑 LAPS Loca
 - **Instant Password Rotation ("Expire Now & Rotate")**:
   - Click **⚡ Expire Now & Rotate** to force immediate credential rotation in Active Directory.
 
-#### E. BitLocker Drive Encryption & Recovery Keys
+#### F. BitLocker Drive Encryption & Recovery Keys
 Right-click any computer -> **⚡ Security & Power Control** -> **🔐 BitLocker Recovery Keys & Drive Encryption...**.
 - Queries Active Directory for backed-up BitLocker recovery passwords, volume GUIDs, key protectors, and drive encryption status.
 
@@ -795,6 +820,14 @@ Right-click any computer (or bulk select) -> **🛠️ Customization, Automation
 - Enables or disables Windows screen savers remotely, customizes inactivity timeouts, and enforces password lockout upon resume across single or multiple workstations.
 - When an active screen saver is running on a target workstation with an interactive user logged in, the application's real-time inventory presence dynamically reflects the state as **`💤 Idle (Screensaver)`** (when unlocked) or **`💤 Locked (Screensaver)`** (when locked).
 
+#### I. Windows Win32 Long Path Support Manager
+Right-click any computer (or bulk select) -> **📁 Files & Shared Folders** -> **🛣️ Win32 Long Path Support (260+ Chars Check & Enable)...** (or access via **Windows God Mode & Power Tweaks**).
+- **Real-Time Path Limit Diagnostic**: Queries both operating system filesystem parameters and Windows Group Policy configurations to verify whether Win32 paths exceeding the classic 260-character limitation are supported.
+- **1-Click Enablement & Policy Harmonization**: Sets both kernel and Group Policy filesystem settings to enabled (`LongPathsEnabled = 1`), removing path length restrictions for compatible applications, PowerShell, and file operations up to 32,767 characters.
+- **Fleet-Wide Bulk Deployment**: Select multiple workstations to inspect and update long-path support fleet-wide with progress indicators and structured operation reporting.
+- **PowerShell Script Generator & Clipboard Copy**: One-click copying of verification and enablement scripts for administrative record-keeping or manual scripting.
+- **Testing & Safety Guidance**: Provides recommendations for safe automated script testing (such as keeping dry-run testing modes enabled) and outlines reboot requirements for background services.
+
 ---
 
 ### 18. Inactivity & Idle Monitor Agent (Enterprise Feature)
@@ -866,6 +899,19 @@ Right-click any computer -> **🌐 Network & Connectivity** -> **📶 Enable Rem
 #### G. Remote Browser URL & Application Launcher
 Right-click any computer -> **🌐 Network & Connectivity** -> **🔗 Open Website URL in Remote User's Browser...**.
 - Launches specified web URLs or application paths directly in the active remote user's web browser session.
+
+#### H. Remote Network Profile Manager (Public / Private Network Switch)
+Right-click any computer (or bulk select) -> **🌐 Network & Connectivity** -> **🛡️ Network Profile Manager (Public / Private Switch)...** or via the toolbar **Ping** button context menu.
+- **Real-Time Network Profile Category Diagnostic**: Inspects active network adapters (Ethernet, Wi-Fi, virtual connections) and displays their current classification:
+  - 🟢 **Private Network**: Enables Windows Network Discovery and File & Printer Sharing (SMB). Best suited for corporate office networks and trusted LAN environments.
+  - 🟡 **Public Network**: Conceals the workstation from network scans and blocks unsolicited inbound connections through Windows Defender Firewall. Intended for untrusted public Wi-Fi hotspots and guest networks.
+  - 🔵 **Domain Network**: Authenticated against an Active Directory Domain Controller and centrally managed via Group Policy.
+- **1-Click Remote Category Switching**:
+  - Support technicians can switch individual adapters between Public and Private with a single click.
+  - Click **"🟢 Switch All to Private Network"** to instantly resolve end-user complaints regarding unreachable network printers, shared folders, or corporate intranet services without taking over the user's screen or requiring administrative elevation.
+  - Click **"🟡 Switch All to Public Network"** to quickly shield portable devices connected to untrusted networks.
+- **Fleet-Wide Bulk Operations**: Review and switch network profile categories across dozens of selected workstations simultaneously, complete with live progress bars and summary reporting.
+- **Automatic Domain Protection**: Safely protects Active Directory Domain-Authenticated profiles from accidental reclassification to maintain domain security compliance.
 
 ---
 
@@ -968,9 +1014,16 @@ Click **🚀 Updates** on the top header bar.
 
 - **Automatic Version Check**: Compares local version against latest GitHub Release tag.
 - **Changelog Preview**: Displays formatted release notes and update details.
-- **Zero-Browser In-Place Update**:
-  - Clicking **⚡ Update & Restart Now** downloads updated PE binary in background.
-  - Automatically overwrites executable and restarts application in ~1.5 seconds without browser downloads or installer wizards.
+- **Zero-Browser In-Place Multi-Component Update**:
+  - Clicking **⚡ Update & Restart Now** downloads the complete distribution archive package (`.zip`) in the background.
+  - Automatically extracts and synchronizes all files directly into the application directory:
+    - Main application executable (`Windows AD-Admin Control Center vX.X.X.exe`)
+    - One-click launcher batch file (`Run_AD_Remote_Control.bat`)
+    - Auxiliary companion tools (`Tools/ADRC_IdleAgent.exe` and release notes)
+    - Active Directory & GPO automation scripts (`PS Scripts/Configure_Endpoint_GPO.ps1`)
+  - Cleans up temporary staging files and older version executables.
+  - Restarts the application seamlessly in ~1.5 seconds without browser downloads or installer wizards.
+  - **Dual-Mode Compatibility**: Also supports single-binary updates if a hotfix or standalone executable release is distributed.
 
 ---
 
@@ -1049,8 +1102,12 @@ Write-Host "[SUCCESS] Workstation is fully configured for Windows AD Remote Cont
 
 ### 27. Enterprise Security & Role-Based Access Governance
 
-- **Startup Authorization Guard**:
-  - Verifies that the launching user belongs to genuine Domain or Enterprise administrative tiers (Domain Admins, Enterprise Admins, Schema Admins, Account Operators, Server Operators, IT Admins). Standard workstation users with local admin are strictly blocked on domain networks.
+- **Domain-Joined Computer Enforcement**:
+  - The application strictly requires a domain-joined computer to run. Standalone or workgroup devices cannot launch the application or enroll into administrative directories. The application uses authoritative Windows system checks to verify domain membership before initializing.
+- **Separated Domain Administrator Permission Verification**:
+  - Device domain membership is evaluated separately from operator permissions. A computer being joined to a domain does not grant access unless the logged-in operator also possesses authorized Active Directory Domain Administrator permissions (such as Domain Admins or Enterprise Admins). Standard workstation users and local administrators are strictly blocked.
+- **Clear Access Restriction Guidance**:
+  - If access is blocked, a user-friendly, professional restriction window explains why access was restricted, highlights whether the computer or user account requires remediation, displays the detected environment details, and provides a direct verification retry action.
 - **Binary Integrity & Hardening**:
   - The compiled executable is a native PE binary hardened with code compilation and Authenticode signatures to prevent reverse engineering or tampering.
 - **Separately Provisioned Enterprise Fleet Governance**:

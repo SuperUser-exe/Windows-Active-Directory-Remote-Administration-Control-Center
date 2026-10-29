@@ -1,6 +1,6 @@
 ﻿# ⚡ Windows AD Remote Administration Control Center — Enterprise Remote Control & Administration Suite
 
-[![Release](https://img.shields.io/badge/Release-v2.8.0-blue.svg?style=for-the-badge&logo=github)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases)
+[![Release](https://img.shields.io/badge/Release-v2.9.0-blue.svg?style=for-the-badge&logo=github)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011%20%7C%20Server-0078D6.svg?style=for-the-badge&logo=windows)](https://microsoft.com)
 [![Framework](https://img.shields.io/badge/.NET%20Framework-4.0%2B-512BD4.svg?style=for-the-badge&logo=dotnet)](https://dotnet.microsoft.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
@@ -46,7 +46,7 @@ After colleagues and fellow sysadmin friends used the tool and experienced how m
 > [!IMPORTANT]
 > The **only official and authentic release source** for this project is:  
 > 👉 **https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center**  
-> * **Latest Official Release**: **Version 2.8.0** is the current official public release. Next-generation features (such as Desktop Info HUD, God Mode, Idle Agent Service, and Fleet Analytics Intelligence) are now integrated.
+> * **Latest Official Release**: **Version 2.9.0** is the current official public release. Next-generation features (such as Desktop Info HUD, God Mode, Idle Agent Service, and Fleet Analytics Intelligence) are now integrated.
 > * **Do not trust unofficial copies**: If downloaded from third-party sites, file-sharing platforms, or re-hosted mirrors, the author assumes no responsibility for modified, corrupted, or repackaged binaries.
 > * **Integrity Check**: Always verify the official release SHA-256 checksums provided in `CHECKSUMS.txt`.
 > * **Community & Discussions**: We have enabled **[GitHub Discussions](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/discussions)**! Come say hello, share workflow feedback, report issues, or suggest new features.
@@ -145,16 +145,18 @@ Most remote management tools (RMMs) and commercial support platforms force you t
 - **📦 Full Software Inventory**: Multi-architecture scanning across 64-bit and 32-bit registries and all user profiles with automated fallback discovery and silent 1-click uninstaller.
 - **📋 Advanced Event Log Viewer & Security Audit Hub**: High-speed reverse streaming and native remote server-side filtering across 14 event channels (including dedicated Group Policy Operational), categorized visual Quick Presets library (35+ enterprise audit presets with colorful badging, emojis, and comprehensive Group Policy / GPUpdate diagnostics), type-to-find search box, forensic entity filtering toolbar (User, Host, IP, and File operations with Exact Match toggle), sortable forensic data columns, vivid severity badges (Audit Success, Audit Failure, Error, Warning, Info, Verbose), event limits up to 10,000 records, rapid emergency pills (including 1-click `📜 GPUpdate`), and 1-click CSV audit export.
 - **🖨️ Remote Printers & Queue Manager**: Inspects local and domain print server shared printers with live print job management.
-- **👤 Active Directory User Controls & Phone Telemetry**: Dynamic account lockout detection with 1-click unlocking, password resets, 360° user profile card inspection, and live Active Directory phone number retrieval directly inside the main inventory grid with search indexing and CSV export.
+- **🔑 Active Directory User Credentials Validation & Account Controls**: Non-interactive Active Directory username and password validation with instant success/failure outcome badges, real-time account lockout detection with 1-click unlocking, password resets, 360° user profile card inspection, and live Active Directory phone number retrieval directly inside the main inventory grid with search indexing and CSV export.
 - **🎛️ Dashboard Column Title Filters & Custom Visibility**: Interactive column filtering across all 12 dashboard columns with multi-mode matching (Contains, Equals, Starts With, Does Not Contain, Blanks, Non-Empty) and fleet quick-select pills, plus dedicated toolbar column visibility checklist with persistent user layout saving and 1-click filter reset.
 - **👥 Bulk Active Directory User Profile Attributes Updater**: High-speed batch updating of Active Directory user properties (First Name, Initials, Last Name, Display Name, Description, Office Location, Telephone, and Email) from CSV, Excel, or Notepad TXT files with mandatory pre-flight dry run validation, strict preservation of blank fields, sample template generation, and full execution audit reporting.
+- **🛡️ Remote Network Profile Management (Public / Private Switch)**: Remotely inspect and switch active network profile categories (Public, Private, Domain-Authenticated) across single or bulk selected workstations. Instantly resolve printer sharing, network discovery, and SMB access issues caused by accidental "Public" classifications without disrupting the user.
+- **🛣️ Win32 Long Path Support Manager (Single & Bulk)**: Inspect and enable Windows long path support (>260 characters) across FileSystem and Group Policy settings in 1-click, resolving deep directory cleanup and file transfer errors.
 - **🧹 4-Path Deep Temp Cleaner**: Purges Temp, AppData Temp across all profiles, Recent files, and Prefetch in 1-click with byte counters.
 - **🖥️ Desktop Info HUD (Sysinternals BgInfo Engine)**: Directly stamp system telemetry onto desktop wallpapers in 2 crisp columns with drop shadows, or launch an optional floating widget (`🖥️ HUD (BgInfo)`).
 - **🖼️ Remote Desktop Wallpaper Changer & Manager (Single & Bulk)**: Remotely apply custom background images (JPG, PNG, BMP) across one or multiple remote PCs with display fit styles (Fill, Fit, Stretch, Tile, Center, Span), live image preview, and 1-click original backup restoration.
-- **👑 Windows God Mode & Power Tweaks Hub (Single & Bulk)**: Enable or remove Windows Master Control Panel on User & Public Desktop, context menus, and direct admin launcher, plus 1-click power tweaks (Take Ownership, Classic Win11 Menu, Ultimate Performance, CompactOS, Show File Extensions, Disable Telemetry, 1-Click RDP Enable, Disable Bing Search) across single or multiple remote computers.
+- **👑 Windows God Mode & Power Tweaks Hub (Single & Bulk)**: Enable or remove Windows Master Control Panel on User & Public Desktop, context menus, and direct admin launcher, plus 1-click power tweaks (Take Ownership, Classic Win11 Menu, Ultimate Performance, CompactOS, Show File Extensions, Disable Telemetry, 1-Click RDP Enable, Disable Bing Search, Win32 Long Path Support) across single or multiple remote computers.
 - **🎯 Dynamic Smart Context Menu (Single vs Bulk)**: Right-clicking multi-selected computers dynamically displays only bulk-supported actions (Wallpaper, God Mode, HUD, Idle Agent, Deep Clean, GPUpdate, Deployer, File Push, Messaging, Power & WOL). Right-clicking a single computer presents the full administrative console with informative messages when features are not configured or supported.
 - **🌐 Remote Browser URL & File Launcher**: Launch web URLs in Default Browser, Microsoft Edge, or Google Chrome directly inside the remote user's interactive session.
-- **🔄 Seamless In-App Auto-Updater**: Directly updates the application in-place from GitHub Releases without browser redirects or installer wizards!
+- **🔄 Seamless In-App Auto-Updater**: Automatically detects and downloads full distribution packages (`.zip`), extracting and synchronizing all companion tools, administrative scripts, and binaries in-place without browser redirects or installer wizards!
 - **⌨️ Universal Keyboard Ergonomics**: Dismiss any popup window with `ESC`, open Drive Manager with `Ctrl + D`.
 ---
 
@@ -436,7 +438,7 @@ Explore the rich visual interface and integrated administrative consoles of **Wi
 | **🖥️ Remote Display** | • Remote Shadowing (Attended & Auto-Attended `/noConsentPrompt`)<br>• Full Control (Keyboard & Mouse) or View-Only<br>• Fullscreen & Multi-Monitor spanning<br>• Standard RDP & Server Console Admin (`/admin`) sessions |
 | **🔔 User Alerts** | • Action Center Toast Notifications near the taskbar clock<br>• Audio chime notification<br>• Automated fallback to `msg.exe` |
 | **📢 Broadcast Studio** | • **In-App Broadcast Studio & Notification Delivery Tracker**<br>• Centralized real-time broadcast dispatcher with domain and workstation targeting<br>• **Full Delivery Lifecycle Tracking**: `Sent / Pending` ➔ `Received` ➔ `Read` ➔ `Acknowledged`<br>• **Mandatory Acknowledgement Mode**: Requires users to click `✓ Acknowledge` before closing critical notices<br>• **Fleet Reach Analytics & Receipts Ledger**: Real-time delivery progress bars and detailed per-workstation compliance receipts (Computer, User, Domain, Delivery Timestamp, Status)<br>• **Contextual Lifecycle Action Control**: Deactivation dynamically limited to active broadcasts; automatically marks `✓ Completed` upon fleet reception |
-| **👑 God Mode & Tweaks**| • **Windows God Mode (Master Control Panel) Remote Controller (Single & Bulk)**<br>• Deploy/remove God Mode folder shortcut on User & Public Desktop<br>• Native desktop background right-click context menu integration<br>• 1-Click live interactive launch of God Mode Master Control Panel on remote user's screen<br>• **"Take Ownership"** context menu injector to reclaim permissions on locked folders<br>• **Classic Windows 11 Context Menu** restorer (bypasses "Show more options")<br>• **"Ultimate Performance"** power plan activator for maximum hardware throughput<br>• **CompactOS** storage compression (free 3-5 GB on SSD)<br>• **Disable Consumer Bloatware** & promotional tiles<br>• **Always Show File Extensions & Hidden Files** in Explorer<br>• **Disable Windows Diagnostic Telemetry** for enterprise privacy and compliance<br>• **1-Click Enable Remote Desktop (RDP)**, NLA & Firewall<br>• **Disable Bing Web Search** in Start Menu |
+| **👑 God Mode & Tweaks**| • **Windows God Mode (Master Control Panel) Remote Controller (Single & Bulk)**<br>• Deploy/remove God Mode folder shortcut on User & Public Desktop<br>• Native desktop background right-click context menu integration<br>• 1-Click live interactive launch of God Mode Master Control Panel on remote user's screen<br>• **"Take Ownership"** context menu injector to reclaim permissions on locked folders<br>• **Classic Windows 11 Context Menu** restorer (bypasses "Show more options")<br>• **"Ultimate Performance"** power plan activator for maximum hardware throughput<br>• **CompactOS** storage compression (free 3-5 GB on SSD)<br>• **Disable Consumer Bloatware** & promotional tiles<br>• **Always Show File Extensions & Hidden Files** in Explorer<br>• **Disable Windows Diagnostic Telemetry** for enterprise privacy and compliance<br>• **1-Click Enable Remote Desktop (RDP)**, NLA & Firewall<br>• **Disable Bing Web Search** in Start Menu<br>• **Win32 Long Path Support** (removes 260 MAX_PATH limit in FileSystem & GPO) |
 | **🖼️ Wallpaper Changer**| • **Remote Desktop Wallpaper Changer & Manager (Single & Bulk)**<br>• Remotely apply custom corporate wallpaper (JPG, PNG, BMP) to single or multi-selected computers<br>• Fit styles: Fill (Default), Fit, Stretch, Tile, Center, Span<br>• Embedded in-app image preview before applying<br>• Automatic backup of original wallpaper prior to replacement<br>• 1-Click restore original wallpaper on single or bulk target computers<br>• Seamless updates across active console and RDP user sessions |
 | **🖥️ Desktop Info HUD** | • **Sysinternals BgInfo Wallpaper Engine (`🖥️ HUD (BgInfo)`)**<br>• Direct-to-wallpaper stamping matching classic Sysinternals BgInfo<br>• Two-column telemetry with drop shadows for 100% legibility on any wallpaper<br>• 3 deployment modes: Wallpaper Overlay, Floating HUD Widget, or Both<br>• Dynamic profile path discovery<br>• Theme-accurate live preview and 1-click wallpaper restoration |
 | **🌐 Browser & App Run** | • **Remote Browser URL & Program Launcher**<br>• Launch URLs in Default Browser, Microsoft Edge, or Google Chrome<br>• Non-interactive execution directly inside user session |
@@ -458,7 +460,7 @@ Explore the rich visual interface and integrated administrative consoles of **Wi
 | **🧹 Deep Temp Cleaner** | • Purges 4 administrative paths: `C:\Windows\Temp`, User `AppData\Local\Temp`, `Recent` files across all profiles, and `Prefetch`<br>• Reports exact file count and MB disk space freed |
 | **⚡ Power Management** | • Wake-on-LAN (WOL) magic packets<br>• Lock remote screen without logging off<br>• Graceful remote user session logoff<br>• Remote reboot and shutdown with 5-second countdown |
 | **📜 Audit Logging** | • Reverse-chronological activity log (newest records always on top)<br>• Isolated single-machine audit filtering<br>• Outcome logging: `SUCCESS`, `FAILED`, `CANCELLED` with error messages<br>• Dedicated administrative isolation preventing background cloud telemetry from polluting local endpoint action records |
-| **🔄 Auto-Updater** | • Direct GitHub Releases API integration with `SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center`<br>• In-app release notes viewer<br>• In-place download, detached update script, and automatic restart (0 browser redirect!) |
+| **🔄 Auto-Updater** | • Direct GitHub Releases API integration with `SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center`<br>• In-app release notes viewer<br>• In-place download, full-package (.zip) extraction, companion tools & scripts synchronization, detached update script, and automatic restart (0 browser redirect!) |
 
 ---
 
@@ -467,7 +469,7 @@ Explore the rich visual interface and integrated administrative consoles of **Wi
 ### 1. 🔍 Header Navigation & Global Controls
 * **Quick Filter / Search Box (`Ctrl+S` / `Ctrl+F`)**: Real-time filter box that narrows the inventory list instantly as you type. Searches across Computer Names, IP Addresses, Logged-in Users, Descriptions, Operating Systems, and OUs. Pressing `ESC` clears the filter.
 * **`🔄 Refresh AD / Scan` (`F5` / `Ctrl+R`)**: Re-synchronizes computer inventory from Active Directory Domain Services and triggers a 24-thread parallel network status and ping latency check.
-* **`🚀 Updates`**: In-app GitHub Release monitor. Compares current version with the latest release, displays formatted changelogs, and performs a 1-click in-place update and restart in ~1.5 seconds without opening a browser.
+* **`🚀 Updates`**: In-app GitHub Release monitor. Compares current version with the latest release, displays formatted changelogs, and performs a 1-click in-place update and restart in ~1.5 seconds, automatically updating all companion tools and scripts without opening a browser.
 * **`ℹ️ Usage Guide`**: In-app operator reference manual with searchable tabs, copy, and export features.
 * **`📜 Activity Log`**: Reverse-chronological audit trail of all administrative actions. Records timestamp, operator, target host, action, and detailed outcome status (`SUCCESS`, `FAILED`, `CANCELLED`), strictly isolated from background fleet telemetry and connection retries.
 * **`🌙 Theme Toggle`**: Instantly switches between high-contrast Dark Mode and Light Mode with zero visual glitching.
@@ -550,9 +552,9 @@ Positioned directly beneath the DataGrid for rapid keyboard-first dispatching:
   - `🌐 Active Directory & DNS Server Troubleshooting ▸`: Dedicated identity & DNS tools (Restart DNS Service, Restart DNS Cache, Clear Resolver Cache, Resolve Custom Name, Ping 8.8.8.8) exclusively shown on Domain Controllers and DNS servers.
   - `📊 Diagnostics & Health ▸`: System Specs, Live Performance Monitor (with full-window deep historical view), Remote System Restore Manager, Remote Event Logs, Battery Health, WMI Repair, Computer Activity Log.
   - `🛠️ Customization, Automation & Deployment ▸`: Remote System Restore Manager (create checkpoints, enable/disable, rollback), Background Wallpaper Deployer, Remote Screen Saver Configuration, Windows God Mode, File Push, Software Deployer.
-  - `🌐 Network & Connectivity ▸`: Ping Host & Info, Network & IP Config (DHCP / Static), DNS Resolution & nslookup, Flush Remote DNS, Enable ICMP Firewall Rule, Open URL in User's Browser, Wake-on-LAN.
+  - `🌐 Network & Connectivity ▸`: Ping Host & Info, Network & IP Config (DHCP / Static), DNS Resolution & nslookup, Flush Remote DNS, Network Profile Manager (Public / Private Switch), One-Click Network Repair, Enable ICMP Firewall Rule, Open URL in User's Browser, Wake-on-LAN.
   - `👤 Active Directory & User Session ▸`: View AD Profile Card, Edit Attributes, Unlock Account, Reset Password, Password Expiry Checker, Send User Toast Message, Logoff Active Session.
-  - `📁 Files & Shared Folders ▸`: Open C$ Admin Share, Desktop Folder, Downloads Folder, Documents Folder, Mapped Network Drives Manager, Push File/Script to Remote PC.
+  - `📁 Files & Shared Folders ▸`: Open C$ Admin Share, Desktop Folder, Downloads Folder, Documents Folder, Mapped Network Drives Manager, Push File/Script to Remote PC, Win32 Long Path Support Manager (Check & Enable).
   - `🛠️ Customization, Automation & Deploy ▸`: Silent Software Deployer, Force Remote GPUpdate, Windows God Mode & Power Tweaks, Desktop Info HUD (BgInfo), Change Desktop Wallpaper, Remote Screen Saver Configuration, Inactivity & Idle Agent (Deploy / Status / Uninstall).
   - `⚡ Security & Power Control ▸`: BitLocker Recovery Keys, Windows LAPS Management Suite (Native Decryption, Plaintext Viewing, 1-Click Rotation & Calendar Expiration Scheduling), 4-Path Deep Temp Clean, Remote Lock & Unlock Controller, Instant Screen Lock, Reboot Computer, Shutdown Computer, Scheduled Power Actions (Date/Time picker).
 * **Multi-Computer Bulk Selection Menu**: Right-clicking multiple selected computers automatically presents the bulk fast search bar and organized bulk operations for fleet maintenance.
@@ -563,7 +565,7 @@ Positioned directly beneath the DataGrid for rapid keyboard-first dispatching:
 
 ```text
 Windows_AD_Remote_Administration_Control_Center/
-├── Windows AD-Admin Control Center v2.8.0.exe  # Standalone portable Windows executable (~2000 KB)
+├── Windows AD-Admin Control Center v2.9.0.exe  # Standalone portable Windows executable (~2000 KB)
 ├── Run_AD_Remote_Control.bat           # 1-Click launcher script (auto-launches versioned exe)
 ├── README.md                          # Complete project documentation & quick start
 ├── VERSION.txt                        # Release version metadata
@@ -588,10 +590,10 @@ Windows_AD_Remote_Administration_Control_Center/
 ## 🚀 How to Run
 
 ### Option 1: Standalone Portable Executable
-Download the latest `Windows AD-Admin Control Center v2.8.0.exe` from [GitHub Releases](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases).  
-Right-click `Windows AD-Admin Control Center v2.8.0.exe` and select **Run as Administrator** (using Domain Admin credentials):
+Download the latest `Windows AD-Admin Control Center v2.9.0.exe` from [GitHub Releases](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases).  
+Right-click `Windows AD-Admin Control Center v2.9.0.exe` and select **Run as Administrator** (using Domain Admin credentials):
 ```cmd
-"Windows AD-Admin Control Center v2.8.0.exe"
+"Windows AD-Admin Control Center v2.9.0.exe"
 ```
 
 ### Option 2: 1-Click Convenience Launcher
@@ -623,7 +625,7 @@ the usage metrics reset utility.bat
 > - **Server Operators** (Well-Known SID ending in `-549`)
 > - **Authorized Active Directory Administrative Groups** (e.g., `IT-Admins`, `IT Admins`, `IT Administrators`, `Server Admins`, `System Admins`, `Security Admins`, `Network Admins`, `Cloud Admins`).
 >
-> ⚠️ **Local Administrators are strictly disallowed on Domain-Joined Machines**: Users who are only granted local workstation administrative privileges (`BUILTIN\Administrators` / `Local Administrators`) are blocked from executing this suite to maintain enterprise governance.
+> 🛡️ **Active Directory Domain-Joined Device Enforcement**: This application is built specifically for enterprise IT administrators operating within an Active Directory environment. The application strictly requires a domain-joined computer to run; standalone or workgroup devices are completely restricted from executing the suite. In addition, users who are only granted local workstation administrative privileges (`BUILTIN\Administrators` / `Local Administrators`) are blocked from executing the suite to maintain enterprise security.
 >
 > 💡 **Need custom groups added or removed?** If your organization uses specialized administrative group names or specific role requirements, please [request a feature or open an issue on GitHub](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/issues) or reach out via [Telegram](https://t.me/WADRACC), and the author will gladly make the changes for your environment!
 

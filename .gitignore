@@ -15,3 +15,4 @@ Security_Audit_Report/
 .vs/
 bin/
 obj/
+*.zip
