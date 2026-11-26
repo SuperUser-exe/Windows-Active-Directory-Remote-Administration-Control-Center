@@ -8,6 +8,9 @@ publish_public_release.ps1
 Build_Exe*.bat
 obfuscar.xml
 Release_Protected/
+SymbolMaps/
+Mapping*.txt
+Build/
 docs/
 AdminConsole/
 Simulation/
@@ -15,4 +18,4 @@ Security_Audit_Report/
 .vs/
 bin/
 obj/
-/*.exe
+*.zip
