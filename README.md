@@ -15,7 +15,15 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Languages-C%23%2012%20%2F%20WPF%20%7C%20PowerShell-239120?style=for-the-badge&logo=csharp&logoColor=white" alt="Languages">
   <a href="https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/stargazers"><img src="https://img.shields.io/github/stars/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center?style=for-the-badge&logo=github&logoColor=white&label=GitHub%20Stars&color=gold" alt="GitHub stars"></a>
+  <a href="https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/network/members"><img src="https://img.shields.io/github/forks/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center?style=for-the-badge&logo=github&logoColor=white&label=Forks&color=8b5cf6" alt="GitHub forks"></a>
+  <a href="https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/watchers"><img src="https://img.shields.io/github/watchers/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center?style=for-the-badge&logo=github&logoColor=white&label=Watchers&color=0ea5e9" alt="GitHub watchers"></a>
   <a href="https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/issues"><img src="https://img.shields.io/github/issues/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center?style=for-the-badge&logo=github&logoColor=white&label=Issues&color=informational" alt="Issues"></a>
+</p>
+
+<p align="center">
+  <a href="https://hits.sh/github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/"><img src="https://hits.sh/github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center.svg?view=today-total&style=for-the-badge&label=Page%20Views%20(Today%20%2F%20Total)&color=6366f1&labelColor=1e293b" alt="Repository Page Views (Today / Total)"></a>
+  <a href="https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases"><img src="https://img.shields.io/github/downloads/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/total?style=for-the-badge&logo=github&logoColor=white&label=Total%20Downloads&color=0078D6" alt="Total Downloads"></a>
+  <a href="https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/latest"><img src="https://img.shields.io/github/downloads/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/latest/total?style=for-the-badge&logo=github&logoColor=white&label=Latest%20Release%20Downloads&color=10b981" alt="Latest Release Downloads"></a>
   <a href="https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/commits/main"><img src="https://img.shields.io/github/last-commit/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center?style=for-the-badge&logo=git&logoColor=white&label=Last%20Commit&color=brightgreen" alt="Last Commit"></a>
 </p>
 
@@ -114,6 +122,31 @@ After colleagues and fellow sysadmin friends used the tool and experienced how m
 > * **WhatsApp Updates Channel**: Follow the official [WhatsApp Updates Channel](https://whatsapp.com/channel/0029VbDZfvhCMY0H1PxerW2c) for new releases, feature announcements, and important notifications.
 > * **WhatsApp Community Group**: Join our [WhatsApp Community](https://chat.whatsapp.com/FFnsz5kSWND2FTZt8WNpZX) to connect with other users, share experiences, and participate in community conversations.
 > * **Telegram Community Chat**: Join our active Telegram group at **[t.me/WADRACC](https://t.me/WADRACC)** for instant community chat, direct feedback, updates, and IT discussions.
+
+---
+
+### 📈 Live Repository Statistics & Per-Version Download Tracker
+
+Track live community adoption, repository engagement, and exact download counts across every published release:
+
+#### 🌐 Repository Status & Traffic Overview
+| Metric | Live Status Badge | Details |
+| :--- | :--- | :--- |
+| **👀 Page Views (Today / Total)** | [![Traffic Analytics](https://img.shields.io/badge/Live%20Traffic-View%20Hits.sh%20Analytics-6366f1?style=for-the-badge&logo=googleanalytics&logoColor=white)](https://hits.sh/github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/) | Counts every repository page visit (including repeat visits) in real time; live counter badge is displayed at the top of this page. |
+| **📥 All Releases Combined** | [![Total Downloads](https://img.shields.io/github/downloads/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/total?style=for-the-badge&logo=github&logoColor=white&label=Total%20Downloads&color=0078D6)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases) | Cumulative downloads across all published release binaries, installers, and verification packages. |
+| **🚀 Latest Release (`v3.0.0`)** | [![Latest Downloads](https://img.shields.io/github/downloads/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/latest/total?style=for-the-badge&logo=github&logoColor=white&label=Latest%20Downloads&color=10b981)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/latest) | Automatically tracks downloads for the newest official GitHub release. |
+| **📅 Latest Release Date** | [![Release Date](https://img.shields.io/github/release-date/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center?style=for-the-badge&logo=github&logoColor=white&label=Released&color=0ea5e9)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/latest) | Publication timestamp of the latest official public release. |
+| **📦 Repository Footprint** | [![Repo Size](https://img.shields.io/github/repo-size/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center?style=for-the-badge&logo=git&logoColor=white&label=Repo%20Size&color=475569)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center) | Total size of the public distribution repository including tools, scripts, and visual documentation. |
+
+#### 📦 Per-Version Release Download Counts
+| Version | Release Date | Edition / Milestone | Live Download Count | Release Page |
+| :--- | :--- | :--- | :--- | :--- |
+| **v3.0.0** | 26 Nov 2026 | Enterprise Release *(Latest)* | [![v3.0.0 Downloads](https://img.shields.io/github/downloads/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/v3.0.0/total?style=for-the-badge&label=v3.0.0&color=10b981)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v3.0.0) | [View v3.0.0 Release](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v3.0.0) |
+| **v2.9.0** | 29 Oct 2026 | Enterprise Release | [![v2.9.0 Downloads](https://img.shields.io/github/downloads/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/v2.9.0/total?style=for-the-badge&label=v2.9.0&color=0078D6)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v2.9.0) | [View v2.9.0 Release](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v2.9.0) |
+| **v2.8.0** | 13 Oct 2026 | Enterprise Release | [![v2.8.0 Downloads](https://img.shields.io/github/downloads/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/v2.8.0/total?style=for-the-badge&label=v2.8.0&color=0078D6)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v2.8.0) | [View v2.8.0 Release](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v2.8.0) |
+| **v2.7.0** | 02 Oct 2026 | Enterprise Release | [![v2.7.0 Downloads](https://img.shields.io/github/downloads/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/v2.7.0/total?style=for-the-badge&label=v2.7.0&color=0078D6)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v2.7.0) | [View v2.7.0 Release](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v2.7.0) |
+| **v2.6.5** | 12 Sep 2026 | Enterprise Release | [![v2.6.5 Downloads](https://img.shields.io/github/downloads/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/v2.6.5/total?style=for-the-badge&label=v2.6.5&color=6366f1)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v2.6.5) | [View v2.6.5 Release](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v2.6.5) |
+| **v2.6.0** | 10 Sep 2026 | Initial Public Release | [![v2.6.0 Downloads](https://img.shields.io/github/downloads/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/v2.6.0/total?style=for-the-badge&label=v2.6.0&color=64748b)](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v2.6.0) | [View v2.6.0 Release](https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases/tag/v2.6.0) |
 
 ---
 
