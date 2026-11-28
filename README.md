@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center/releases"><img src="https://img.shields.io/badge/Latest%20Release-v3.0.0-0078D6?style=for-the-badge&logo=github&logoColor=white" alt="Latest Release v3.0.0"></a>
   <a href="Documentation/Release_Notes/Main_Application/CHANGELOG.md"><img src="https://img.shields.io/badge/Release%20Notes-v3.0.0%20Enterprise-10b981?style=for-the-badge" alt="Release Notes v3.0.0 Enterprise"></a>
-  <a href="Documentation/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License: MIT"></a>
+  <a href="Documentation/LICENSE"><img src="https://img.shields.io/badge/License-Freeware%20(EULA)-green?style=for-the-badge" alt="License: Freeware (EULA)"></a>
 </p>
 
 <p align="center">
@@ -1155,7 +1155,7 @@ Windows_AD_Remote_Administration_Control_Center/
 │   ├── CHANGELOG.md                   # Detailed version release notes & history
 │   ├── CHANGELOG.txt                  # Plain text copy of release notes
 │   ├── Release_Notes/                 # Per-module release notes (Main App v3.0.0, Idle Agent v1.2.0, Coordinator v1.0.0, Disk Scanner v1.0.0)
-│   └── LICENSE                        # MIT License
+│   └── LICENSE                        # Freeware License & EULA (All Rights Reserved)
 ├── Tools/                             # Auxiliary administrative tools
 │   ├── ADRC_IdleAgent.exe             # Endpoint inactivity and presence monitoring agent (v1.2.0)
 │   ├── ADRC_MonitorCoordinator.exe    # 24/7 background network monitoring coordinator service (v1.0.0)
@@ -1316,7 +1316,7 @@ The application provides universal keyboard shortcuts for high-frequency operati
 ## 📄 License, Legal & Ethical Use Notice
 
 Developed with ❤️ by **[Askarali Mattummal](https://www.linkedin.com/in/askaralimattummal/)** | [GitHub](https://github.com/SuperUser-exe) | [Telegram Community](https://t.me/WADRACC).  
-Licensed under the [MIT License & Distribution Terms](Documentation/LICENSE).
+Licensed under the [Freeware License & End-User License Agreement (EULA)](Documentation/LICENSE) — Free for personal and enterprise IT use (source code remains private; All Rights Reserved).
 
 > [!CAUTION]
 > **Authorized IT Administrative Use Only**: This software is designed, developed, and published strictly for authorized IT systems administrators and certified support personnel to maintain, monitor, and troubleshoot authorized enterprise domain infrastructure. Any unauthorized deployment, surveillance, privacy violation, or malicious use is strictly prohibited. The author assumes no responsibility or liability for damages or legal consequences arising from misuse. Please consult the [LICENSE](Documentation/LICENSE) for complete terms of use and liability disclaimers.

@@ -1,101 +1,274 @@
-MIT License & Project Distribution Terms
+FREEWARE LICENSE & END-USER LICENSE AGREEMENT (EULA)
+Windows AD Remote Administration Control Center Enterprise (WADRACC, formerly ADRC)
 
-Copyright (c) 2026 Askarali Mattummal. All rights reserved.
+Copyright (c) 2026 Askarali Mattummal. All Rights Reserved.
 
-================================================================================
-PROJECT PURPOSE & OFFICIAL DISTRIBUTION NOTICE
-================================================================================
-
-This software, "Windows AD Remote Administration Control Center Enterprise", was originally created by
-Askarali Mattummal for personal use in Windows Active Directory enterprise
-administration. Following requests from colleagues and fellow IT professionals,
-it has been released publicly to assist IT administrators, systems engineers, and
-helpdesk specialists with daily domain management tasks.
-
-The software was specifically developed to be:
-  * Safe to use and non-intrusive
-  * Fully portable — requires no installer, agents, or third-party dependencies
-  * Lightweight, responsive, and resource-efficient for IT administrators
-  * Comprehensive — unifying Active Directory user management, workstation remote
-    control (Remote Shadow & RDP), printer queue control, network shares, live
-    telemetry, and diagnostic functions into a single administrative console.
-
---------------------------------------------------------------------------------
-OFFICIAL RELEASE SOURCE & INTEGRITY VERIFICATION
---------------------------------------------------------------------------------
-
-The ONLY official, authentic, and verified source for downloading this
-software and its updates is the official GitHub repository:
-
-  👉 https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center
-
-IMPORTANT SECURITY NOTICE:
-  1. Unofficial Sources: If you obtain this application from any third-party
-     website, file-sharing platform, mirror, or unauthorized repository, the
-     author (Askarali Mattummal) assumes NO responsibility or liability for any
-     malfunction, security issue, data loss, or damages resulting from the use
-     of that unofficial or modified copy.
-  2. Integrity: Users must always download releases directly from the official
-     GitHub repository and verify the release SHA-256 checksums provided in
-     CHECKSUMS.txt.
-  3. Binary Protection: Production public releases of this software are protected
-     using multi-layered code obfuscation and string encryption to preserve
-     project integrity and prevent unauthorized malicious tampering or repackaging.
+This is proprietary, closed-source freeware. It is not open-source software.
 
 ================================================================================
-AUTHORIZED IT ADMINISTRATIVE USE & MISUSE DISCLAIMER
+1. PROJECT PURPOSE & OFFICIAL DISTRIBUTION
 ================================================================================
 
-1. LEGITIMATE USE ONLY:
-   This application is designed, developed, and published strictly and exclusively
-   for legitimate, authorized IT system administrators, domain engineers, and
-   certified support specialists to monitor, maintain, troubleshoot, and simplify
-   routine daily corporate Active Directory and Windows domain operations.
+Windows AD Remote Administration Control Center Enterprise ("WADRACC", formerly
+known as "ADRC", or "the Software"), developed by Askarali Mattummal
+("Author"), is a Windows-based administration application originally created for
+personal use to simplify everyday Active Directory and enterprise Windows
+infrastructure management.
 
-2. STRICT PROHIBITION AGAINST MISUSE:
-   Under NO circumstances should this tool be deployed, executed, or used:
-     * On any computer, server, or corporate network without prior explicit,
-       documented authorization from the network owner or management.
-     * For unauthorized surveillance, clandestine user monitoring, privacy
-       infringement, espionage, credential harvesting, or illicit data capture.
-     * For penetration testing, exploitation, cyber attacks, or intentional
-       disruption of any computer systems, networks, or domain services.
+Following requests from colleagues and fellow IT professionals, WADRACC has been
+made publicly available as freeware to assist system administrators, network
+engineers, domain administrators, and helpdesk specialists.
 
-3. ZERO LIABILITY & INDEMNIFICATION:
-   The author and developer (Askarali Mattummal) expressly disclaims ABSOLUTELY
-   NO RESPONSIBILITY, LEGAL OBLIGATION, OR LIABILITY for any damages, losses,
-   penalties, security breaches, data compromises, employment disputes, or legal
-   consequences resulting from any misuse, illicit deployment, or improper
-   operation of this software.
+The Software is specifically designed to provide:
+  * Safe, non-intrusive administrative operations.
+  * Fully portable execution — requiring no installer, agents, or external
+    third-party DLL dependencies.
+  * Lightweight, responsive, and resource-efficient operation.
+  * Centralized Active Directory user, group, and computer management.
+  * Workstation remote administration, including Remote Shadow and RDP.
+  * Printer queue, mapped drive, software inventory, and share management.
+  * Live system telemetry, 24/7 network monitoring, and diagnostic suites.
+  * Active Directory security assessment and server health auditing tools.
 
-   The entire responsibility and legal liability for ensuring lawful, ethical,
-   and authorized usage — in strict compliance with all local laws, privacy
-   statutes (e.g., GDPR, CCPA, labor laws), and corporate IT policies — rests
-   entirely upon the individual operator and organization utilizing this software.
-
-   BY DOWNLOADING, STORING, OR EXECUTING THIS SOFTWARE, YOU EXPLICITLY AGREE TO
-   USE IT ONLY FOR AUTHORIZED, LEGITIMATE IT ADMINISTRATIVE PURPOSES AND ACCEPT
-   FULL PERSONAL AND LEGAL RESPONSIBILITY FOR ALL ACTIONS PERFORMED WITH IT.
+The Software (including its main executable, companion executables such as
+ADRC_IdleAgent, ADRC_MonitorCoordinator, and ADRC_DiskScanner, administrative
+scripts, and documentation) is distributed free of charge under the terms of
+this proprietary license.
 
 ================================================================================
-TERMS OF USE & PERMISSION NOTICE
+2. OFFICIAL DISTRIBUTION SOURCE & SOFTWARE INTEGRITY
 ================================================================================
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+The ONLY official, authentic, and verified source for downloading WADRACC
+releases, updates, documentation, and announcements is the official GitHub
+repository:
 
-The above copyright notice, project purpose, official distribution notice,
-authorized use disclaimer, and this permission notice shall be included in all
-copies or substantial portions of the Software.
+  https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+Security & Authenticity Notice:
+  1. Official Downloads:
+     Users are strongly advised to download WADRACC exclusively from the
+     official GitHub repository. The Author does not guarantee the
+     authenticity, integrity, or security of copies obtained from unauthorized
+     third-party websites, file-sharing platforms, mirrors, or repositories.
+  2. SHA-256 Integrity Verification:
+     Users should always verify downloaded release files against the official
+     SHA-256 checksums published in CHECKSUMS.txt.
+  3. Binary Protection:
+     Public production releases incorporate multi-layered code obfuscation,
+     string encryption, and software protection mechanisms to protect
+     intellectual property and discourage unauthorized modification, tampering,
+     or repackaging.
+  4. Unofficial or Modified Copies:
+     The Author assumes no responsibility or liability for any malfunction,
+     security issue, data loss, or damages resulting from unofficial, modified,
+     or repackaged versions of the Software.
+
+================================================================================
+3. AUTHORIZED IT ADMINISTRATIVE USE & MISUSE PROHIBITION
+================================================================================
+
+WADRACC is designed, developed, and published strictly and exclusively for
+legitimate, authorized IT system administrators, domain engineers, and
+certified support specialists to monitor, maintain, troubleshoot, and manage
+authorized Windows systems and Active Directory environments.
+
+3.1 Authorized Usage
+Users and organizations may use WADRACC for legitimate administrative
+activities, including:
+  * Active Directory administration, auditing, and security assessments.
+  * Authorized remote workstation support and screen shadowing.
+  * Network device and server health monitoring.
+  * IT troubleshooting, storage analysis, and diagnostics.
+  * Helpdesk and technical support operations.
+  * Internal enterprise infrastructure management.
+
+3.2 Prohibited Activities
+Under NO circumstances may WADRACC be deployed, executed, or used:
+  * On any computer, server, or corporate network without prior explicit,
+    documented authorization from the network owner or management.
+  * For unauthorized surveillance, clandestine user monitoring, privacy
+    infringement, espionage, credential harvesting, or illicit data capture.
+  * For penetration testing, exploitation, cyberattacks, or intentional
+    disruption of any computer systems, networks, or domain services.
+  * In violation of applicable laws, privacy regulations, or corporate IT
+    security policies.
+
+3.3 User and Organizational Responsibility
+The individual operating WADRACC and the organization deploying it bear full
+personal and legal responsibility for ensuring that all operations are properly
+authorized and comply strictly with all applicable local laws, privacy statutes
+(such as GDPR, CCPA, and labor laws), and corporate IT policies.
+
+The Author is not responsible or liable for any unauthorized deployment,
+misuse, employment disputes, security breaches, or unlawful activities
+performed by users or organizations utilizing WADRACC.
+
+================================================================================
+4. END-USER LICENSE GRANT (FREEWARE)
+================================================================================
+
+Subject to strict compliance with this Agreement, Askarali Mattummal ("Author")
+grants you a limited, non-exclusive, non-transferable, royalty-free license to:
+  * Download WADRACC from the official distribution source.
+  * Store and execute the compiled Software (including its companion
+    executables and documentation) on supported Windows systems.
+  * Use the Software without paying a license fee for personal IT
+    administration or internal commercial/enterprise IT administration.
+  * Deploy unmodified official Software binaries internally across computers,
+    servers, and IT shares owned or managed by your organization.
+
+IMPORTANT: Freeware availability does not transfer ownership of the Software
+or grant any open-source rights.
+
+================================================================================
+5. PROPRIETARY SOFTWARE & RESTRICTIONS
+================================================================================
+
+WADRACC is proprietary, closed-source software. Its source code is privately
+maintained by the Author and is not publicly distributed. The Software is
+licensed, not sold.
+
+Unless expressly authorized in writing by the Author, you may NOT:
+  1. Reverse engineer, decompile, disassemble, decode, or otherwise attempt to
+     extract or reconstruct the source code of the compiled executables, except
+     where such restrictions are prohibited by mandatory applicable law.
+  2. Modify, patch, alter, rebrand, or create derivative versions of the
+     compiled executables or protected components.
+  3. Remove, obscure, or alter copyright notices, proprietary identifiers, or
+     software ownership information.
+  4. Sell, rent, lease, sublicense, or distribute WADRACC for a fee.
+  5. Bundle WADRACC into another commercial product, paid service, or commercial
+     software distribution package without prior written permission.
+  6. Publish, mirror, re-host, or publicly redistribute modified or unmodified
+     WADRACC binaries through unauthorized third-party websites, download
+     portals, or repositories.
+  7. Claim ownership, authorship, or intellectual property rights over WADRACC
+     or its original implementation.
+
+5.1 Internal PowerShell Script Customization
+Where WADRACC includes administrative PowerShell scripts in the "PS Scripts/"
+directory, organizations may customize those scripts solely for their own
+internal IT administration and Group Policy deployment requirements.
+
+Such permission does NOT grant the right to:
+  * Redistribute modified scripts publicly.
+  * Sell or commercially license the scripts.
+  * Claim ownership of the original scripts.
+  * Incorporate the scripts into another publicly distributed or commercial
+    product.
+
+All original copyright and ownership rights remain with the Author.
+
+================================================================================
+6. OWNERSHIP & INTELLECTUAL PROPERTY
+================================================================================
+
+All title, copyright, trademarks, and intellectual property rights in and to
+WADRACC (formerly ADRC) remain the exclusive property of Askarali Mattummal,
+including:
+  * Application architecture and private source code.
+  * Compiled executables and proprietary components.
+  * Application design, user interfaces, and original implementations.
+  * Official documentation, visual assets, and associated materials.
+  * Software branding, product names, and associated intellectual property.
+
+The publication of compiled binaries through a public GitHub repository does
+not grant access to the private source code or transfer any ownership rights.
+All rights not expressly granted under this Agreement are reserved by the
+Author.
+
+================================================================================
+7. PLATFORM & EXTERNAL SERVICE INTERACTIONS
+================================================================================
+
+WADRACC operates using native Windows operating system components and the
+Microsoft .NET Framework without bundling external third-party DLLs. Any
+operating system components, runtime frameworks, or optional external services
+and integrations configured by the operator (such as messaging or notification
+gateways) remain subject to their respective providers' terms and licenses.
+
+================================================================================
+8. UPDATES & FUTURE RELEASES
+================================================================================
+
+The Author may periodically publish new versions, improvements, security
+updates, bug fixes, and additional features through the official GitHub
+repository.
+  * The Author is not obligated to provide continuous updates, maintenance,
+    technical support, or backward compatibility.
+  * Features and functionality may change or be retired between releases.
+  * Future versions may be subject to updated licensing terms.
+
+Unless expressly stated otherwise, updates remain subject to this Agreement.
+
+================================================================================
+9. DISCLAIMER OF WARRANTY
+================================================================================
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SOFTWARE IS PROVIDED
+"AS IS" AND "AS AVAILABLE", WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS,
+IMPLIED, OR STATUTORY, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+
+The Author does not warrant that:
+  * The Software will operate uninterrupted or error-free.
+  * The Software will be compatible with every Windows version or environment.
+  * All defects or vulnerabilities will be identified or corrected.
+  * The Software will meet every organization's specific requirements.
+
+Users are responsible for evaluating the Software in their own environments
+and maintaining appropriate backups and administrative safeguards.
+
+================================================================================
+10. LIMITATION OF LIABILITY
+================================================================================
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE AUTHOR
+OR COPYRIGHT HOLDERS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, CONSEQUENTIAL, OR PUNITIVE DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+DATA LOSS OR CORRUPTION, SYSTEM FAILURES, SERVICE INTERRUPTIONS, SECURITY
+INCIDENTS, UNAUTHORIZED ACCESS, BUSINESS INTERRUPTION, LOSS OF PROFITS,
+INFRASTRUCTURE DAMAGE, OR CLAIMS ARISING FROM UNAUTHORIZED DEPLOYMENT OR
+MISUSE), WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM,
+OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Nothing in this Agreement excludes or limits liability that cannot legally be
+excluded or limited under applicable law.
+
+================================================================================
+11. TERMINATION OF LICENSE
+================================================================================
+
+This license remains effective until terminated. If you fail to comply with
+any term of this Agreement, the license granted to you may be terminated to the
+extent permitted by applicable law. Upon termination, you must cease all use
+of WADRACC and delete all copies of the Software under your control, except
+where retention is required by applicable law. Termination does not affect any
+rights or obligations that accrued prior to termination.
+
+================================================================================
+12. ACCEPTANCE OF THIS AGREEMENT
+================================================================================
+
+By downloading, storing, copying, or executing WADRACC, you acknowledge that you
+have read, understood, and agreed to the terms and conditions of this Freeware
+License and End-User License Agreement, to the extent such acceptance is
+legally effective under applicable law.
+
+If you do not agree to these terms, do not download, store, or use the
+Software.
+
+================================================================================
+13. COPYRIGHT & CONTACT INFORMATION
+================================================================================
+
+Software:      Windows AD Remote Administration Control Center Enterprise
+               (WADRACC, formerly ADRC)
+Author:        Askarali Mattummal
+Repository:    https://github.com/SuperUser-exe/Windows-Active-Directory-Remote-Administration-Control-Center
+
+Copyright (c) 2026 Askarali Mattummal. All Rights Reserved.
+Unauthorized use, modification, or redistribution is prohibited except as
+expressly permitted under this Agreement or applicable law.
