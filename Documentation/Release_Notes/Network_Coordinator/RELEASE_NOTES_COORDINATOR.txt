@@ -5,6 +5,18 @@ The **Network Monitor** is the monitoring module inside the suite; the **Network
 
 ---
 
+## Version: 1.0.1 – Peer Share Synchronization & Maintenance Reliability Update
+**Release Date:** 27 November 2026
+
+> **ADRC_MonitorCoordinator v1.0.1** eliminates transient peer-share permission gaps during scheduled security maintenance, hardens remote peer incident synchronization retries, and fixes build-time UTF-8 character preservation.
+
+#### Fixes & Reliability Improvements
+- **Zero-Gap Peer Monitoring Permissions During Maintenance**: Fixed scheduled 30-minute security maintenance so peer monitoring write permissions on shared state storage are never briefly reset and re-applied, preventing transient *Access Denied* errors when peer coordinators synchronize outage records.
+- **Resilient Remote Peer Incident Synchronization**: Hardened remote file replacement and retry handling across SMB peer shares so transient antivirus scans or concurrent peer updates complete reliably without falling back to direct writes or generating automated error reports.
+- **Clean Multi-Coordinator Message Formatting**: Fixed an encoding issue in the version synchronization pipeline so status emojis and punctuation in WhatsApp alert templates remain crisp across coordinator version updates.
+
+---
+
 ## Version: 1.0.0 – Initial Public Release
 **Release Date:** 26 November 2026
 

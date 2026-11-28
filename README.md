@@ -114,7 +114,7 @@ After colleagues and fellow sysadmin friends used the tool and experienced how m
 
 > [!IMPORTANT]
 > The **only official and authentic release source** for this project is:  
-> * **Official Enterprise Release**: **Version 3.0.0** — featuring the **Multi-DC Health & Replication Command Center**, **Centralized IT Hardware & Workstation Inventory Report**, **Multi-Monitor & Windows License Detection**, **Advanced Multi-Target Ping Studio**, **Dedicated Network Monitor User Guide**, **two-tab cache-first User Guide & Release Notes**, companion modules (**ADRC_IdleAgent v1.2.0**, **ADRC_MonitorCoordinator v1.0.0**, **ADRC_DiskScanner v1.0.0**), and expanded security & remote power tools.
+> * **Official Enterprise Release**: **Version 3.0.0** — featuring the **Multi-DC Health & Replication Command Center**, **Centralized IT Hardware & Workstation Inventory Report**, **Multi-Monitor & Windows License Detection**, **Advanced Multi-Target Ping Studio**, **Dedicated Network Monitor User Guide**, **two-tab cache-first User Guide & Release Notes**, companion modules (**ADRC_IdleAgent v1.2.0**, **ADRC_MonitorCoordinator v1.0.1**, **ADRC_DiskScanner v1.0.0**), and expanded security & remote power tools.
 > * **Publisher & Authenticode Verification**: All public release builds carry consistent publisher metadata (`Askarali Mattummal`) and are designed for post-build SHA-256 Authenticode code signing with trusted timestamping alongside `CHECKSUMS.txt` SHA-256 verification. Always download only from official GitHub Releases.
 > * **Do not trust unofficial copies**: If downloaded from third-party sites, file-sharing platforms, or re-hosted mirrors, the author assumes no responsibility for modified, corrupted, or repackaged binaries.
 > * **Integrity Check**: Always verify the official release SHA-256 checksums provided in `CHECKSUMS.txt`.
@@ -1154,11 +1154,11 @@ Windows_AD_Remote_Administration_Control_Center/
 │   ├── NETWORK_MONITOR_GUIDE.txt      # Plain text copy of the Network Monitor guide
 │   ├── CHANGELOG.md                   # Detailed version release notes & history
 │   ├── CHANGELOG.txt                  # Plain text copy of release notes
-│   ├── Release_Notes/                 # Per-module release notes (Main App v3.0.0, Idle Agent v1.2.0, Coordinator v1.0.0, Disk Scanner v1.0.0)
+│   ├── Release_Notes/                 # Per-module release notes (Main App v3.0.0, Idle Agent v1.2.0, Coordinator v1.0.1, Disk Scanner v1.0.0)
 │   └── LICENSE                        # Freeware License & EULA (All Rights Reserved)
 ├── Tools/                             # Auxiliary administrative tools
 │   ├── ADRC_IdleAgent.exe             # Endpoint inactivity and presence monitoring agent (v1.2.0)
-│   ├── ADRC_MonitorCoordinator.exe    # 24/7 background network monitoring coordinator service (v1.0.0)
+│   ├── ADRC_MonitorCoordinator.exe    # 24/7 background network monitoring coordinator service (v1.0.1)
 │   └── ADRC_DiskScanner.exe           # High-speed standalone disk usage scanner companion (v1.0.0)
 ├── PS Scripts/                        # Domain & endpoint configuration scripts
 │   ├── Configure_Endpoint_GPO.ps1     # Automated endpoint GPO & firewall configuration script

@@ -1,7 +1,7 @@
 # 📡 Network Monitor — User Guide
-## Network Device Monitoring, Network Coordinator Service & WhatsApp Alerting (v1.0.0)
+## Network Device Monitoring, Network Coordinator Service & WhatsApp Alerting (v1.0.1)
 
-> **Version 1.0.0 — Initial Public Release (with Suite v3.0.0).** This guide describes how Network Monitor works for both normal everyday monitoring and Distributed Multi-Coordinator deployments.
+> **Version 1.0.1 (with Suite v3.0.0).** This guide describes how Network Monitor works for both normal everyday monitoring and Distributed Multi-Coordinator deployments.
 
 The **Network Monitor** watches your switches, routers, firewalls, servers, storage, cameras, printers and other network devices 24 hours a day, detects outages and partial failures, keeps a record of every incident, and sends WhatsApp alerts to your on-call team. It needs no software on the monitored devices.
 
